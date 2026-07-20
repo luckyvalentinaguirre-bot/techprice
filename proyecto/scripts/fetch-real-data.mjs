@@ -129,18 +129,27 @@ async function fromTiendanube(store) {
 
 async function fromMercadoLibre(store) {
   if (!store.token) throw new Error("Mercado Libre necesita un token (ver REALES.md).");
+  const site = store.site || "MLU";
+  const porBusqueda = store.maxPorBusqueda || 100; // cuántos traer por término
+  const seen = new Set();
   const out = [];
   for (const q of store.queries || []) {
-    const url = `https://api.mercadolibre.com/sites/${store.site || "MLU"}/search?q=${encodeURIComponent(q)}&limit=50`;
-    const data = await getJson(url, { Authorization: "Bearer " + store.token }).catch(() => ({ results: [] }));
-    for (const r of data.results || []) {
-      out.push({
-        nombre: r.title, precio: r.price, moneda: r.currency_id || store.moneda || "UYU",
-        imagen: (r.thumbnail || "").replace("http://", "https://").replace("-I.jpg", "-O.jpg") || null,
-        url: r.permalink, disponible: (r.available_quantity ?? 1) > 0,
-      });
+    for (let offset = 0; offset < porBusqueda; offset += 50) {
+      const url = `https://api.mercadolibre.com/sites/${site}/search?q=${encodeURIComponent(q)}&limit=50&offset=${offset}`;
+      const data = await getJson(url, { Authorization: "Bearer " + store.token }).catch((e) => { console.warn("  ML '" + q + "': " + e.message); return { results: [] }; });
+      const results = data.results || [];
+      for (const r of results) {
+        if (seen.has(r.id)) continue;
+        seen.add(r.id);
+        const img = (r.secure_thumbnail || r.thumbnail || "").replace("http://", "https://").replace(/-I\.jpg$/, "-O.jpg");
+        out.push({
+          nombre: r.title, precio: r.price, moneda: r.currency_id || store.moneda || "UYU",
+          imagen: img || null, url: r.permalink, disponible: (r.available_quantity ?? 1) > 0,
+        });
+      }
+      if (results.length < 50) break;
+      await new Promise((res) => setTimeout(res, 400));
     }
-    await new Promise((res) => setTimeout(res, 400));
   }
   return out;
 }

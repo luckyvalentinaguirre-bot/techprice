@@ -43,11 +43,26 @@ confirmada). Tres tipos soportados:
 - **Tiendanube** — `"plataforma": "tiendanube"`, `baseUrl`. (Se confirma abriendo
   `TIENDA/products.json`.)
 - **Mercado Libre** — `"plataforma": "mercadolibre"`, con `queries` (qué buscar)
-  y un `token`. La API de ML hoy **pide token**:
-  1. Entrá a **https://developers.mercadolibre.com.ar**, iniciá sesión y creá
-     una aplicación (gratis).
-  2. Generá un **access token** de prueba y pegalo en `token`.
-  3. Poné `enabled: true`.
+  y un `token`. Es la opción que más rinde: una sola API trae muchísimos
+  productos con imagen y precio. La API hoy **pide token**:
+
+  1. Entrá a **https://developers.mercadolibre.com.uy** e iniciá sesión con tu
+     cuenta normal de Mercado Libre.
+  2. **Tus aplicaciones → Crear aplicación**. Completá:
+     - Nombre y descripción (cualquiera).
+     - **Redirect URI**: poné `https://localhost` (para el token de prueba no
+       importa cuál sea).
+     - Marcá permisos de lectura (`read`).
+  3. Al crearla vas a ver el **Client ID** y **Client Secret**, y una opción para
+     **generar un access token de prueba**. Copiá ese token (empieza con
+     `APP_USR-…`).
+  4. Pegalo en `scripts/stores.config.json` en el store de Mercado Libre, campo
+     `token`, y poné `enabled: true`.
+  5. Corré `node scripts/fetch-real-data.mjs --fresh`.
+
+  > El token de prueba **dura unas horas**. Si vence, la próxima corrida te va a
+  > dar error 401: generás uno nuevo y lo pegás de nuevo. Ajustá qué se busca en
+  > la lista `queries`, y cuántos por término en `maxPorBusqueda`.
 
 > Si una tienda no tiene API (WooCommerce/Tiendanube/ML), hay que escribir un
 > lector a medida (scraping de HTML), que es más frágil. Empezá por las que sí

@@ -21,13 +21,33 @@
       "enabled": false
     },
     {
+      "_nota": "Pegá tu access token de Mercado Libre en 'token' y poné enabled:true. Ver REALES.md.",
       "id": 99,
       "nombre": "Mercado Libre UY",
       "plataforma": "mercadolibre",
       "site": "MLU",
       "moneda": "UYU",
       "token": "",
-      "queries": ["rtx 4060", "ryzen 5 7600", "ssd nvme 1tb", "monitor 27 165hz"],
+      "maxPorBusqueda": 100,
+      "queries": [
+        "placa de video rtx",
+        "placa de video radeon",
+        "procesador amd ryzen",
+        "procesador intel core",
+        "motherboard am5",
+        "motherboard lga1700",
+        "memoria ram ddr5",
+        "memoria ram ddr4",
+        "disco ssd nvme",
+        "fuente 80 plus",
+        "gabinete gamer",
+        "cooler cpu",
+        "monitor gamer 27",
+        "notebook",
+        "teclado mecanico",
+        "mouse gamer",
+        "auriculares gamer"
+      ],
       "enabled": false
     }
   ]
