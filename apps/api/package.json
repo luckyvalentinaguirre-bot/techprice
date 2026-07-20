@@ -1,0 +1,25 @@
+{
+  "name": "@techprice/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@techprice/shared": "workspace:*",
+    "@techprice/core": "workspace:*",
+    "@techprice/database": "workspace:*",
+    "@techprice/scrapers": "workspace:*",
+    "fastify": "^4.28.1",
+    "@fastify/cors": "^9.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "tsx": "^4.19.1",
+    "@types/node": "^20.16.11"
+  }
+}

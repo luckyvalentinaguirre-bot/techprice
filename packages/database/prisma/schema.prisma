@@ -1,0 +1,111 @@
+// TechPrice Uruguay - schema del catalogo canonico de productos.
+//
+// Store        -> tienda origen (config de scraping vive en packages/scrapers)
+// Product      -> ficha canonica (el "mismo producto" agrupado entre tiendas)
+// Listing      -> oferta ACTUAL de una tienda para un Product (1 fila por store+externalId)
+// PriceHistory -> snapshot de precio en el tiempo, uno por scrape, usado para el historial
+// ProductAlias -> nombres normalizados ya vistos -> Product, acelera el re-matching
+// ScrapeRun    -> auditoria de cada corrida del pipeline de ingestion
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Store {
+  id        String   @id
+  name      String
+  baseUrl   String
+  platform  String
+  enabled   Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  listings   Listing[]
+  scrapeRuns ScrapeRun[]
+}
+
+model Product {
+  id         String   @id @default(cuid())
+  name       String
+  category   String
+  brand      String?
+  model      String?
+  imageUrl   String?
+  /// Extracted ProductAttributes (brand/model/capacityGb/...), cached so the
+  /// matcher doesn't need to re-normalize every past product on each run.
+  attributes Json     @default("{}")
+  /// Cached normalized core tokens, used as the matcher's fuzzy fallback.
+  tokens     String[] @default([])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  listings     Listing[]
+  priceHistory PriceHistory[]
+  aliases      ProductAlias[]
+
+  @@index([category])
+  @@index([brand, model])
+}
+
+model Listing {
+  id          String   @id @default(cuid())
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  storeId     String
+  store       Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  externalId  String
+  rawName     String
+  url         String
+  price       Float
+  currency    String
+  available   Boolean  @default(true)
+  lastUpdated DateTime @default(now())
+
+  @@unique([storeId, externalId])
+  @@index([productId])
+}
+
+model PriceHistory {
+  id         String   @id @default(cuid())
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  storeId    String
+  price      Float
+  currency   String
+  recordedAt DateTime @default(now())
+
+  @@index([productId, recordedAt])
+}
+
+/// Cache de nombres normalizados ya asociados a un Product, para evitar
+/// re-correr el matcher difuso en cada scrape cuando el nombre no cambio.
+model ProductAlias {
+  id             String  @id @default(cuid())
+  productId      String
+  product        Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  storeId        String
+  normalizedName String
+
+  @@unique([storeId, normalizedName])
+  @@index([productId])
+}
+
+model ScrapeRun {
+  id              String    @id @default(cuid())
+  storeId         String
+  store           Store     @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  startedAt       DateTime  @default(now())
+  finishedAt      DateTime?
+  status          String // running | success | failed
+  productsFound   Int       @default(0)
+  productsMatched Int       @default(0)
+  productsCreated Int       @default(0)
+  errorMessage    String?
+
+  @@index([storeId, startedAt])
+}

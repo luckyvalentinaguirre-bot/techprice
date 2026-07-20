@@ -1,0 +1,27 @@
+{
+  "name": "techprice-uruguay",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Comparador de precios de componentes y productos individuales de tecnologia en tiendas de Uruguay",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm -r --filter=./packages/* build",
+    "test": "pnpm -r --filter=./packages/* test",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "db:generate": "pnpm --filter @techprice/database generate",
+    "db:migrate": "pnpm --filter @techprice/database migrate",
+    "db:seed": "pnpm --filter @techprice/database seed",
+    "ingest": "pnpm --filter @techprice/ingestion start",
+    "api:dev": "pnpm --filter @techprice/api dev",
+    "web:dev": "pnpm --filter @techprice/web dev"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4",
+    "@types/node": "^20.16.11"
+  }
+}

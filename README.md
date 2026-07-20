@@ -1,0 +1,161 @@
+# TechPrice Uruguay
+
+Comparador de precios de **componentes y productos individuales de tecnologia**
+entre tiendas de Uruguay. El sistema identifica cuando el mismo producto
+aparece publicado con nombres distintos en distintas tiendas (ej. "ASUS Dual
+RTX 5070 OC 12GB" / "Asus RTX5070 Dual OC" / "RTX 5070 ASUS Dual OC") y los
+agrupa en una unica ficha con precio minimo, promedio, maximo, historial,
+disponibilidad y ahorro maximo posible.
+
+**Nunca compara PCs armadas ni equipos preconfigurados** — solo componentes y
+productos individuales (GPU, CPU, RAM, SSD/HDD, motherboards, gabinetes,
+perifericos, notebooks, celulares, etc.). Ver
+[`packages/shared/src/category.ts`](./packages/shared/src/category.ts) para
+el listado completo de categorias soportadas.
+
+## Arquitectura
+
+Monorepo (pnpm workspaces) en TypeScript, con la logica de comparacion
+totalmente desacoplada del frontend:
+
+```
+packages/
+  shared/      Tipos de dominio compartidos (Category, RawProduct, ComparisonCard...)
+  core/        Normalizacion de nombres, matching entre tiendas y motor de comparacion
+               (min/avg/max, diferencia de precio, ahorro maximo). Sin dependencias
+               de DB, HTTP ni frontend: logica pura y testeada.
+  scrapers/    Adaptadores por plataforma de e-commerce (Tiendanube, WooCommerce,
+               VTEX, HTML generico) + registro de tiendas (stores.config.ts).
+  database/    Schema de Prisma (Postgres) + cliente.
+  ingestion/   Orquestador: corre los scrapers, filtra PCs armadas/combos,
+               normaliza, matchea contra el catalogo existente (o crea producto
+               nuevo) y guarda precios + historial. CLI para correrlo manualmente
+               o desde un cron.
+apps/
+  api/         API REST (Fastify) que expone el catalogo. Unico punto de
+               contacto del frontend con el sistema.
+  web/         Frontend (Next.js) que consume la API. No contiene logica de
+               negocio: solo presentacion.
+```
+
+Flujo de datos:
+
+```
+Tienda (Tiendanube/WooCommerce/VTEX/HTML) 
+  -> Scraper adapter (packages/scrapers)         RawProduct
+  -> Filtro anti PC-armada (packages/ingestion)
+  -> Normalizacion + extraccion de atributos      NormalizedProduct
+  -> Matching contra catalogo existente           (packages/core)
+  -> Producto canonico (nuevo o existente) + Listing + PriceHistory (Postgres)
+  -> API REST (apps/api)                          ComparisonCard
+  -> Frontend (apps/web)
+```
+
+### Como agrupa productos de distintas tiendas
+
+`packages/core/src/normalization` extrae marca, modelo (ej. "rtx5070",
+independiente de espaciado/orden de palabras) y atributos como capacidad
+(GB), tipo de memoria, velocidad, pulgadas de pantalla. `packages/core/src/matching`
+compara marca+modelo exacto (score 1.0) o cae a similitud de tokens (Jaccard)
++ coincidencia de atributos cuando la categoria no tiene un patron de modelo
+estricto (ej. RAM). Ver los tests en `packages/core/src/**/*.test.ts` para
+casos concretos, incluido el ejemplo de la spec (las 3 variantes de nombre de
+la RTX 5070 se agrupan; una RTX 5070 Ti NO se agrupa con una RTX 5070).
+
+### Como se agregan tiendas nuevas
+
+El sistema esta preparado para sumar tiendas sin tocar el resto de la
+arquitectura:
+
+1. Si la tienda corre sobre **Tiendanube, WooCommerce o VTEX** (las
+   plataformas de e-commerce mas comunes en Uruguay), agregar una entrada en
+   [`packages/scrapers/src/stores.config.ts`](./packages/scrapers/src/stores.config.ts)
+   con su `baseUrl` y el mapeo de categorias de la tienda a nuestras
+   categorias canonicas — **sin escribir codigo nuevo**. Solo mapear
+   categorias que sean componentes/productos individuales; nunca mapear una
+   categoria de "PC armada" o combos.
+2. Si la tienda tiene un sitio a medida, usar `platform: "generic_html"` y
+   completar `htmlSelectors` (selectores CSS) en la misma config.
+3. Si la tienda corre sobre una plataforma nueva no soportada, implementar la
+   interfaz `StoreScraper` (un archivo en `packages/scrapers/src/platforms/`)
+   y registrarla en `packages/scrapers/src/registry.ts` (una linea). Nada mas
+   en el sistema necesita cambiar: ni el matcher, ni la API, ni el frontend.
+
+Las 4 entradas actuales en `stores.config.ts` son **plantillas** (`enabled:
+false`) — no apuntan a tiendas reales verificadas. Antes de habilitar una
+tienda hay que confirmar sus URLs/ids de categoria reales y revisar su
+`robots.txt`/terminos de uso.
+
+## Requisitos
+
+- Node.js 20+
+- pnpm 10+
+- PostgreSQL 16 (o Docker, ver `docker-compose.yml`)
+
+## Uso local
+
+```bash
+cp .env.example .env   # y ajustar DATABASE_URL si hace falta
+
+pnpm install
+
+# Levantar Postgres (opcion Docker)
+docker compose up -d
+
+# Migrar y generar el cliente de Prisma
+pnpm db:migrate
+
+# Sembrar las tiendas configuradas en stores.config.ts
+pnpm db:seed
+
+# Correr el pipeline de scraping + matching (requiere al menos una tienda
+# enabled: true en stores.config.ts con datos reales)
+pnpm ingest
+
+# Levantar la API (http://localhost:4000)
+pnpm api:dev
+
+# Levantar el frontend (http://localhost:3000)
+pnpm web:dev
+```
+
+## Tests
+
+```bash
+pnpm --filter @techprice/core test       # normalizacion, matching, comparison engine
+pnpm --filter @techprice/scrapers test   # parseo de precios, utilidades
+```
+
+## Estado actual / pendiente
+
+Lo construido y verificado end-to-end (incluye una corrida real contra
+Postgres reproduciendo el ejemplo de la spec: 3 nombres distintos de RTX 5070
+en 3 tiendas se agrupan en 1 ficha con min/avg/max y ahorro correctos):
+
+- [x] Modelo de datos (Prisma) para catalogo canonico, listings, historial de
+      precios y auditoria de scraping.
+- [x] Normalizacion + extraccion de atributos + matcher difuso, con tests.
+- [x] Motor de comparacion (min/avg/max, diferencia, ahorro maximo).
+- [x] Framework de scrapers por plataforma (Tiendanube/WooCommerce/VTEX/HTML
+      generico) + filtro anti PC-armada, con tests de utilidades.
+- [x] Pipeline de ingestion (orquestador + CLI).
+- [x] API REST (categorias, tiendas, listado de productos, ficha de
+      comparacion con historial).
+- [x] Frontend Next.js (home por categoria, listado con filtros/busqueda,
+      ficha de producto con tabla de precios por tienda + grafico de
+      historial).
+
+Pendiente (siguiente paso natural, no bloqueante para el uso del sistema):
+
+- [ ] Onboarding de tiendas reales de Uruguay: confirmar plataforma
+      (Tiendanube/WooCommerce/VTEX/custom), `baseUrl` y los ids/slugs reales
+      de categoria de cada una, y completar `stores.config.ts` con
+      `enabled: true`. No se hizo en este PR porque requiere verificar la
+      estructura real de cada sitio (varias tiendas de Uruguay no fueron
+      alcanzables desde este entorno de desarrollo).
+- [ ] Programar `pnpm ingest` en un cron/scheduler para actualizar precios
+      periodicamente.
+- [ ] Autenticacion/rate-limiting en la API si se expone publicamente.
+- [ ] Deduplicar filas de `PriceHistory` cuando el precio no cambio entre
+      corridas (hoy inserta un punto por scrape; funcionalmente correcto,
+      pero se puede optimizar el volumen de datos).
