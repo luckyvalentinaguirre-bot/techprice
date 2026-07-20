@@ -156,11 +156,18 @@
       icon(down ? "trendingDown" : "trendingUp", 13) + pct(m.change.pct) + "</span>";
   }
 
+  // Imagen real del producto si existe; si no, el ícono de la categoría.
+  function mediaInner(m, sz) {
+    return m.imagen
+      ? '<img src="' + esc(m.imagen) + '" alt="' + esc(m.nombre) + '" loading="lazy" />'
+      : '<span class="showcase-card__placeholder">' + icon(catIcon(m.categoria), sz) + "</span>";
+  }
+
   function showcaseCard(m) {
     return '' +
       '<article class="showcase-card" data-id="' + m.id + '">' +
         '<div class="showcase-card__media" data-open="' + m.id + '" role="button" tabindex="0" aria-label="' + esc(m.nombre) + '">' +
-          '<span class="showcase-card__placeholder">' + icon(catIcon(m.categoria), 26) + "</span>" +
+          mediaInner(m, 26) +
           deltaPill(m) +
         "</div>" +
         '<div class="showcase-card__body">' +
@@ -186,7 +193,7 @@
     const c = m.change;
     return '' +
       '<div class="drop-card" data-open="' + m.id + '" role="button" tabindex="0">' +
-        '<div class="drop-card__thumb"><span class="showcase-card__placeholder">' + icon(catIcon(m.categoria), 20) + "</span></div>" +
+        '<div class="drop-card__thumb">' + mediaInner(m, 20) + "</div>" +
         '<div class="drop-card__body">' +
           '<span class="drop-card__pct">' + icon("trendingDown", 13) + pct(c.pct) + "</span>" +
           '<p class="drop-card__name">' + esc(m.nombre) + "</p>" +
@@ -346,6 +353,7 @@
           '<button class="btn btn--icon" data-close aria-label="Cerrar">' + icon("close", 16) + "</button>" +
         "</div>" +
         '<div class="modal__body">' +
+          (m.imagen ? '<div style="display:grid;place-items:center;background:var(--surface-2);border-radius:var(--radius-md);padding:1rem"><img src="' + esc(m.imagen) + '" alt="' + esc(m.nombre) + '" style="max-height:200px;max-width:100%;object-fit:contain" /></div>' : "") +
           '<div class="stat-row">' +
             '<div class="stat"><div class="stat__label">Precio más bajo</div><div class="stat__value stat__value--good">' + money(m.lowest, m.moneda) + "</div></div>" +
             '<div class="stat"><div class="stat__label">Precio promedio</div><div class="stat__value">' + money(m.avg, m.moneda) + "</div></div>" +
@@ -448,22 +456,24 @@
     const c = ctxOf(s);
     const sp = part.specs || {};
     switch (part.categoria) {
+      // Nota: cada regla solo bloquea cuando el dato existe en ambas partes.
+      // Así, productos reales sin specs completas no se ocultan de más.
       case "CPU":
-        if (c.socket && sp.socket !== c.socket) return { ok: false, reason: "Socket " + sp.socket + " ≠ " + c.socket };
+        if (c.socket && sp.socket && sp.socket !== c.socket) return { ok: false, reason: "Socket " + sp.socket + " ≠ " + c.socket };
         return { ok: true };
       case "Motherboard":
-        if (c.socket && sp.socket !== c.socket) return { ok: false, reason: "Socket no coincide con el CPU (" + c.socket + ")" };
-        if (c.ramType && sp.ramType !== c.ramType) return { ok: false, reason: "La RAM elegida es " + c.ramType };
-        if (c.caseFF && !caseSupports(c.caseFF, sp.formFactor)) return { ok: false, reason: "No entra en el gabinete " + c.caseFF };
+        if (c.socket && sp.socket && sp.socket !== c.socket) return { ok: false, reason: "Socket no coincide con el CPU (" + c.socket + ")" };
+        if (c.ramType && sp.ramType && sp.ramType !== c.ramType) return { ok: false, reason: "La RAM elegida es " + c.ramType };
+        if (c.caseFF && sp.formFactor && !caseSupports(c.caseFF, sp.formFactor)) return { ok: false, reason: "No entra en el gabinete " + c.caseFF };
         return { ok: true };
       case "RAM":
-        if (c.ramType && sp.ramType !== c.ramType) return { ok: false, reason: "El motherboard usa " + c.ramType };
+        if (c.ramType && sp.ramType && sp.ramType !== c.ramType) return { ok: false, reason: "El motherboard usa " + c.ramType };
         return { ok: true };
       case "Gabinete":
-        if (c.mbFF && !caseSupports(sp.formFactor, c.mbFF)) return { ok: false, reason: "No entra un motherboard " + c.mbFF };
+        if (c.mbFF && sp.formFactor && !caseSupports(sp.formFactor, c.mbFF)) return { ok: false, reason: "No entra un motherboard " + c.mbFF };
         return { ok: true };
       case "Cooler":
-        if (c.socket && !(sp.sockets || []).includes(c.socket)) return { ok: false, reason: "No soporta socket " + c.socket };
+        if (c.socket && sp.sockets && !sp.sockets.includes(c.socket)) return { ok: false, reason: "No soporta socket " + c.socket };
         return { ok: true };
       default:
         return { ok: true };

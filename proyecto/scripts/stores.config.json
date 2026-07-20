@@ -1,0 +1,33 @@
+{
+  "_ayuda": "Tiendas a leer. Poné enabled:true en las que quieras. Ver REALES.md.",
+  "stores": [
+    {
+      "id": 4,
+      "nombre": "Thot Computación",
+      "plataforma": "woocommerce",
+      "baseUrl": "https://thotcomputacion.com.uy",
+      "moneda": "USD",
+      "maxPages": 20,
+      "enabled": true
+    },
+    {
+      "id": 3,
+      "nombre": "ZonaTecno",
+      "plataforma": "tiendanube",
+      "baseUrl": "https://www.zonatecno.com.uy",
+      "moneda": "UYU",
+      "maxPages": 20,
+      "enabled": false
+    },
+    {
+      "id": 99,
+      "nombre": "Mercado Libre UY",
+      "plataforma": "mercadolibre",
+      "site": "MLU",
+      "moneda": "UYU",
+      "token": "",
+      "queries": ["rtx 4060", "ryzen 5 7600", "ssd nvme 1tb", "monitor 27 165hz"],
+      "enabled": false
+    }
+  ]
+}
