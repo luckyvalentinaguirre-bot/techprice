@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>TechPrice Uruguay — Compará precios de tecnología</title>
-<meta name="description" content="Comparador de precios de tecnología entre tiendas de Uruguay (versión local con archivos JSON)." />
+<title>TechPrice Uruguay — Compará precios y armá tu PC</title>
+<meta name="description" content="Comparador de precios de tecnología entre tiendas de Uruguay + armador de PC con compatibilidad (versión local con archivos JSON)." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -1311,7 +1311,7 @@ section.panel h2 {
 }
 
 
-/* --- versión JSON: buscador, modal de detalle y mini-chart --- */
+/* --- versión JSON: buscador, modal, chart y armador --- */
 .searchbar__submit { cursor: pointer; }
 .section.is-hidden { display: none; }
 [data-open], [data-cat] { cursor: pointer; }
@@ -1339,10 +1339,7 @@ section.panel h2 {
   gap: 1rem; padding: var(--space-5) var(--space-5) var(--space-4);
   border-bottom: 1px solid var(--border);
 }
-.modal__brand {
-  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
-  text-transform: uppercase; color: var(--muted-2);
-}
+.modal__brand { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted-2); }
 .modal__title { font-size: 1.2rem; font-weight: 650; letter-spacing: -0.02em; margin-top: 0.2rem; }
 .modal__body { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-5); }
 .modal__section-title { font-size: 0.95rem; font-weight: 600; margin-bottom: var(--space-3); }
@@ -1353,8 +1350,69 @@ section.panel h2 {
 .chart__dot { fill: var(--surface); stroke: var(--brand); stroke-width: 2; }
 .chart__label { fill: var(--muted-2); font-size: 11px; }
 .chart__grid { stroke: var(--border); stroke-width: 1; }
-
 .empty-results { color: var(--muted); padding: var(--space-6); text-align: center; }
+
+/* ---- Armador de PC ---- */
+.builder { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-5); align-items: start; }
+.builder__slots { display: flex; flex-direction: column; gap: var(--space-3); }
+.slot {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-4); background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+}
+.slot__icon {
+  display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 10px; background: var(--surface-2); color: var(--brand);
+}
+.slot__main { flex: 1; min-width: 0; }
+.slot__label { font-size: 0.75rem; color: var(--muted-2); }
+.slot__value { font-size: 0.95rem; font-weight: 550; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.slot__empty { font-size: 0.9rem; color: var(--muted-2); }
+.slot__price { font-size: 0.8rem; color: var(--muted); margin-top: 0.1rem; }
+.slot__price b { color: var(--positive); font-weight: 700; }
+.slot__actions { display: flex; gap: var(--space-2); flex-shrink: 0; }
+
+.builder__summary {
+  position: sticky; top: 84px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+  display: flex; flex-direction: column; gap: var(--space-4);
+}
+.summary__row { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); font-size: 0.9rem; }
+.summary__total { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
+.summary__hint { font-size: 0.8rem; color: var(--muted); }
+.summary__best {
+  padding: var(--space-3); border-radius: var(--radius-md);
+  background: var(--positive-soft); color: var(--positive);
+  font-size: 0.85rem; font-weight: 550; display: flex; gap: 0.4rem; align-items: flex-start;
+}
+.summary__best svg { flex-shrink: 0; margin-top: 1px; }
+.summary__warn {
+  padding: var(--space-3); border-radius: var(--radius-md);
+  background: var(--negative-soft); color: var(--negative);
+  font-size: 0.82rem; display: flex; gap: 0.4rem; align-items: flex-start;
+}
+.summary__note { font-size: 0.82rem; color: var(--muted); display: flex; gap: 0.4rem; align-items: flex-start; }
+.summary__note svg, .summary__warn svg { flex-shrink: 0; margin-top: 1px; }
+
+.pick-tabs { display: flex; gap: var(--space-2); margin-bottom: var(--space-4); }
+.pick-tab { font: inherit; font-size: 0.85rem; font-weight: 550; padding: 0.35rem 0.8rem; border-radius: var(--radius-pill); border: 1px solid var(--border-strong); background: var(--surface); color: var(--muted); cursor: pointer; }
+.pick-tab.is-active { background: var(--brand); border-color: var(--brand); color: #fff; }
+.pick-list { display: flex; flex-direction: column; gap: var(--space-2); max-height: 52vh; overflow: auto; }
+.pick-item {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-3) var(--space-4); border: 1px solid var(--border);
+  border-radius: var(--radius-md); background: var(--surface);
+}
+.pick-item__main { flex: 1; min-width: 0; }
+.pick-item__name { font-size: 0.9rem; font-weight: 550; }
+.pick-item__spec { font-size: 0.76rem; color: var(--muted-2); }
+.pick-item__price { font-size: 0.95rem; font-weight: 700; color: var(--positive); white-space: nowrap; }
+
+@media (max-width: 860px) {
+  .builder { grid-template-columns: 1fr; }
+  .builder__summary { position: static; }
+}
 
 </style>
 </head>
@@ -1364,7 +1422,7 @@ section.panel h2 {
     <a href="#" class="brand"><span class="brand__mark"><svg class="" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4v16h16M8 15l3-4 3 2 4-6"/></svg></span>TechPrice <span>Uruguay</span></a>
     <nav class="site-nav">
       <a href="#section-destacados">Productos</a>
-      <a href="#section-tiendas" class="site-nav__cta">Tiendas</a>
+      <a href="#section-armar" class="site-nav__cta">Armá tu PC</a>
     </nav>
   </div>
 </header>
@@ -1373,8 +1431,8 @@ section.panel h2 {
   <div class="container">
     <section class="hero">
       <span class="hero__eyebrow"><span class="dot"></span> Precios de tecnología en Uruguay, en un solo lugar</span>
-      <h1>Compará precios de tecnología en Uruguay.</h1>
-      <p class="hero__subtitle">Encontrá el mejor precio entre múltiples tiendas y seguí la evolución del valor de cada producto — sin ruido, solo la información.</p>
+      <h1>Compará precios y armá tu PC.</h1>
+      <p class="hero__subtitle">Encontrá el mejor precio entre múltiples tiendas, seguí el historial y armá una PC compatible pieza por pieza — sin ruido, solo la información.</p>
       <div class="hero__search">
         <form class="searchbar" role="search" id="search-form">
           <svg class="searchbar__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
@@ -1390,6 +1448,15 @@ section.panel h2 {
         <div class="statbar__item"><span class="statbar__value" id="stat-actualizacion">—</span><span class="statbar__label">Última actualización</span></div>
         <span class="statbar__divider"></span>
         <div class="statbar__item"><span class="statbar__value" id="stat-usuarios">—</span><span class="statbar__label">Usuarios activos</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="section-armar">
+      <div class="section__head"><div><h2 class="section__title">Armá tu PC</h2><p class="section__subtitle">Elegí las partes: solo te dejamos combinar componentes compatibles (Intel/AMD, socket, tipo de RAM, gabinete) y te decimos dónde conviene comprar.</p></div>
+        <button class="section__link" id="reset-build" type="button">Vaciar selección</button></div>
+      <div class="builder">
+        <div class="builder__slots" id="builder-slots"></div>
+        <aside class="builder__summary" id="builder-summary"></aside>
       </div>
     </section>
 
@@ -1425,10 +1492,10 @@ section.panel h2 {
     <div class="site-footer__inner">
       <div class="site-footer__brandcol">
         <span class="brand"><span class="brand__mark"><svg class="" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4v16h16M8 15l3-4 3 2 4-6"/></svg></span>TechPrice <span>Uruguay</span></span>
-        <p>Herramienta para analizar y comparar precios de tecnología entre tiendas de Uruguay. Comparamos componentes y productos individuales, no PCs armadas.</p>
+        <p>Herramienta para analizar y comparar precios de tecnología entre tiendas de Uruguay, y armar una PC compatible al mejor precio.</p>
       </div>
-      <div class="footer-col"><h4>Producto</h4><ul><li><a href="#section-destacados">Productos</a></li><li><a href="#section-bajaron">Productos que bajaron</a></li><li><a href="#section-tendencias">Tendencias</a></li></ul></div>
-      <div class="footer-col"><h4>Categorías</h4><ul><li><a href="#">Tarjetas gráficas</a></li><li><a href="#">Procesadores</a></li><li><a href="#">Monitores</a></li><li><a href="#">Notebooks</a></li></ul></div>
+      <div class="footer-col"><h4>Producto</h4><ul><li><a href="#section-destacados">Productos</a></li><li><a href="#section-armar">Armá tu PC</a></li><li><a href="#section-tendencias">Tendencias</a></li></ul></div>
+      <div class="footer-col"><h4>Categorías</h4><ul><li><a href="#">Tarjetas gráficas</a></li><li><a href="#">Procesadores</a></li><li><a href="#">Motherboards</a></li><li><a href="#">Fuentes</a></li></ul></div>
       <div class="footer-col"><h4>Plataforma</h4><ul><li><a href="#section-tiendas">Tiendas</a></li><li><a href="#">Contacto</a></li><li><a href="#">Política de privacidad</a></li><li><a href="#">Términos</a></li></ul></div>
     </div>
     <div class="site-footer__bar">

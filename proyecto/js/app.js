@@ -43,6 +43,8 @@
     flame: '<path d="M12 3s5 4 5 9a5 5 0 0 1-10 0c0-2 1-3 1-3s0 2 2 2c1.5 0 2-1.5 1-4-.6-1.4 1-3 0-4Z"/>',
     plus: '<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>',
     close: '<path d="M6 6l12 12M18 6 6 18"/>',
+    wrench: '<path d="M14.5 5.5a3.5 3.5 0 0 0-4.6 4.3L3 16.7V21h4.3l6.9-6.9a3.5 3.5 0 0 0 4.3-4.6l-2.4 2.4-2.1-.5-.5-2.1 2.4-2.4Z"/>',
+    fan: '<circle cx="12" cy="12" r="2"/><path d="M12 10c-1-3 .5-6 1.5-6.5C15 4 14 8 12 10Zm2 2c3-1 6 .5 6.5 1.5.5 1.5-3.5.5-6.5-1.5Zm-2 2c1 3-.5 6-1.5 6.5-1.5.5-.5-3.5 1.5-6.5Zm-2-2c-3 1-6-.5-6.5-1.5C3 9.5 7 10.5 10 12Z"/>',
     gpu: '<path d="M3 6h15a2 2 0 0 1 2 2v7H7a2 2 0 0 1-2-2V6ZM3 6v13M9 15v3M14 15v3M9 9.5h6M9 12h4"/>',
     cpu: '<rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 10.5h4v4h-4zM9 3v2M15 3v2M9 19v2M15 19v2M3 9h2M3 15h2M19 9h2M19 15h2"/>',
     memory: '<path d="M4 8h16v8H4zM7 8V6M12 8V6M17 8V6M6 20v-4M10 20v-4M14 20v-4M18 20v-4"/>',
@@ -64,7 +66,7 @@
   const CAT_ICON = {
     gpu: "gpu", cpu: "cpu", ram: "memory", ssd: "drive", hdd: "drive", monitor: "monitor",
     notebook: "laptop", teclado: "keyboard", mouse: "mouse", auriculares: "headphones",
-    motherboard: "board", fuente: "power", gabinete: "case",
+    motherboard: "board", fuente: "power", gabinete: "case", cooler: "fan",
   };
   const catIcon = (cat) => CAT_ICON[String(cat).toLowerCase()] || "box";
 
@@ -136,6 +138,7 @@
 
       return {
         id: p.id, nombre: p.nombre, marca: p.marca, categoria: p.categoria, imagen: p.imagen,
+        specs: p.specs || {},
         offers, lowest, highest, avg, moneda, cheapestTiendaId: cheapest ? cheapest.tiendaId : null,
         change, historia, lastFecha,
         _buscable: norm(p.nombre + " " + (p.marca || "") + " " + (p.categoria || "")),
@@ -273,6 +276,7 @@
 
     $("#year").textContent = new Date().getFullYear();
     wireCards();
+    renderBuilder();
   }
 
   /* =============================== BUSCADOR ============================= */
@@ -339,7 +343,7 @@
         '<div class="modal__head"><div>' +
           (m.marca ? '<div class="modal__brand">' + esc(m.marca) + " · " + esc(m.categoria) + "</div>" : "") +
           '<h2 class="modal__title">' + esc(m.nombre) + "</h2></div>" +
-          '<button class="btn btn--icon" id="modal-close" aria-label="Cerrar">' + icon("close", 16) + "</button>" +
+          '<button class="btn btn--icon" data-close aria-label="Cerrar">' + icon("close", 16) + "</button>" +
         "</div>" +
         '<div class="modal__body">' +
           '<div class="stat-row">' +
@@ -353,12 +357,17 @@
           "<div><div class=\"modal__section-title\">Historial de precios (mejor precio por fecha)</div>" + sparkline(m.historia, m.moneda) + "</div>" +
         "</div>" +
       "</div>";
-    root.hidden = false;
-    requestAnimationFrame(() => root.classList.add("is-open"));
-    $("#modal-close").addEventListener("click", cerrarDetalle);
+    openModalWired();
   }
 
-  function cerrarDetalle() {
+  function openModalWired() {
+    const root = $("#modal-root");
+    root.hidden = false;
+    requestAnimationFrame(() => root.classList.add("is-open"));
+    root.querySelectorAll("[data-close]").forEach((b) => b.addEventListener("click", closeModal));
+  }
+
+  function closeModal() {
     const root = $("#modal-root");
     root.classList.remove("is-open");
     setTimeout(() => { root.hidden = true; root.innerHTML = ""; }, 180);
@@ -391,8 +400,209 @@
   function wireGlobal() {
     $("#search-form").addEventListener("submit", (e) => { e.preventDefault(); buscar($("#search-input").value); });
     $("#search-input").addEventListener("input", (e) => buscar(e.target.value));
-    $("#modal-root").addEventListener("click", (e) => { if (e.target.id === "modal-root") cerrarDetalle(); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") cerrarDetalle(); });
+    $("#modal-root").addEventListener("click", (e) => { if (e.target.id === "modal-root") closeModal(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+    const reset = $("#reset-build"); if (reset) reset.addEventListener("click", resetBuild);
+  }
+
+  /* =============================== ARMADOR ============================= */
+  const SLOTS = [
+    { cat: "CPU", label: "Procesador" },
+    { cat: "Motherboard", label: "Motherboard" },
+    { cat: "RAM", label: "Memoria RAM" },
+    { cat: "GPU", label: "Placa de video" },
+    { cat: "SSD", label: "Almacenamiento" },
+    { cat: "Fuente", label: "Fuente" },
+    { cat: "Gabinete", label: "Gabinete" },
+    { cat: "Cooler", label: "Cooler (opcional)" },
+  ];
+  const FF_RANK = { ITX: 1, mATX: 2, ATX: 3 };
+  let build = {}; // categoria -> productId
+
+  const byId = (id) => MODEL.productos.find((p) => p.id === id);
+  const partsOf = (cat) => MODEL.productos.filter((p) => p.categoria === cat);
+  function bestOffer(m) {
+    const disp = m.offers.filter((o) => o.disponible);
+    const ref = disp.length ? disp : m.offers;
+    return ref.length ? ref[0] : null; // offers vienen ordenadas por precio asc
+  }
+  const caseSupports = (caseFF, mbFF) => FF_RANK[caseFF] >= FF_RANK[mbFF];
+
+  function ctxOf(state) {
+    const cpu = state.CPU ? byId(state.CPU) : null;
+    const mb = state.Motherboard ? byId(state.Motherboard) : null;
+    const ram = state.RAM ? byId(state.RAM) : null;
+    const cs = state.Gabinete ? byId(state.Gabinete) : null;
+    return {
+      socket: (cpu && cpu.specs.socket) || (mb && mb.specs.socket) || null,
+      plataforma: (cpu && cpu.specs.plataforma) || (mb && mb.specs.plataforma) || null,
+      ramType: (mb && mb.specs.ramType) || (ram && ram.specs.ramType) || null,
+      mbFF: mb && mb.specs.formFactor,
+      caseFF: cs && cs.specs.formFactor,
+    };
+  }
+
+  // ¿`part` es compatible con lo ya elegido (sin contar su propia categoría)?
+  function compat(part, state) {
+    const s = Object.assign({}, state); delete s[part.categoria];
+    const c = ctxOf(s);
+    const sp = part.specs || {};
+    switch (part.categoria) {
+      case "CPU":
+        if (c.socket && sp.socket !== c.socket) return { ok: false, reason: "Socket " + sp.socket + " ≠ " + c.socket };
+        return { ok: true };
+      case "Motherboard":
+        if (c.socket && sp.socket !== c.socket) return { ok: false, reason: "Socket no coincide con el CPU (" + c.socket + ")" };
+        if (c.ramType && sp.ramType !== c.ramType) return { ok: false, reason: "La RAM elegida es " + c.ramType };
+        if (c.caseFF && !caseSupports(c.caseFF, sp.formFactor)) return { ok: false, reason: "No entra en el gabinete " + c.caseFF };
+        return { ok: true };
+      case "RAM":
+        if (c.ramType && sp.ramType !== c.ramType) return { ok: false, reason: "El motherboard usa " + c.ramType };
+        return { ok: true };
+      case "Gabinete":
+        if (c.mbFF && !caseSupports(sp.formFactor, c.mbFF)) return { ok: false, reason: "No entra un motherboard " + c.mbFF };
+        return { ok: true };
+      case "Cooler":
+        if (c.socket && !(sp.sockets || []).includes(c.socket)) return { ok: false, reason: "No soporta socket " + c.socket };
+        return { ok: true };
+      default:
+        return { ok: true };
+    }
+  }
+
+  function reconcile() {
+    for (let pass = 0; pass < 3; pass++) {
+      for (const cat of Object.keys(build)) {
+        const part = byId(build[cat]);
+        if (!part || !compat(part, build).ok) delete build[cat];
+      }
+    }
+  }
+  function selectPart(cat, id) { build[cat] = id; reconcile(); renderBuilder(); closeModal(); }
+  function removePart(cat) { delete build[cat]; reconcile(); renderBuilder(); }
+  function resetBuild() { build = {}; renderBuilder(); }
+
+  function specLine(m) {
+    const s = m.specs || {};
+    if (m.categoria === "CPU") return s.plataforma + " · " + s.socket + " · " + s.tdp + "W";
+    if (m.categoria === "Motherboard") return s.socket + " · " + s.chipset + " · " + s.ramType + " · " + s.formFactor;
+    if (m.categoria === "RAM") return s.ramType + " · " + s.capacidadGb + "GB";
+    if (m.categoria === "GPU") return "TDP " + s.tdp + "W";
+    if (m.categoria === "SSD") return s.interfaz;
+    if (m.categoria === "Fuente") return s.watts + "W · " + s.cert;
+    if (m.categoria === "Gabinete") return "Form factor " + s.formFactor;
+    if (m.categoria === "Cooler") return "Sockets: " + (s.sockets || []).join(", ");
+    return "";
+  }
+
+  function openPicker(cat) {
+    const slot = SLOTS.find((s) => s.cat === cat);
+    const items = partsOf(cat).map((m) => ({ m, c: compat(m, build) })).filter((x) => x.c.ok);
+    items.sort((a, b) => (bestOffer(a.m) ? bestOffer(a.m).precio : 1e12) - (bestOffer(b.m) ? bestOffer(b.m).precio : 1e12));
+
+    const tabs = cat === "CPU"
+      ? '<div class="pick-tabs"><button class="pick-tab is-active" data-plat="all">Todos</button><button class="pick-tab" data-plat="Intel">Intel</button><button class="pick-tab" data-plat="AMD">AMD (Ryzen)</button></div>'
+      : "";
+    const renderList = (plat) =>
+      items.filter((x) => plat === "all" || !plat || x.m.specs.plataforma === plat).map((x) => {
+        const o = bestOffer(x.m);
+        return '<div class="pick-item"><div class="pick-item__main"><div class="pick-item__name">' + esc(x.m.nombre) + "</div>" +
+          '<div class="pick-item__spec">' + esc(specLine(x.m)) + (o ? " · " + esc(o.tienda) : "") + "</div></div>" +
+          '<div class="pick-item__price">' + (o ? money(o.precio, x.m.moneda) : "—") + "</div>" +
+          '<button class="btn btn--primary" data-choose="' + x.m.id + '">Elegir</button></div>';
+      }).join("") || '<p class="empty-results">No hay opciones compatibles con lo que elegiste.</p>';
+
+    const inner =
+      '<div class="modal__head"><div><div class="modal__brand">Armá tu PC</div><h2 class="modal__title">Elegí ' + slot.label.toLowerCase() + "</h2></div>" +
+      '<button class="btn btn--icon" data-close aria-label="Cerrar">' + icon("close", 16) + "</button></div>" +
+      '<div class="modal__body">' + tabs + '<div class="pick-list" id="pick-list">' + renderList("all") + "</div></div>";
+
+    const root = $("#modal-root");
+    root.innerHTML = '<div class="modal" role="document">' + inner + "</div>";
+    openModalWired();
+    const list = $("#pick-list");
+    const wireChoose = () => list.querySelectorAll("[data-choose]").forEach((b) =>
+      b.addEventListener("click", () => selectPart(cat, Number(b.getAttribute("data-choose")))));
+    wireChoose();
+    root.querySelectorAll("[data-plat]").forEach((t) => t.addEventListener("click", () => {
+      root.querySelectorAll(".pick-tab").forEach((x) => x.classList.remove("is-active"));
+      t.classList.add("is-active");
+      list.innerHTML = renderList(t.getAttribute("data-plat"));
+      wireChoose();
+    }));
+  }
+
+  function renderBuilder() {
+    if (!$("#builder-slots")) return;
+    $("#builder-slots").innerHTML = SLOTS.map((slot) => {
+      const m = build[slot.cat] ? byId(build[slot.cat]) : null;
+      const o = m ? bestOffer(m) : null;
+      const main = m
+        ? '<div class="slot__label">' + slot.label + '</div><div class="slot__value">' + esc(m.nombre) + "</div>" +
+          (o ? '<div class="slot__price">Desde <b>' + money(o.precio, m.moneda) + "</b> en " + esc(o.tienda) + "</div>" : "")
+        : '<div class="slot__label">' + slot.label + '</div><div class="slot__empty">Sin elegir</div>';
+      const actions = m
+        ? '<button class="btn" data-pick="' + slot.cat + '">Cambiar</button><button class="btn btn--icon" data-remove="' + slot.cat + '" aria-label="Quitar">' + icon("close", 16) + "</button>"
+        : '<button class="btn btn--primary" data-pick="' + slot.cat + '">Elegir</button>';
+      return '<div class="slot"><span class="slot__icon">' + icon(catIcon(slot.cat), 20) + "</span>" +
+        '<div class="slot__main">' + main + '</div><div class="slot__actions">' + actions + "</div></div>";
+    }).join("");
+
+    const elegidas = SLOTS.map((s) => build[s.cat]).filter(Boolean).map(byId);
+    let totalBest = 0;
+    const perStore = new Map();
+    for (const t of MODEL.tiendasList) perStore.set(t.id, { suma: 0, tiene: 0 });
+    for (const m of elegidas) {
+      const o = bestOffer(m);
+      if (o) totalBest += o.precio;
+      for (const of of m.offers.filter((x) => x.disponible)) {
+        const ps = perStore.get(of.tiendaId);
+        if (ps) { ps.suma += of.precio; ps.tiene++; }
+      }
+    }
+    let single = null;
+    for (const t of MODEL.tiendasList) {
+      const ps = perStore.get(t.id);
+      if (elegidas.length && ps.tiene === elegidas.length && (!single || ps.suma < single.suma)) single = { nombre: t.nombre, suma: ps.suma };
+    }
+
+    const cpu = build.CPU ? byId(build.CPU) : null;
+    const gpu = build.GPU ? byId(build.GPU) : null;
+    const psu = build.Fuente ? byId(build.Fuente) : null;
+    let psuNote = "";
+    if (cpu && gpu) {
+      const need = cpu.specs.tdp + gpu.specs.tdp + 90;
+      const reco = Math.ceil((need * 1.5) / 50) * 50;
+      if (psu && psu.specs.watts < need * 1.3)
+        psuNote = '<div class="summary__warn">' + icon("bell", 14) + "<span>La fuente de " + psu.specs.watts + "W puede quedar justa. Recomendado ≈ " + reco + "W.</span></div>";
+      else if (!psu)
+        psuNote = '<div class="summary__note">' + icon("bell", 14) + "<span>Para este CPU + GPU, fuente recomendada ≈ " + reco + "W.</span></div>";
+    }
+
+    const c = ctxOf(build);
+    const compatNote = c.plataforma
+      ? '<div class="summary__note">' + icon("wrench", 14) + "<span>Plataforma <b>" + c.plataforma + "</b>" + (c.socket ? " · " + c.socket : "") + (c.ramType ? " · " + c.ramType : "") + ". Solo se ofrecen partes compatibles.</span></div>"
+      : '<div class="summary__note">' + icon("wrench", 14) + "<span>Empezá por el procesador (Intel o AMD): el resto se filtra para que todo sea compatible.</span></div>";
+
+    let bestBox = "";
+    if (elegidas.length) {
+      if (single && single.suma > totalBest)
+        bestBox = '<div class="summary__best">' + icon("store", 14) + "<span>Comprando cada parte en la tienda más barata ahorrás <b>" + money(single.suma - totalBest, "UYU") + "</b> frente a comprar todo en " + esc(single.nombre) + " (" + money(single.suma, "UYU") + ").</span></div>";
+      else if (single)
+        bestBox = '<div class="summary__best">' + icon("store", 14) + "<span>" + esc(single.nombre) + " tiene todas las partes y es lo más conveniente: " + money(single.suma, "UYU") + ".</span></div>";
+      else
+        bestBox = '<div class="summary__note">' + icon("store", 14) + "<span>Ninguna tienda tiene todas las partes: el total es comprando cada una donde está más barata.</span></div>";
+    }
+
+    $("#builder-summary").innerHTML =
+      '<div><div class="summary__hint">Total (mejor precio por parte)</div><div class="summary__total">' + money(totalBest, "UYU") + "</div>" +
+      '<div class="summary__hint">' + elegidas.length + " de " + SLOTS.length + " partes elegidas</div></div>" +
+      compatNote + psuNote + bestBox +
+      (elegidas.length ? '<button class="btn" id="reset-build-2" type="button" style="width:100%">Vaciar selección</button>' : "");
+
+    $("#builder-slots").querySelectorAll("[data-pick]").forEach((b) => b.addEventListener("click", () => openPicker(b.getAttribute("data-pick"))));
+    $("#builder-slots").querySelectorAll("[data-remove]").forEach((b) => b.addEventListener("click", () => removePart(b.getAttribute("data-remove"))));
+    const r2 = $("#reset-build-2"); if (r2) r2.addEventListener("click", resetBuild);
   }
 
   /* =============================== INIT ================================= */

@@ -2,7 +2,10 @@
 
 Versión simple que funciona **solo con archivos**: `index.html` + `js/app.js` +
 tres archivos JSON. No necesita Node, ni base de datos, ni build. Permite
-**buscar productos, comparar precios entre tiendas y ver el historial**.
+**buscar productos, comparar precios entre tiendas, ver el historial** y
+**armar una PC** con chequeo de compatibilidad (Intel/AMD, socket, tipo de RAM,
+form factor del gabinete y potencia de fuente) que te muestra en qué tienda
+conviene comprar cada parte.
 
 ## Cómo abrirlo
 
@@ -35,10 +38,20 @@ proyecto/
 
 Todo sale de los tres JSON: editalos y recargá la página.
 
-**`productos.json`** — un objeto por producto:
+**`productos.json`** — un objeto por producto. El campo `specs` es lo que usa el
+**armador de PC** para chequear compatibilidad (socket, plataforma, tipo de RAM,
+form factor, etc.):
 ```json
-{ "id": 1, "nombre": "Asus Dual RTX 4060 OC 8GB", "marca": "Asus", "categoria": "GPU", "imagen": null }
+{
+  "id": 3, "nombre": "Intel Core i5-13400F", "marca": "Intel", "categoria": "CPU",
+  "imagen": null, "specs": { "plataforma": "Intel", "socket": "LGA1700", "tdp": 65 }
+}
 ```
+Specs por categoría: **CPU** `{plataforma, socket, tdp}` · **Motherboard**
+`{plataforma, socket, chipset, ramType, formFactor}` · **RAM** `{ramType, capacidadGb}`
+· **GPU** `{tdp}` · **SSD** `{interfaz}` · **Fuente** `{watts, cert}` · **Gabinete**
+`{formFactor}` · **Cooler** `{sockets:[...]}`. Los productos sin `specs` (monitores,
+periféricos) simplemente no entran al armador.
 
 **`tiendas.json`** — un objeto por tienda:
 ```json

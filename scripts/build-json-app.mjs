@@ -1,7 +1,7 @@
 /**
- * Genera la versión SIN base de datos: proyecto/ con index.html (diseño),
- * data/*.json (productos, tiendas, precios con historial) y deja lugar para
- * js/app.js (la lógica). Reutiliza el mismo globals.css del frontend.
+ * Genera la versión SIN base de datos: proyecto/ con index.html (diseño +
+ * armador de PC), data/*.json (productos con specs, tiendas, precios con
+ * historial) y usa js/app.js (la lógica). Reutiliza el globals.css del front.
  *
  *   node scripts/build-json-app.mjs
  */
@@ -13,29 +13,63 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = resolve(ROOT, "proyecto");
 const css = readFileSync(resolve(ROOT, "apps/web/src/app/globals.css"), "utf8");
 
-/* ============================ DATOS DE EJEMPLO ============================ */
-// [id, nombre, marca, categoria, precioBase (UYU), #tiendas, cambio% reciente]
-const products = [
-  [1, "Asus Dual RTX 4060 OC 8GB", "Asus", "GPU", 18900, 3, -5.2],
-  [2, "MSI Gaming X RTX 4060 Ti 16GB", "MSI", "GPU", 26500, 2, -3.1],
-  [3, "Intel Core i5-13400F", "Intel", "CPU", 11500, 3, 1.8],
-  [4, "AMD Ryzen 5 7600", "AMD", "CPU", 12900, 2, -2.4],
-  [5, "Kingston Fury Beast 16GB DDR5 6000MHz", "Kingston", "RAM", 3400, 3, 0],
-  [6, "Corsair Vengeance 32GB DDR5 6000MHz", "Corsair", "RAM", 6900, 2, -4.0],
-  [7, "Samsung 990 Pro 2TB NVMe", "Samsung", "SSD", 14500, 3, -6.1],
-  [8, "WD Black SN770 1TB NVMe", "Western Digital", "SSD", 4200, 2, -1.2],
-  [9, 'LG UltraGear 27GP850 27" 165Hz', "LG", "Monitor", 17000, 2, -2.4],
-  [10, 'Samsung Odyssey G5 27" 144Hz', "Samsung", "Monitor", 12500, 3, 2.1],
-  [11, "Lenovo IdeaPad 3 Ryzen 5 8GB 512GB", "Lenovo", "Notebook", 27000, 2, -3.3],
-  [12, "Acer Swift 3 i7-1165G7 8GB 512GB", "Acer", "Notebook", 31600, 2, -1.1],
-  [13, "Logitech G Pro X Mecánico", "Logitech", "Teclado", 4700, 3, -1.1],
-  [14, "Redragon Kumara K552", "Redragon", "Teclado", 1800, 2, 0],
-  [15, "Logitech G502 Hero", "Logitech", "Mouse", 1900, 3, 0.9],
-  [16, "HyperX Cloud II", "HyperX", "Auriculares", 2600, 2, -2.0],
-  [17, "ASUS TUF Gaming B650-PLUS", "Asus", "Motherboard", 7900, 2, 1.4],
-  [18, "Corsair RM750e 750W 80+ Gold", "Corsair", "Fuente", 4300, 2, -0.8],
-  [19, "NZXT H5 Flow", "NZXT", "Gabinete", 3200, 2, 0],
-];
+/* ============================ DATOS DE EJEMPLO ============================
+ * Cada producto: { nombre, marca, categoria, base (UYU), nStores, trend%, specs }
+ * Las specs son las que usa el armador para chequear compatibilidad.
+ * ------------------------------------------------------------------------- */
+const P = [
+  // --- CPU Intel (LGA1700) ---
+  { nombre: "Intel Core i3-12100F", marca: "Intel", categoria: "CPU", base: 5200, nStores: 3, trend: -1.5, specs: { plataforma: "Intel", socket: "LGA1700", tdp: 58 } },
+  { nombre: "Intel Core i5-12400F", marca: "Intel", categoria: "CPU", base: 8200, nStores: 3, trend: -2.1, specs: { plataforma: "Intel", socket: "LGA1700", tdp: 65 } },
+  { nombre: "Intel Core i5-13400F", marca: "Intel", categoria: "CPU", base: 11500, nStores: 4, trend: 1.8, specs: { plataforma: "Intel", socket: "LGA1700", tdp: 65 } },
+  { nombre: "Intel Core i7-13700K", marca: "Intel", categoria: "CPU", base: 21000, nStores: 3, trend: -1.2, specs: { plataforma: "Intel", socket: "LGA1700", tdp: 125 } },
+  // --- CPU AMD (AM5 / AM4) ---
+  { nombre: "AMD Ryzen 5 5500", marca: "AMD", categoria: "CPU", base: 5200, nStores: 3, trend: -3.0, specs: { plataforma: "AMD", socket: "AM4", tdp: 65 } },
+  { nombre: "AMD Ryzen 5 5600", marca: "AMD", categoria: "CPU", base: 7200, nStores: 3, trend: -2.4, specs: { plataforma: "AMD", socket: "AM4", tdp: 65 } },
+  { nombre: "AMD Ryzen 5 7500F", marca: "AMD", categoria: "CPU", base: 10500, nStores: 3, trend: -1.0, specs: { plataforma: "AMD", socket: "AM5", tdp: 65 } },
+  { nombre: "AMD Ryzen 5 7600", marca: "AMD", categoria: "CPU", base: 12900, nStores: 3, trend: 0, specs: { plataforma: "AMD", socket: "AM5", tdp: 65 } },
+  { nombre: "AMD Ryzen 7 7700", marca: "AMD", categoria: "CPU", base: 18500, nStores: 2, trend: -0.8, specs: { plataforma: "AMD", socket: "AM5", tdp: 65 } },
+  // --- Motherboards ---
+  { nombre: "ASRock H610M-HDV/M.2", marca: "ASRock", categoria: "Motherboard", base: 3900, nStores: 3, trend: -1.0, specs: { plataforma: "Intel", socket: "LGA1700", chipset: "H610", ramType: "DDR4", formFactor: "mATX" } },
+  { nombre: "MSI PRO B660M-A DDR4", marca: "MSI", categoria: "Motherboard", base: 5600, nStores: 3, trend: -1.6, specs: { plataforma: "Intel", socket: "LGA1700", chipset: "B660", ramType: "DDR4", formFactor: "mATX" } },
+  { nombre: "Gigabyte B760 Gaming X DDR5", marca: "Gigabyte", categoria: "Motherboard", base: 8900, nStores: 3, trend: -2.2, specs: { plataforma: "Intel", socket: "LGA1700", chipset: "B760", ramType: "DDR5", formFactor: "ATX" } },
+  { nombre: "ASUS TUF Gaming B650-PLUS", marca: "ASUS", categoria: "Motherboard", base: 7900, nStores: 3, trend: 1.4, specs: { plataforma: "AMD", socket: "AM5", chipset: "B650", ramType: "DDR5", formFactor: "ATX" } },
+  { nombre: "Gigabyte X670 AORUS Elite AX", marca: "Gigabyte", categoria: "Motherboard", base: 14500, nStores: 2, trend: -0.6, specs: { plataforma: "AMD", socket: "AM5", chipset: "X670", ramType: "DDR5", formFactor: "ATX" } },
+  { nombre: "MSI B550-A PRO", marca: "MSI", categoria: "Motherboard", base: 4800, nStores: 3, trend: -1.1, specs: { plataforma: "AMD", socket: "AM4", chipset: "B550", ramType: "DDR4", formFactor: "ATX" } },
+  { nombre: "ASRock A520M-HDV", marca: "ASRock", categoria: "Motherboard", base: 3200, nStores: 2, trend: 0, specs: { plataforma: "AMD", socket: "AM4", chipset: "A520", ramType: "DDR4", formFactor: "mATX" } },
+  // --- RAM ---
+  { nombre: "Kingston Fury Beast 16GB DDR5 6000MHz", marca: "Kingston", categoria: "RAM", base: 3400, nStores: 3, trend: 0, specs: { ramType: "DDR5", capacidadGb: 16 } },
+  { nombre: "Corsair Vengeance 32GB (2x16) DDR5 6000MHz", marca: "Corsair", categoria: "RAM", base: 6900, nStores: 2, trend: -4.0, specs: { ramType: "DDR5", capacidadGb: 32 } },
+  { nombre: "Kingston Fury Beast 16GB DDR4 3200MHz", marca: "Kingston", categoria: "RAM", base: 2400, nStores: 3, trend: -1.2, specs: { ramType: "DDR4", capacidadGb: 16 } },
+  { nombre: "Corsair Vengeance LPX 8GB DDR4 3200MHz", marca: "Corsair", categoria: "RAM", base: 1300, nStores: 3, trend: 0.5, specs: { ramType: "DDR4", capacidadGb: 8 } },
+  // --- GPU ---
+  { nombre: "Asus Dual RTX 4060 OC 8GB", marca: "Asus", categoria: "GPU", base: 18900, nStores: 3, trend: -5.2, specs: { tdp: 115 } },
+  { nombre: "Sapphire Pulse Radeon RX 7600 8GB", marca: "Sapphire", categoria: "GPU", base: 16500, nStores: 2, trend: -2.0, specs: { tdp: 165 } },
+  { nombre: "MSI Gaming X RTX 4060 Ti 16GB", marca: "MSI", categoria: "GPU", base: 26500, nStores: 2, trend: -3.1, specs: { tdp: 165 } },
+  { nombre: "Gigabyte RTX 4070 WINDFORCE 12GB", marca: "Gigabyte", categoria: "GPU", base: 34000, nStores: 2, trend: -1.4, specs: { tdp: 200 } },
+  // --- SSD ---
+  { nombre: "Kingston A400 480GB SATA", marca: "Kingston", categoria: "SSD", base: 1500, nStores: 3, trend: -1.0, specs: { interfaz: "SATA" } },
+  { nombre: "WD Black SN770 1TB NVMe", marca: "Western Digital", categoria: "SSD", base: 4200, nStores: 3, trend: -1.2, specs: { interfaz: "NVMe" } },
+  { nombre: "Samsung 990 Pro 2TB NVMe", marca: "Samsung", categoria: "SSD", base: 14500, nStores: 3, trend: -6.1, specs: { interfaz: "NVMe" } },
+  // --- Fuente ---
+  { nombre: "Corsair CV550 550W", marca: "Corsair", categoria: "Fuente", base: 2600, nStores: 3, trend: -0.5, specs: { watts: 550, cert: "80+ White" } },
+  { nombre: "Corsair RM650e 650W 80+ Gold", marca: "Corsair", categoria: "Fuente", base: 3600, nStores: 2, trend: -0.8, specs: { watts: 650, cert: "80+ Gold" } },
+  { nombre: "Corsair RM750e 750W 80+ Gold", marca: "Corsair", categoria: "Fuente", base: 4300, nStores: 3, trend: -0.8, specs: { watts: 750, cert: "80+ Gold" } },
+  { nombre: "Corsair RM850e 850W 80+ Gold", marca: "Corsair", categoria: "Fuente", base: 5200, nStores: 2, trend: 0, specs: { watts: 850, cert: "80+ Gold" } },
+  // --- Gabinete ---
+  { nombre: "Cooler Master MasterBox MB311L (mATX)", marca: "Cooler Master", categoria: "Gabinete", base: 2400, nStores: 3, trend: 0, specs: { formFactor: "mATX" } },
+  { nombre: "NZXT H5 Flow (ATX)", marca: "NZXT", categoria: "Gabinete", base: 3200, nStores: 2, trend: 0, specs: { formFactor: "ATX" } },
+  { nombre: "Lian Li A4-H2O (ITX)", marca: "Lian Li", categoria: "Gabinete", base: 5900, nStores: 2, trend: 1.0, specs: { formFactor: "ITX" } },
+  // --- Cooler ---
+  { nombre: "DeepCool AK400", marca: "DeepCool", categoria: "Cooler", base: 1600, nStores: 3, trend: -1.0, specs: { sockets: ["LGA1700", "AM5", "AM4"] } },
+  { nombre: "Noctua NH-U12S redux", marca: "Noctua", categoria: "Cooler", base: 2300, nStores: 2, trend: 0, specs: { sockets: ["LGA1700", "AM5", "AM4"] } },
+  // --- Periféricos (para el catálogo; no entran al armador) ---
+  { nombre: 'LG UltraGear 27GP850 27" 165Hz', marca: "LG", categoria: "Monitor", base: 17000, nStores: 2, trend: -2.4, specs: {} },
+  { nombre: "Logitech G Pro X Mecánico", marca: "Logitech", categoria: "Teclado", base: 4700, nStores: 3, trend: -1.1, specs: {} },
+  { nombre: "Logitech G502 Hero", marca: "Logitech", categoria: "Mouse", base: 1900, nStores: 3, trend: 0.9, specs: {} },
+  { nombre: "HyperX Cloud II", marca: "HyperX", categoria: "Auriculares", base: 2600, nStores: 2, trend: -2.0, specs: {} },
+].map((p, i) => ({ id: i + 1, imagen: null, ...p }));
+
 const stores = [
   [1, "PC Store Uruguay", "generic_html"],
   [2, "Hard PC", "generic_html"],
@@ -43,26 +77,34 @@ const stores = [
   [4, "Thot Computación", "woocommerce"],
   [5, "NNET", "generic_html"],
 ];
+// Cada tienda tiene un factor de precio distinto para que el "más barato" varíe.
+const storeFactor = { 1: 1.0, 2: 0.985, 3: 1.025, 4: 0.965, 5: 1.008 };
 const DATES = ["2026-07-04", "2026-07-09", "2026-07-14", "2026-07-18", "2026-07-20"];
 
-const productosJson = products.map(([id, nombre, marca, categoria]) => ({ id, nombre, marca, categoria, imagen: null }));
+// PC Store (1) aparece en todo (buena cobertura); el resto rota.
+const OTHERS = [4, 2, 3, 5];
+function storesFor(id, n) {
+  const set = [1];
+  for (let j = 0; j < n - 1; j++) set.push(OTHERS[(id - 1 + j) % OTHERS.length]);
+  return [...new Set(set)].slice(0, n);
+}
+
+const productosJson = P.map((p) => ({ id: p.id, nombre: p.nombre, marca: p.marca, categoria: p.categoria, imagen: p.imagen, specs: p.specs }));
 const tiendasJson = stores.map(([id, nombre, plataforma]) => ({ id, nombre, plataforma }));
 
 const precios = [];
-for (const [id, , , , base, nStores, trend] of products) {
-  const prev = 1 / (1 + trend / 100); // multiplicador de la fecha anterior a la última
+for (const p of P) {
+  const prev = 1 / (1 + p.trend / 100);
   const path = [prev * 1.05, prev * 1.035, prev * 1.02, prev, 1.0];
-  for (let i = 0; i < nStores; i++) {
-    const tienda = ((id + i - 1) % stores.length) + 1;
-    const baseStore = Math.round(base * (1 + 0.03 * i));
-    const agotado = i === nStores - 1 && id % 4 === 0;
+  for (const tienda of storesFor(p.id, p.nStores)) {
+    const factor = storeFactor[tienda];
     for (let k = 0; k < DATES.length; k++) {
       precios.push({
-        producto: id,
+        producto: p.id,
         tienda,
-        precio: Math.round(baseStore * path[k]),
+        precio: Math.round(p.base * factor * path[k]),
         moneda: "UYU",
-        disponible: k === DATES.length - 1 ? !agotado : true,
+        disponible: !(k === DATES.length - 1 && (p.id + tienda) % 11 === 0),
         fecha: DATES[k],
       });
     }
@@ -76,9 +118,9 @@ writeJson("productos.json", productosJson);
 writeJson("tiendas.json", tiendasJson);
 writeJson("precios.json", precios);
 
-/* ============================ CSS EXTRA (modal, buscador, chart) ========= */
+/* ============================ CSS EXTRA ================================== */
 const extraCss = `
-/* --- versión JSON: buscador, modal de detalle y mini-chart --- */
+/* --- versión JSON: buscador, modal, chart y armador --- */
 .searchbar__submit { cursor: pointer; }
 .section.is-hidden { display: none; }
 [data-open], [data-cat] { cursor: pointer; }
@@ -106,10 +148,7 @@ const extraCss = `
   gap: 1rem; padding: var(--space-5) var(--space-5) var(--space-4);
   border-bottom: 1px solid var(--border);
 }
-.modal__brand {
-  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
-  text-transform: uppercase; color: var(--muted-2);
-}
+.modal__brand { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted-2); }
 .modal__title { font-size: 1.2rem; font-weight: 650; letter-spacing: -0.02em; margin-top: 0.2rem; }
 .modal__body { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-5); }
 .modal__section-title { font-size: 0.95rem; font-weight: 600; margin-bottom: var(--space-3); }
@@ -120,18 +159,79 @@ const extraCss = `
 .chart__dot { fill: var(--surface); stroke: var(--brand); stroke-width: 2; }
 .chart__label { fill: var(--muted-2); font-size: 11px; }
 .chart__grid { stroke: var(--border); stroke-width: 1; }
-
 .empty-results { color: var(--muted); padding: var(--space-6); text-align: center; }
+
+/* ---- Armador de PC ---- */
+.builder { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-5); align-items: start; }
+.builder__slots { display: flex; flex-direction: column; gap: var(--space-3); }
+.slot {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-4); background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+}
+.slot__icon {
+  display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 10px; background: var(--surface-2); color: var(--brand);
+}
+.slot__main { flex: 1; min-width: 0; }
+.slot__label { font-size: 0.75rem; color: var(--muted-2); }
+.slot__value { font-size: 0.95rem; font-weight: 550; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.slot__empty { font-size: 0.9rem; color: var(--muted-2); }
+.slot__price { font-size: 0.8rem; color: var(--muted); margin-top: 0.1rem; }
+.slot__price b { color: var(--positive); font-weight: 700; }
+.slot__actions { display: flex; gap: var(--space-2); flex-shrink: 0; }
+
+.builder__summary {
+  position: sticky; top: 84px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+  display: flex; flex-direction: column; gap: var(--space-4);
+}
+.summary__row { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); font-size: 0.9rem; }
+.summary__total { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
+.summary__hint { font-size: 0.8rem; color: var(--muted); }
+.summary__best {
+  padding: var(--space-3); border-radius: var(--radius-md);
+  background: var(--positive-soft); color: var(--positive);
+  font-size: 0.85rem; font-weight: 550; display: flex; gap: 0.4rem; align-items: flex-start;
+}
+.summary__best svg { flex-shrink: 0; margin-top: 1px; }
+.summary__warn {
+  padding: var(--space-3); border-radius: var(--radius-md);
+  background: var(--negative-soft); color: var(--negative);
+  font-size: 0.82rem; display: flex; gap: 0.4rem; align-items: flex-start;
+}
+.summary__note { font-size: 0.82rem; color: var(--muted); display: flex; gap: 0.4rem; align-items: flex-start; }
+.summary__note svg, .summary__warn svg { flex-shrink: 0; margin-top: 1px; }
+
+.pick-tabs { display: flex; gap: var(--space-2); margin-bottom: var(--space-4); }
+.pick-tab { font: inherit; font-size: 0.85rem; font-weight: 550; padding: 0.35rem 0.8rem; border-radius: var(--radius-pill); border: 1px solid var(--border-strong); background: var(--surface); color: var(--muted); cursor: pointer; }
+.pick-tab.is-active { background: var(--brand); border-color: var(--brand); color: #fff; }
+.pick-list { display: flex; flex-direction: column; gap: var(--space-2); max-height: 52vh; overflow: auto; }
+.pick-item {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-3) var(--space-4); border: 1px solid var(--border);
+  border-radius: var(--radius-md); background: var(--surface);
+}
+.pick-item__main { flex: 1; min-width: 0; }
+.pick-item__name { font-size: 0.9rem; font-weight: 550; }
+.pick-item__spec { font-size: 0.76rem; color: var(--muted-2); }
+.pick-item__price { font-size: 0.95rem; font-weight: 700; color: var(--positive); white-space: nowrap; }
+
+@media (max-width: 860px) {
+  .builder { grid-template-columns: 1fr; }
+  .builder__summary { position: static; }
+}
 `;
 
 /* ============================ HTML SHELL ================================= */
 const ic = (paths, size = 18, cls = "") =>
   `<svg class="${cls}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
-const P = {
+const G = {
   chart: '<path d="M4 4v16h16M8 15l3-4 3 2 4-6"/>',
   search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/>',
   arrowRight: '<path d="M5 12h14M13 6l6 6-6 6"/>',
-  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  wrench: '<path d="M14.5 5.5a3.5 3.5 0 0 0-4.6 4.3L3 16.7V21h4.3l6.9-6.9a3.5 3.5 0 0 0 4.3-4.6l-2.4 2.4-2.1-.5-.5-2.1 2.4-2.4Z"/>',
   github:
     '<path d="M9 19c-4 1.4-4-2.4-5.5-3M15 21v-3.2c0-.9.2-1.6-.5-2.2 2.3-.3 4.5-1.2 4.5-5a3.8 3.8 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-3 1a12 12 0 0 0-6 0C6 3.9 5 4.2 5 4.2a3.6 3.6 0 0 0-.1 2.7A3.8 3.8 0 0 0 4 9.6c0 3.7 2.2 4.7 4.5 5-.5.5-.5 1-.5 1.8V21"/>',
   x: '<path d="M4 4l16 16M20 4 4 20"/>',
@@ -143,8 +243,8 @@ const html = `<!doctype html>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>TechPrice Uruguay — Compará precios de tecnología</title>
-<meta name="description" content="Comparador de precios de tecnología entre tiendas de Uruguay (versión local con archivos JSON)." />
+<title>TechPrice Uruguay — Compará precios y armá tu PC</title>
+<meta name="description" content="Comparador de precios de tecnología entre tiendas de Uruguay + armador de PC con compatibilidad (versión local con archivos JSON)." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -157,10 +257,10 @@ ${extraCss}
 <body>
 <header class="site-header">
   <div class="container site-header__inner">
-    <a href="#" class="brand"><span class="brand__mark">${ic(P.chart, 18)}</span>TechPrice <span>Uruguay</span></a>
+    <a href="#" class="brand"><span class="brand__mark">${ic(G.chart, 18)}</span>TechPrice <span>Uruguay</span></a>
     <nav class="site-nav">
       <a href="#section-destacados">Productos</a>
-      <a href="#section-tiendas" class="site-nav__cta">Tiendas</a>
+      <a href="#section-armar" class="site-nav__cta">Armá tu PC</a>
     </nav>
   </div>
 </header>
@@ -169,13 +269,13 @@ ${extraCss}
   <div class="container">
     <section class="hero">
       <span class="hero__eyebrow"><span class="dot"></span> Precios de tecnología en Uruguay, en un solo lugar</span>
-      <h1>Compará precios de tecnología en Uruguay.</h1>
-      <p class="hero__subtitle">Encontrá el mejor precio entre múltiples tiendas y seguí la evolución del valor de cada producto — sin ruido, solo la información.</p>
+      <h1>Compará precios y armá tu PC.</h1>
+      <p class="hero__subtitle">Encontrá el mejor precio entre múltiples tiendas, seguí el historial y armá una PC compatible pieza por pieza — sin ruido, solo la información.</p>
       <div class="hero__search">
         <form class="searchbar" role="search" id="search-form">
-          ${ic(P.search, 22, "searchbar__icon")}
+          ${ic(G.search, 22, "searchbar__icon")}
           <input type="search" id="search-input" placeholder="Buscá una RTX 4060, un i5-13400F, un SSD 2TB…" aria-label="Buscar producto" autocomplete="off" />
-          <button type="submit" class="searchbar__submit"><span class="searchbar__submit-label">Buscar</span>${ic(P.arrowRight, 18)}</button>
+          <button type="submit" class="searchbar__submit"><span class="searchbar__submit-label">Buscar</span>${ic(G.arrowRight, 18)}</button>
         </form>
       </div>
       <div class="statbar" aria-label="Estado de la plataforma">
@@ -186,6 +286,15 @@ ${extraCss}
         <div class="statbar__item"><span class="statbar__value" id="stat-actualizacion">—</span><span class="statbar__label">Última actualización</span></div>
         <span class="statbar__divider"></span>
         <div class="statbar__item"><span class="statbar__value" id="stat-usuarios">—</span><span class="statbar__label">Usuarios activos</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="section-armar">
+      <div class="section__head"><div><h2 class="section__title">Armá tu PC</h2><p class="section__subtitle">Elegí las partes: solo te dejamos combinar componentes compatibles (Intel/AMD, socket, tipo de RAM, gabinete) y te decimos dónde conviene comprar.</p></div>
+        <button class="section__link" id="reset-build" type="button">Vaciar selección</button></div>
+      <div class="builder">
+        <div class="builder__slots" id="builder-slots"></div>
+        <aside class="builder__summary" id="builder-summary"></aside>
       </div>
     </section>
 
@@ -220,19 +329,19 @@ ${extraCss}
   <div class="container">
     <div class="site-footer__inner">
       <div class="site-footer__brandcol">
-        <span class="brand"><span class="brand__mark">${ic(P.chart, 18)}</span>TechPrice <span>Uruguay</span></span>
-        <p>Herramienta para analizar y comparar precios de tecnología entre tiendas de Uruguay. Comparamos componentes y productos individuales, no PCs armadas.</p>
+        <span class="brand"><span class="brand__mark">${ic(G.chart, 18)}</span>TechPrice <span>Uruguay</span></span>
+        <p>Herramienta para analizar y comparar precios de tecnología entre tiendas de Uruguay, y armar una PC compatible al mejor precio.</p>
       </div>
-      <div class="footer-col"><h4>Producto</h4><ul><li><a href="#section-destacados">Productos</a></li><li><a href="#section-bajaron">Productos que bajaron</a></li><li><a href="#section-tendencias">Tendencias</a></li></ul></div>
-      <div class="footer-col"><h4>Categorías</h4><ul><li><a href="#">Tarjetas gráficas</a></li><li><a href="#">Procesadores</a></li><li><a href="#">Monitores</a></li><li><a href="#">Notebooks</a></li></ul></div>
+      <div class="footer-col"><h4>Producto</h4><ul><li><a href="#section-destacados">Productos</a></li><li><a href="#section-armar">Armá tu PC</a></li><li><a href="#section-tendencias">Tendencias</a></li></ul></div>
+      <div class="footer-col"><h4>Categorías</h4><ul><li><a href="#">Tarjetas gráficas</a></li><li><a href="#">Procesadores</a></li><li><a href="#">Motherboards</a></li><li><a href="#">Fuentes</a></li></ul></div>
       <div class="footer-col"><h4>Plataforma</h4><ul><li><a href="#section-tiendas">Tiendas</a></li><li><a href="#">Contacto</a></li><li><a href="#">Política de privacidad</a></li><li><a href="#">Términos</a></li></ul></div>
     </div>
     <div class="site-footer__bar">
       <span>© <span id="year"></span> TechPrice Uruguay — versión local (JSON)</span>
       <div class="site-footer__social">
-        <a href="#" aria-label="GitHub">${ic(P.github, 17)}</a>
-        <a href="#" aria-label="X">${ic(P.x, 17)}</a>
-        <a href="#" aria-label="Instagram">${ic(P.instagram, 17)}</a>
+        <a href="#" aria-label="GitHub">${ic(G.github, 17)}</a>
+        <a href="#" aria-label="X">${ic(G.x, 17)}</a>
+        <a href="#" aria-label="Instagram">${ic(G.instagram, 17)}</a>
       </div>
     </div>
   </div>
@@ -245,4 +354,4 @@ ${extraCss}
 </html>`;
 
 writeFileSync(resolve(OUT, "index.html"), html, "utf8");
-console.log("proyecto/index.html + data/*.json generados. Productos:", productosJson.length, "| Precios:", precios.length);
+console.log("proyecto/ generado. Productos:", productosJson.length, "| Precios:", precios.length);
