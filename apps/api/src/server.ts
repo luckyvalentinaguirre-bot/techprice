@@ -16,7 +16,9 @@ await app.register(categoryRoutes);
 await app.register(storeRoutes);
 await app.register(productRoutes);
 
-const port = Number(process.env.API_PORT ?? 4000);
+// Most PaaS providers (Render, Railway, Heroku) inject PORT; API_PORT stays
+// as the override for local dev via .env.
+const port = Number(process.env.PORT ?? process.env.API_PORT ?? 4000);
 app
   .listen({ port, host: "0.0.0.0" })
   .catch((err) => {

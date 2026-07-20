@@ -1,0 +1,53 @@
+# Render Blueprint: deploys the whole stack (Postgres + API + web) in one
+# click from https://dashboard.render.com/blueprints -> "New Blueprint
+# Instance", pointing at this repo/branch. Render auto-detects this file.
+#
+# Seeds illustrative demo data on API boot (packages/database/src/seedDemo.ts)
+# since stores.config.ts has no verified/enabled real store yet — see README.
+#
+# NOTE: if Render renames a service because "techprice-api"/"techprice-web"
+# is already taken, update API_CORS_ORIGIN and NEXT_PUBLIC_API_URL below (or
+# in the dashboard) to match the actual assigned *.onrender.com hostnames.
+
+databases:
+  - name: techprice-db
+    databaseName: techprice
+    user: techprice
+    plan: free
+
+services:
+  - type: web
+    name: techprice-api
+    runtime: node
+    plan: free
+    healthCheckPath: /health
+    buildCommand: >-
+      corepack enable && corepack prepare pnpm@10.33.0 --activate &&
+      pnpm install --frozen-lockfile &&
+      pnpm --filter @techprice/database build &&
+      pnpm --filter @techprice/api build
+    startCommand: >-
+      pnpm --filter @techprice/database migrate:deploy &&
+      pnpm --filter @techprice/database seed:demo &&
+      pnpm --filter @techprice/api start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: techprice-db
+          property: connectionString
+      - key: API_CORS_ORIGIN
+        value: https://techprice-web.onrender.com
+
+  - type: web
+    name: techprice-web
+    runtime: node
+    plan: free
+    buildCommand: >-
+      corepack enable && corepack prepare pnpm@10.33.0 --activate &&
+      pnpm install --frozen-lockfile &&
+      pnpm --filter @techprice/shared build &&
+      pnpm --filter @techprice/web build
+    startCommand: pnpm --filter @techprice/web start
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://techprice-api.onrender.com

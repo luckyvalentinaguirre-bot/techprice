@@ -86,6 +86,30 @@ false`) — no apuntan a tiendas reales verificadas. Antes de habilitar una
 tienda hay que confirmar sus URLs/ids de categoria reales y revisar su
 `robots.txt`/terminos de uso.
 
+## Deploy de demo (Render, gratis)
+
+`render.yaml` en la raiz define un Blueprint que levanta los 3 componentes
+(Postgres + API + web) en un solo deploy, con datos de ejemplo precargados
+(`packages/database/src/seedDemo.ts` — **no son datos reales**, son solo
+para que la demo se vea con contenido mientras no hay tiendas verificadas).
+
+1. Crear cuenta gratis en [render.com](https://render.com) (podes entrar con
+   tu cuenta de GitHub).
+2. Dashboard -> **New +** -> **Blueprint**.
+3. Elegir el repo `luckyvalentinaguirre-bot/techprice`, rama
+   `claude/techprice-product-comparison-rfzvxm`. Render va a detectar
+   `render.yaml` solo.
+4. Aplicar el blueprint. Va a crear 3 recursos: `techprice-db` (Postgres),
+   `techprice-api` y `techprice-web`. El primer deploy tarda unos minutos.
+5. Cuando `techprice-web` termine, su URL (`https://techprice-web.onrender.com`,
+   o la que Render le haya asignado si ese nombre ya estaba tomado) es la
+   pagina publica.
+
+Nota: los planes free de Render "duermen" el servicio tras un rato sin
+trafico (el primer request después de eso tarda ~30s en responder) y la
+base de datos free expira a los 90 dias — para un uso real hay que pasar a
+un plan pago o cambiar de proveedor.
+
 ## Requisitos
 
 - Node.js 20+
