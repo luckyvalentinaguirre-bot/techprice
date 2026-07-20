@@ -34,8 +34,16 @@ Después:
 
 ## Elegir las tiendas — `scripts/stores.config.json`
 
-Poné `enabled: true` en las que quieras. Ya viene lista **Thot** (WooCommerce,
-confirmada). Tres tipos soportados:
+Ya viene una **lista grande de tiendas de tecnología de Uruguay** con
+`plataforma: "auto"`: el script **detecta solo** si cada una es WooCommerce,
+Tiendanube o VTEX, y **la que no tenga API, la saltea** (vas a ver en pantalla
+"sin API detectada, la salteo"). No hace falta que sepas la plataforma de cada
+una. Sacá o agregá tiendas libremente (poné `enabled: false` para apagar una).
+
+> **Mercado Libre está apagado**: restringió su API de búsqueda (devuelve 403
+> aun con token válido), así que por ahora no se puede leer por API.
+
+Los tipos soportados (para detección automática o manual) son:
 
 - **WooCommerce** — `"plataforma": "woocommerce"`, `baseUrl`. (Para saber si una
   tienda es WooCommerce: abrí `TIENDA/wp-json/wc/store/v1/products` en el

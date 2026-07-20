@@ -80,10 +80,33 @@ function claveModelo(nombre, cat) {
 
 /* --------------------------------- fetch --------------------------------- */
 const UA = { "User-Agent": "Mozilla/5.0 (compatible; TechPriceUY/1.0; comparador de precios)", Accept: "application/json" };
-async function getJson(url, headers = {}) {
-  const res = await fetch(url, { headers: { ...UA, ...headers } });
-  if (!res.ok) throw new Error("HTTP " + res.status + " en " + url);
-  return res.json();
+async function getJson(url, headers = {}, timeoutMs = 12000) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, { headers: { ...UA, ...headers }, signal: ctrl.signal, redirect: "follow" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    return await res.json();
+  } finally {
+    clearTimeout(t);
+  }
+}
+
+// Detecta sola la plataforma de una tienda probando los endpoints conocidos.
+async function detectPlatform(store) {
+  const base = store.baseUrl.replace(/\/$/, "");
+  const tries = [
+    ["woocommerce", `${base}/wp-json/wc/store/v1/products?per_page=1`, (d) => d[0] && (d[0].prices || d[0].permalink)],
+    ["tiendanube", `${base}/products.json?page=1`, (d) => d[0] && (d[0].variants || d[0].handle || d[0].name)],
+    ["vtex", `${base}/api/catalog_system/pub/products/search?_from=0&_to=0`, (d) => d[0] && (d[0].items || d[0].productName || d[0].linkText)],
+  ];
+  for (const [plat, url, ok] of tries) {
+    try {
+      const data = await getJson(url, {}, 10000);
+      if (Array.isArray(data) && data.length > 0 && ok(data)) return plat;
+    } catch { /* probar la siguiente */ }
+  }
+  return null;
 }
 
 async function fromWoo(store) {
@@ -229,10 +252,18 @@ async function main() {
   } else {
     if (enabled.length === 0) { console.error("No hay tiendas con enabled:true en scripts/stores.config.json"); process.exit(1); }
     for (const store of enabled) {
-      const fetcher = FETCHERS[store.plataforma];
-      if (!fetcher) { console.warn("Plataforma desconocida:", store.plataforma); continue; }
-      process.stdout.write(`Leyendo ${store.nombre} (${store.plataforma})… `);
-      try { const items = await fetcher(store); console.log(items.length + " productos"); rawPorTienda.push({ store, items }); }
+      let plataforma = store.plataforma;
+      if (!plataforma || plataforma === "auto") {
+        process.stdout.write(`Detectando ${store.nombre}… `);
+        plataforma = await detectPlatform(store).catch(() => null);
+        if (!plataforma) { console.log("sin API detectada, la salteo"); continue; }
+        console.log("es " + plataforma);
+      }
+      const fetcher = FETCHERS[plataforma];
+      if (!fetcher) { console.log(`Plataforma no soportada (${plataforma}) en ${store.nombre}, la salteo`); continue; }
+      const s = { ...store, plataforma };
+      process.stdout.write(`Leyendo ${store.nombre} (${plataforma})… `);
+      try { const items = await fetcher(s); console.log(items.length + " productos"); if (items.length) rawPorTienda.push({ store: s, items }); }
       catch (e) { console.log("ERROR: " + e.message); }
     }
   }
@@ -240,7 +271,10 @@ async function main() {
   const prev = FRESH || SELFTEST
     ? { productos: [], precios: [] }
     : { productos: readJson(resolve(DATA, "productos.json"), []), precios: readJson(resolve(DATA, "precios.json"), []) };
-  const storesMeta = SELFTEST ? [{ id: 4, nombre: "Thot (selftest)", plataforma: "woocommerce" }] : enabled;
+  // Solo entran a tiendas.json las que realmente trajeron productos.
+  const storesMeta = SELFTEST
+    ? [{ id: 4, nombre: "Thot (selftest)", plataforma: "woocommerce" }]
+    : rawPorTienda.map((x) => ({ id: x.store.id, nombre: x.store.nombre, plataforma: x.store.plataforma }));
   const ds = buildDataset(rawPorTienda, storesMeta, prev);
 
   const resumen = `Productos: ${ds.productos.length} | Tiendas: ${ds.tiendas.length} | Precios: ${ds.precios.length} | conImagen: ${ds.productos.filter((p) => p.imagen).length}`;

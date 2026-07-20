@@ -1,54 +1,25 @@
 {
-  "_ayuda": "Tiendas a leer. Poné enabled:true en las que quieras. Ver REALES.md.",
+  "_ayuda": "Tiendas de tecnología de Uruguay. plataforma:'auto' → el script detecta solo si es WooCommerce/Tiendanube/VTEX y, si no tiene API, la saltea. Podés agregar/quitar tiendas o poner enabled:false. Ver REALES.md.",
   "stores": [
-    {
-      "id": 4,
-      "nombre": "Thot Computación",
-      "plataforma": "woocommerce",
-      "baseUrl": "https://thotcomputacion.com.uy",
-      "moneda": "USD",
-      "maxPages": 20,
-      "enabled": true
-    },
-    {
-      "_nota": "ZonaTecno NO es Tiendanube (su /products.json da 404). Poné la plataforma correcta (woocommerce o vtex) según lo que confirmes en el navegador; ver REALES.md.",
-      "id": 3,
-      "nombre": "ZonaTecno",
-      "plataforma": "vtex",
-      "baseUrl": "https://www.zonatecno.com.uy",
-      "moneda": "UYU",
-      "maxItems": 1000,
-      "enabled": false
-    },
-    {
-      "_nota": "Pegá tu access token de Mercado Libre en 'token' y poné enabled:true. Ver REALES.md.",
-      "id": 99,
-      "nombre": "Mercado Libre UY",
-      "plataforma": "mercadolibre",
-      "site": "MLU",
-      "moneda": "UYU",
-      "token": "",
-      "maxPorBusqueda": 100,
-      "queries": [
-        "placa de video rtx",
-        "placa de video radeon",
-        "procesador amd ryzen",
-        "procesador intel core",
-        "motherboard am5",
-        "motherboard lga1700",
-        "memoria ram ddr5",
-        "memoria ram ddr4",
-        "disco ssd nvme",
-        "fuente 80 plus",
-        "gabinete gamer",
-        "cooler cpu",
-        "monitor gamer 27",
-        "notebook",
-        "teclado mecanico",
-        "mouse gamer",
-        "auriculares gamer"
-      ],
-      "enabled": false
-    }
+    { "id": 1, "nombre": "PC Store Uruguay", "plataforma": "auto", "baseUrl": "https://pcstore.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 2, "nombre": "Hard PC", "plataforma": "auto", "baseUrl": "https://www.hardpc.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 3, "nombre": "ZonaTecno", "plataforma": "auto", "baseUrl": "https://www.zonatecno.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 4, "nombre": "Thot Computación", "plataforma": "woocommerce", "baseUrl": "https://thotcomputacion.com.uy", "moneda": "USD", "maxPages": 25, "enabled": true },
+    { "id": 5, "nombre": "NNET", "plataforma": "auto", "baseUrl": "https://www.nnet.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 6, "nombre": "Banifox", "plataforma": "auto", "baseUrl": "https://www.banifox.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 7, "nombre": "LOi", "plataforma": "auto", "baseUrl": "https://loi.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 8, "nombre": "NetPC", "plataforma": "auto", "baseUrl": "https://netpc.uy", "moneda": "USD", "enabled": true },
+    { "id": 9, "nombre": "Compudabo", "plataforma": "auto", "baseUrl": "https://compudabo.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 10, "nombre": "Ractech", "plataforma": "auto", "baseUrl": "https://ractech.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 11, "nombre": "Notebook Store", "plataforma": "auto", "baseUrl": "https://www.notebookstore.com.uy", "moneda": "USD", "enabled": true },
+    { "id": 12, "nombre": "Mundo PC", "plataforma": "auto", "baseUrl": "https://www.mundopc.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 13, "nombre": "TvTerra", "plataforma": "auto", "baseUrl": "https://www.tvterra.uy", "moneda": "UYU", "enabled": true },
+    { "id": 14, "nombre": "Newcom", "plataforma": "auto", "baseUrl": "https://www.newcom.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 15, "nombre": "Divino", "plataforma": "auto", "baseUrl": "https://www.divino.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 16, "nombre": "Tienda Inglesa", "plataforma": "auto", "baseUrl": "https://www.tiendainglesa.com.uy", "moneda": "UYU", "maxItems": 800, "enabled": true },
+    { "id": 17, "nombre": "Loi Tecnología", "plataforma": "auto", "baseUrl": "https://www.loi.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 18, "nombre": "Punto Digital", "plataforma": "auto", "baseUrl": "https://www.puntodigital.com.uy", "moneda": "UYU", "enabled": true },
+
+    { "_nota": "Mercado Libre restringió su API de búsqueda (403 aun con token). Queda apagado.", "id": 99, "nombre": "Mercado Libre UY", "plataforma": "mercadolibre", "site": "MLU", "moneda": "UYU", "token": "", "maxPorBusqueda": 100, "queries": ["placa de video rtx", "procesador ryzen", "memoria ram ddr5", "disco ssd nvme", "monitor gamer"], "enabled": false }
   ]
 }
