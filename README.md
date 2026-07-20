@@ -110,6 +110,24 @@ trafico (el primer request después de eso tarda ~30s en responder) y la
 base de datos free expira a los 90 dias — para un uso real hay que pasar a
 un plan pago o cambiar de proveedor.
 
+## Arranque rápido (un solo comando)
+
+Si ya tenés **Node 20+**, **pnpm** y **Docker Desktop** (abierto), no hace falta
+seguir el paso a paso: desde la carpeta del proyecto corré
+
+```bash
+pnpm local        # o:  ./dev.sh
+```
+
+Ese comando levanta la base de datos, aplica las migraciones, carga datos de
+ejemplo y arranca la API + el frontend, todo junto. Cuando termine, abrí
+**http://localhost:8080**. Es reejecutable: podés cerrarlo con `Ctrl+C` y volver
+a correr `pnpm local` cuando quieras. Cada archivo que se edite recarga la
+página sola.
+
+> ¿No tenés Docker? Seguí el paso a paso de abajo (podés usar una base gratis
+> en la nube como neon.tech en lugar de Docker).
+
 ## Probarlo en tu compu (Linux), paso a paso
 
 Guía pensada para no tener que andar exportando variables de entorno a
