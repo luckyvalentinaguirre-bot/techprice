@@ -145,14 +145,51 @@ en 3 tiendas se agrupan en 1 ficha con min/avg/max y ahorro correctos):
       ficha de producto con tabla de precios por tienda + grafico de
       historial).
 
-Pendiente (siguiente paso natural, no bloqueante para el uso del sistema):
+### Tiendas: 8 confirmadas, plataforma sin verificar
 
-- [ ] Onboarding de tiendas reales de Uruguay: confirmar plataforma
-      (Tiendanube/WooCommerce/VTEX/custom), `baseUrl` y los ids/slugs reales
-      de categoria de cada una, y completar `stores.config.ts` con
-      `enabled: true`. No se hizo en este PR porque requiere verificar la
-      estructura real de cada sitio (varias tiendas de Uruguay no fueron
-      alcanzables desde este entorno de desarrollo).
+`stores.config.ts` ya tiene una entrada por cada una de estas 8 tiendas
+reales de Uruguay, con su `baseUrl` confirmado por busqueda web:
+
+| Tienda | id | baseUrl | Plataforma (sin confirmar) |
+|---|---|---|---|
+| Banifox | `banifox` | banifox.com.uy | generic_html (guess) |
+| Thot Computación | `thot-computacion` | thotcomputacion.com.uy | woocommerce (guess, tiene `/shop/`) |
+| LOi | `loi` | loi.com.uy | generic_html (guess) |
+| NetPC | `netpc` | netpc.uy | generic_html (guess, precios en USD) |
+| PC Store | `pcstore` | pcstore.com.uy | generic_html (guess) |
+| ZonaTecno | `zonatecno` | zonatecno.com.uy | tiendanube (guess) |
+| Hard PC | `hardpc` | hardpc.com.uy | generic_html (guess) |
+| NNET | `nnet` | nnet.com.uy | generic_html (guess) |
+
+Todas quedaron con `enabled: false` porque **no pude verificar la
+plataforma real de ninguna**: este entorno de desarrollo no tiene salida de
+red hacia dominios `.uy` (los intentos de fetch a las 8 tiendas devolvieron
+403 o timeout de DNS, incluso para `/robots.txt`, que normalmente es
+publico). La columna "Plataforma" de la tabla es una estimacion a partir de
+patrones de URL vistos en los resultados de busqueda (ej. Thot tiene una
+pagina `/shop/`, el slug por defecto de WooCommerce), no una confirmacion.
+
+**Para habilitar cada tienda** (desde una red que sí llegue a los sitios):
+
+1. Abrir en el navegador `{baseUrl}/products.json?page=1` (Tiendanube),
+   `{baseUrl}/wp-json/wc/store/v1/products` (WooCommerce) o
+   `{baseUrl}/api/catalog_system/pub/products/search?_from=0&_to=9` (VTEX).
+   Si alguno devuelve JSON, esa es la plataforma real — ajustar `platform`
+   en `stores.config.ts` si mi estimacion estaba mal.
+2. Si ninguno responde JSON, es un sitio a medida: dejar `generic_html` e
+   inspeccionar el HTML de una pagina de categoria para completar los
+   selectores CSS reales en `htmlSelectors` (los que puse son placeholders
+   `"TODO_SELECTOR"`).
+3. Completar `categoryMappings` con los ids/slugs reales de categoria de la
+   tienda — **solo** las que sean componentes/productos individuales, nunca
+   "PC armada" ni combos.
+4. Revisar `robots.txt` y terminos de uso del sitio.
+5. Poner `enabled: true`.
+
+## Pendiente
+
+- [ ] Verificar la plataforma real y completar selectores/category ids de
+      las 8 tiendas de la tabla de arriba (ver pasos 1-5).
 - [ ] Programar `pnpm ingest` en un cron/scheduler para actualizar precios
       periodicamente.
 - [ ] Autenticacion/rate-limiting en la API si se expone publicamente.
