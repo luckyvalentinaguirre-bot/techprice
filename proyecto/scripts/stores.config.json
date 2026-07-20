@@ -11,12 +11,13 @@
       "enabled": true
     },
     {
+      "_nota": "ZonaTecno NO es Tiendanube (su /products.json da 404). Poné la plataforma correcta (woocommerce o vtex) según lo que confirmes en el navegador; ver REALES.md.",
       "id": 3,
       "nombre": "ZonaTecno",
-      "plataforma": "tiendanube",
+      "plataforma": "vtex",
       "baseUrl": "https://www.zonatecno.com.uy",
       "moneda": "UYU",
-      "maxPages": 20,
+      "maxItems": 1000,
       "enabled": false
     },
     {

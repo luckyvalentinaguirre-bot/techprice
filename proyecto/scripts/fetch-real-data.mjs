@@ -145,7 +145,31 @@ async function fromMercadoLibre(store) {
   return out;
 }
 
-const FETCHERS = { woocommerce: fromWoo, tiendanube: fromTiendanube, mercadolibre: fromMercadoLibre };
+async function fromVtex(store) {
+  const out = [];
+  const base = store.baseUrl.replace(/\/$/, "");
+  const step = 50;
+  for (let from = 0; from < (store.maxItems || 1000); from += step) {
+    const url = `${base}/api/catalog_system/pub/products/search?_from=${from}&_to=${from + step - 1}`;
+    const arr = await getJson(url).catch(() => []);
+    if (!Array.isArray(arr) || arr.length === 0) break;
+    for (const p of arr) {
+      const item = (p.items && p.items[0]) || {};
+      const offer = ((item.sellers && item.sellers[0]) || {}).commertialOffer || {};
+      out.push({
+        nombre: p.productName, precio: offer.Price, moneda: store.moneda || "UYU",
+        imagen: item.images?.[0]?.imageUrl || null,
+        url: p.link || `${base}/${p.linkText}/p`,
+        disponible: offer.IsAvailable !== false && (offer.AvailableQuantity ?? 1) > 0,
+      });
+    }
+    if (arr.length < step) break;
+    await new Promise((r) => setTimeout(r, 500));
+  }
+  return out;
+}
+
+const FETCHERS = { woocommerce: fromWoo, tiendanube: fromTiendanube, vtex: fromVtex, mercadolibre: fromMercadoLibre };
 
 /* --------------------------- armar el dataset ---------------------------- */
 function buildDataset(rawPorTienda, storesMeta, prev) {
