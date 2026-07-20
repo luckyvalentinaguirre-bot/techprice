@@ -19,13 +19,15 @@
     "db:seed:demo": "dotenv -e .env -- pnpm --filter @techprice/database seed:demo",
     "ingest": "dotenv -e .env -- pnpm --filter @techprice/ingestion start",
     "api:dev": "dotenv -e .env -- pnpm --filter @techprice/api dev",
-    "web:dev": "dotenv -e .env -- pnpm --filter @techprice/web dev"
+    "web:dev": "dotenv -e .env -- pnpm --filter @techprice/web dev",
+    "dev": "dotenv -e .env -- concurrently -n API,WEB -c blue,green \"pnpm --filter @techprice/api dev\" \"WEB_PORT=8080 pnpm --filter @techprice/web dev\""
   },
   "devDependencies": {
     "typescript": "^5.6.3",
     "vitest": "^2.1.4",
     "@types/node": "^20.16.11",
-    "dotenv-cli": "^7.4.4"
+    "dotenv-cli": "^7.4.4",
+    "concurrently": "^9.1.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
