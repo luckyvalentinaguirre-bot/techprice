@@ -12,16 +12,18 @@
     "test": "pnpm -r --filter=./packages/* test",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
-    "db:generate": "pnpm --filter @techprice/database generate",
-    "db:migrate": "pnpm --filter @techprice/database migrate",
-    "db:seed": "pnpm --filter @techprice/database seed",
-    "ingest": "pnpm --filter @techprice/ingestion start",
-    "api:dev": "pnpm --filter @techprice/api dev",
-    "web:dev": "pnpm --filter @techprice/web dev"
+    "db:generate": "dotenv -e .env -- pnpm --filter @techprice/database generate",
+    "db:migrate": "dotenv -e .env -- pnpm --filter @techprice/database migrate",
+    "db:seed": "dotenv -e .env -- pnpm --filter @techprice/database seed",
+    "db:seed:demo": "dotenv -e .env -- pnpm --filter @techprice/database seed:demo",
+    "ingest": "dotenv -e .env -- pnpm --filter @techprice/ingestion start",
+    "api:dev": "dotenv -e .env -- pnpm --filter @techprice/api dev",
+    "web:dev": "dotenv -e .env -- pnpm --filter @techprice/web dev"
   },
   "devDependencies": {
     "typescript": "^5.6.3",
     "vitest": "^2.1.4",
-    "@types/node": "^20.16.11"
+    "@types/node": "^20.16.11",
+    "dotenv-cli": "^7.4.4"
   }
 }

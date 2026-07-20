@@ -25,9 +25,17 @@ services:
       npx --yes pnpm@10.33.0 install --frozen-lockfile &&
       npx --yes pnpm@10.33.0 --filter @techprice/database build &&
       npx --yes pnpm@10.33.0 --filter @techprice/api build
+    # Retries migrate:deploy in case the DB is still starting on the very
+    # first boot; seed:demo is best-effort so a seeding hiccup never blocks
+    # the API from serving.
     startCommand: >-
-      npx --yes pnpm@10.33.0 --filter @techprice/database migrate:deploy &&
-      npx --yes pnpm@10.33.0 --filter @techprice/database seed:demo &&
+      ok="" ;
+      for i in 1 2 3 4 5; do
+        npx --yes pnpm@10.33.0 --filter @techprice/database migrate:deploy && ok=1 && break;
+        sleep 5;
+      done ;
+      [ "$ok" = "1" ] &&
+      (npx --yes pnpm@10.33.0 --filter @techprice/database seed:demo || true) &&
       npx --yes pnpm@10.33.0 --filter @techprice/api start
     envVars:
       - key: DATABASE_URL

@@ -110,13 +110,64 @@ trafico (el primer request después de eso tarda ~30s en responder) y la
 base de datos free expira a los 90 dias — para un uso real hay que pasar a
 un plan pago o cambiar de proveedor.
 
+## Probarlo en tu compu (Linux), paso a paso
+
+Guía pensada para no tener que andar exportando variables de entorno a
+mano: todo se lee de un archivo `.env`.
+
+```bash
+# 1. Si no tenes Node.js 20+, instalalo (podes verificar con: node -v)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+source ~/.bashrc   # o abrí una terminal nueva
+nvm install 20
+
+# 2. Instalar pnpm
+npm install -g pnpm@10.33.0
+
+# 3. Traer el codigo (o descargalo como zip desde GitHub y entra a la carpeta)
+git clone https://github.com/luckyvalentinaguirre-bot/techprice.git
+cd techprice
+git checkout claude/techprice-product-comparison-rfzvxm
+
+# 4. Instalar dependencias del proyecto
+pnpm install
+
+# 5. Base de datos: la mas simple es Docker...
+docker compose up -d
+# ...si no tenes Docker, podes usar una gratis en la nube (neon.tech: te
+# registras, creas un proyecto, copias el "connection string" que te dan y
+# lo pegas en el archivo .env del paso 6, en DATABASE_URL).
+
+# 6. Copiar la config de ejemplo (y editarla si usaste Neon en vez de Docker)
+cp .env.example .env
+
+# 7. Crear las tablas
+pnpm db:migrate
+
+# 8. Cargar datos de EJEMPLO para ver la pagina con contenido
+#    (no son datos reales, son solo para ver el diseño funcionando)
+pnpm db:seed:demo
+
+# 9. Levantar la API — dejala corriendo en esta terminal
+pnpm api:dev
+```
+
+Abrí una **segunda terminal** (misma carpeta `techprice`) para el frontend:
+
+```bash
+pnpm web:dev
+```
+
+Y abrí **http://localhost:3000** en el navegador. Cada vez que edites un
+archivo del proyecto, la página se actualiza sola.
+
 ## Requisitos
 
 - Node.js 20+
 - pnpm 10+
 - PostgreSQL 16 (o Docker, ver `docker-compose.yml`)
 
-## Uso local
+## Uso local (referencia rápida)
 
 ```bash
 cp .env.example .env   # y ajustar DATABASE_URL si hace falta
@@ -131,6 +182,9 @@ pnpm db:migrate
 
 # Sembrar las tiendas configuradas en stores.config.ts
 pnpm db:seed
+
+# (opcional) cargar datos de ejemplo para ver la UI con contenido
+pnpm db:seed:demo
 
 # Correr el pipeline de scraping + matching (requiere al menos una tienda
 # enabled: true en stores.config.ts con datos reales)
