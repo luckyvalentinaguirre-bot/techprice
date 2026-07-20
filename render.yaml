@@ -22,14 +22,13 @@ services:
     plan: free
     healthCheckPath: /health
     buildCommand: >-
-      corepack enable && corepack prepare pnpm@10.33.0 --activate &&
-      pnpm install --frozen-lockfile &&
-      pnpm --filter @techprice/database build &&
-      pnpm --filter @techprice/api build
+      npx --yes pnpm@10.33.0 install --frozen-lockfile &&
+      npx --yes pnpm@10.33.0 --filter @techprice/database build &&
+      npx --yes pnpm@10.33.0 --filter @techprice/api build
     startCommand: >-
-      pnpm --filter @techprice/database migrate:deploy &&
-      pnpm --filter @techprice/database seed:demo &&
-      pnpm --filter @techprice/api start
+      npx --yes pnpm@10.33.0 --filter @techprice/database migrate:deploy &&
+      npx --yes pnpm@10.33.0 --filter @techprice/database seed:demo &&
+      npx --yes pnpm@10.33.0 --filter @techprice/api start
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -43,11 +42,10 @@ services:
     runtime: node
     plan: free
     buildCommand: >-
-      corepack enable && corepack prepare pnpm@10.33.0 --activate &&
-      pnpm install --frozen-lockfile &&
-      pnpm --filter @techprice/shared build &&
-      pnpm --filter @techprice/web build
-    startCommand: pnpm --filter @techprice/web start
+      npx --yes pnpm@10.33.0 install --frozen-lockfile &&
+      npx --yes pnpm@10.33.0 --filter @techprice/shared build &&
+      npx --yes pnpm@10.33.0 --filter @techprice/web build
+    startCommand: npx --yes pnpm@10.33.0 --filter @techprice/web start
     envVars:
       - key: NEXT_PUBLIC_API_URL
         value: https://techprice-api.onrender.com
