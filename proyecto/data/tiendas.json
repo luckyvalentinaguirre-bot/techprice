@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "nombre": "PC Store Uruguay",
+    "plataforma": "generic_html"
+  },
+  {
+    "id": 2,
+    "nombre": "Hard PC",
+    "plataforma": "generic_html"
+  },
+  {
+    "id": 3,
+    "nombre": "ZonaTecno",
+    "plataforma": "tiendanube"
+  },
+  {
+    "id": 4,
+    "nombre": "Thot Computación",
+    "plataforma": "woocommerce"
+  },
+  {
+    "id": 5,
+    "nombre": "NNET",
+    "plataforma": "generic_html"
+  }
+]

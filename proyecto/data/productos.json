@@ -1,0 +1,135 @@
+[
+  {
+    "id": 1,
+    "nombre": "Asus Dual RTX 4060 OC 8GB",
+    "marca": "Asus",
+    "categoria": "GPU",
+    "imagen": null
+  },
+  {
+    "id": 2,
+    "nombre": "MSI Gaming X RTX 4060 Ti 16GB",
+    "marca": "MSI",
+    "categoria": "GPU",
+    "imagen": null
+  },
+  {
+    "id": 3,
+    "nombre": "Intel Core i5-13400F",
+    "marca": "Intel",
+    "categoria": "CPU",
+    "imagen": null
+  },
+  {
+    "id": 4,
+    "nombre": "AMD Ryzen 5 7600",
+    "marca": "AMD",
+    "categoria": "CPU",
+    "imagen": null
+  },
+  {
+    "id": 5,
+    "nombre": "Kingston Fury Beast 16GB DDR5 6000MHz",
+    "marca": "Kingston",
+    "categoria": "RAM",
+    "imagen": null
+  },
+  {
+    "id": 6,
+    "nombre": "Corsair Vengeance 32GB DDR5 6000MHz",
+    "marca": "Corsair",
+    "categoria": "RAM",
+    "imagen": null
+  },
+  {
+    "id": 7,
+    "nombre": "Samsung 990 Pro 2TB NVMe",
+    "marca": "Samsung",
+    "categoria": "SSD",
+    "imagen": null
+  },
+  {
+    "id": 8,
+    "nombre": "WD Black SN770 1TB NVMe",
+    "marca": "Western Digital",
+    "categoria": "SSD",
+    "imagen": null
+  },
+  {
+    "id": 9,
+    "nombre": "LG UltraGear 27GP850 27\" 165Hz",
+    "marca": "LG",
+    "categoria": "Monitor",
+    "imagen": null
+  },
+  {
+    "id": 10,
+    "nombre": "Samsung Odyssey G5 27\" 144Hz",
+    "marca": "Samsung",
+    "categoria": "Monitor",
+    "imagen": null
+  },
+  {
+    "id": 11,
+    "nombre": "Lenovo IdeaPad 3 Ryzen 5 8GB 512GB",
+    "marca": "Lenovo",
+    "categoria": "Notebook",
+    "imagen": null
+  },
+  {
+    "id": 12,
+    "nombre": "Acer Swift 3 i7-1165G7 8GB 512GB",
+    "marca": "Acer",
+    "categoria": "Notebook",
+    "imagen": null
+  },
+  {
+    "id": 13,
+    "nombre": "Logitech G Pro X Mecánico",
+    "marca": "Logitech",
+    "categoria": "Teclado",
+    "imagen": null
+  },
+  {
+    "id": 14,
+    "nombre": "Redragon Kumara K552",
+    "marca": "Redragon",
+    "categoria": "Teclado",
+    "imagen": null
+  },
+  {
+    "id": 15,
+    "nombre": "Logitech G502 Hero",
+    "marca": "Logitech",
+    "categoria": "Mouse",
+    "imagen": null
+  },
+  {
+    "id": 16,
+    "nombre": "HyperX Cloud II",
+    "marca": "HyperX",
+    "categoria": "Auriculares",
+    "imagen": null
+  },
+  {
+    "id": 17,
+    "nombre": "ASUS TUF Gaming B650-PLUS",
+    "marca": "Asus",
+    "categoria": "Motherboard",
+    "imagen": null
+  },
+  {
+    "id": 18,
+    "nombre": "Corsair RM750e 750W 80+ Gold",
+    "marca": "Corsair",
+    "categoria": "Fuente",
+    "imagen": null
+  },
+  {
+    "id": 19,
+    "nombre": "NZXT H5 Flow",
+    "marca": "NZXT",
+    "categoria": "Gabinete",
+    "imagen": null
+  }
+]

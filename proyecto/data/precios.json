@@ -1,0 +1,1802 @@
+[
+  {
+    "producto": 1,
+    "tienda": 1,
+    "precio": 20934,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 1,
+    "tienda": 1,
+    "precio": 20634,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 1,
+    "tienda": 1,
+    "precio": 20335,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 1,
+    "tienda": 1,
+    "precio": 19937,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 1,
+    "tienda": 1,
+    "precio": 18900,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 1,
+    "tienda": 2,
+    "precio": 21562,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 1,
+    "tienda": 2,
+    "precio": 21254,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 1,
+    "tienda": 2,
+    "precio": 20946,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 1,
+    "tienda": 2,
+    "precio": 20535,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 1,
+    "tienda": 2,
+    "precio": 19467,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 1,
+    "tienda": 3,
+    "precio": 22190,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 1,
+    "tienda": 3,
+    "precio": 21873,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 1,
+    "tienda": 3,
+    "precio": 21556,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 1,
+    "tienda": 3,
+    "precio": 21133,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 1,
+    "tienda": 3,
+    "precio": 20034,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 2,
+    "tienda": 2,
+    "precio": 28715,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 2,
+    "tienda": 2,
+    "precio": 28305,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 2,
+    "tienda": 2,
+    "precio": 27895,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 2,
+    "tienda": 2,
+    "precio": 27348,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 2,
+    "tienda": 2,
+    "precio": 26500,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 2,
+    "tienda": 3,
+    "precio": 29577,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 2,
+    "tienda": 3,
+    "precio": 29154,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 2,
+    "tienda": 3,
+    "precio": 28732,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 2,
+    "tienda": 3,
+    "precio": 28168,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 2,
+    "tienda": 3,
+    "precio": 27295,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 3,
+    "tienda": 3,
+    "precio": 11861,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 3,
+    "tienda": 3,
+    "precio": 11692,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 3,
+    "tienda": 3,
+    "precio": 11523,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 3,
+    "tienda": 3,
+    "precio": 11297,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 3,
+    "tienda": 3,
+    "precio": 11500,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 3,
+    "tienda": 4,
+    "precio": 12217,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 3,
+    "tienda": 4,
+    "precio": 12043,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 3,
+    "tienda": 4,
+    "precio": 11868,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 3,
+    "tienda": 4,
+    "precio": 11636,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 3,
+    "tienda": 4,
+    "precio": 11845,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 3,
+    "tienda": 5,
+    "precio": 12573,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 3,
+    "tienda": 5,
+    "precio": 12394,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 3,
+    "tienda": 5,
+    "precio": 12214,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 3,
+    "tienda": 5,
+    "precio": 11974,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 3,
+    "tienda": 5,
+    "precio": 12190,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 4,
+    "tienda": 4,
+    "precio": 13878,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 4,
+    "tienda": 4,
+    "precio": 13680,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 4,
+    "tienda": 4,
+    "precio": 13482,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 4,
+    "tienda": 4,
+    "precio": 13217,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 4,
+    "tienda": 4,
+    "precio": 12900,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 4,
+    "tienda": 5,
+    "precio": 14294,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 4,
+    "tienda": 5,
+    "precio": 14090,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 4,
+    "tienda": 5,
+    "precio": 13886,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 4,
+    "tienda": 5,
+    "precio": 13614,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 4,
+    "tienda": 5,
+    "precio": 13287,
+    "moneda": "UYU",
+    "disponible": false,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 5,
+    "tienda": 5,
+    "precio": 3570,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 5,
+    "tienda": 5,
+    "precio": 3519,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 5,
+    "tienda": 5,
+    "precio": 3468,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 5,
+    "tienda": 5,
+    "precio": 3400,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 5,
+    "tienda": 5,
+    "precio": 3400,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 5,
+    "tienda": 1,
+    "precio": 3677,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 5,
+    "tienda": 1,
+    "precio": 3625,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 5,
+    "tienda": 1,
+    "precio": 3572,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 5,
+    "tienda": 1,
+    "precio": 3502,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 5,
+    "tienda": 1,
+    "precio": 3502,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 5,
+    "tienda": 2,
+    "precio": 3784,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 5,
+    "tienda": 2,
+    "precio": 3730,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 5,
+    "tienda": 2,
+    "precio": 3676,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 5,
+    "tienda": 2,
+    "precio": 3604,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 5,
+    "tienda": 2,
+    "precio": 3604,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 6,
+    "tienda": 1,
+    "precio": 7547,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 6,
+    "tienda": 1,
+    "precio": 7439,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 6,
+    "tienda": 1,
+    "precio": 7331,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 6,
+    "tienda": 1,
+    "precio": 7188,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 6,
+    "tienda": 1,
+    "precio": 6900,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 6,
+    "tienda": 2,
+    "precio": 7773,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 6,
+    "tienda": 2,
+    "precio": 7662,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 6,
+    "tienda": 2,
+    "precio": 7551,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 6,
+    "tienda": 2,
+    "precio": 7403,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 6,
+    "tienda": 2,
+    "precio": 7107,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 7,
+    "tienda": 2,
+    "precio": 16214,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 7,
+    "tienda": 2,
+    "precio": 15982,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 7,
+    "tienda": 2,
+    "precio": 15751,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 7,
+    "tienda": 2,
+    "precio": 15442,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 7,
+    "tienda": 2,
+    "precio": 14500,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 7,
+    "tienda": 3,
+    "precio": 16700,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 7,
+    "tienda": 3,
+    "precio": 16462,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 7,
+    "tienda": 3,
+    "precio": 16223,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 7,
+    "tienda": 3,
+    "precio": 15905,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 7,
+    "tienda": 3,
+    "precio": 14935,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 7,
+    "tienda": 4,
+    "precio": 17187,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 7,
+    "tienda": 4,
+    "precio": 16941,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 7,
+    "tienda": 4,
+    "precio": 16696,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 7,
+    "tienda": 4,
+    "precio": 16368,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 7,
+    "tienda": 4,
+    "precio": 15370,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 8,
+    "tienda": 3,
+    "precio": 4464,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 8,
+    "tienda": 3,
+    "precio": 4400,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 8,
+    "tienda": 3,
+    "precio": 4336,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 8,
+    "tienda": 3,
+    "precio": 4251,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 8,
+    "tienda": 3,
+    "precio": 4200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 8,
+    "tienda": 4,
+    "precio": 4597,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 8,
+    "tienda": 4,
+    "precio": 4532,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 8,
+    "tienda": 4,
+    "precio": 4466,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 8,
+    "tienda": 4,
+    "precio": 4379,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 8,
+    "tienda": 4,
+    "precio": 4326,
+    "moneda": "UYU",
+    "disponible": false,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 9,
+    "tienda": 4,
+    "precio": 18289,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 9,
+    "tienda": 4,
+    "precio": 18028,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 9,
+    "tienda": 4,
+    "precio": 17766,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 9,
+    "tienda": 4,
+    "precio": 17418,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 9,
+    "tienda": 4,
+    "precio": 17000,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 9,
+    "tienda": 5,
+    "precio": 18838,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 9,
+    "tienda": 5,
+    "precio": 18568,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 9,
+    "tienda": 5,
+    "precio": 18299,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 9,
+    "tienda": 5,
+    "precio": 17941,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 9,
+    "tienda": 5,
+    "precio": 17510,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 10,
+    "tienda": 5,
+    "precio": 12855,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 10,
+    "tienda": 5,
+    "precio": 12671,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 10,
+    "tienda": 5,
+    "precio": 12488,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 10,
+    "tienda": 5,
+    "precio": 12243,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 10,
+    "tienda": 5,
+    "precio": 12500,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 10,
+    "tienda": 1,
+    "precio": 13241,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 10,
+    "tienda": 1,
+    "precio": 13052,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 10,
+    "tienda": 1,
+    "precio": 12862,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 10,
+    "tienda": 1,
+    "precio": 12610,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 10,
+    "tienda": 1,
+    "precio": 12875,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 10,
+    "tienda": 2,
+    "precio": 13626,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 10,
+    "tienda": 2,
+    "precio": 13432,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 10,
+    "tienda": 2,
+    "precio": 13237,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 10,
+    "tienda": 2,
+    "precio": 12977,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 10,
+    "tienda": 2,
+    "precio": 13250,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 11,
+    "tienda": 1,
+    "precio": 29317,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 11,
+    "tienda": 1,
+    "precio": 28899,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 11,
+    "tienda": 1,
+    "precio": 28480,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 11,
+    "tienda": 1,
+    "precio": 27921,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 11,
+    "tienda": 1,
+    "precio": 27000,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 11,
+    "tienda": 2,
+    "precio": 30197,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 11,
+    "tienda": 2,
+    "precio": 29766,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 11,
+    "tienda": 2,
+    "precio": 29334,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 11,
+    "tienda": 2,
+    "precio": 28759,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 11,
+    "tienda": 2,
+    "precio": 27810,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 12,
+    "tienda": 2,
+    "precio": 33549,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 12,
+    "tienda": 2,
+    "precio": 33070,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 12,
+    "tienda": 2,
+    "precio": 32590,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 12,
+    "tienda": 2,
+    "precio": 31951,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 12,
+    "tienda": 2,
+    "precio": 31600,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 12,
+    "tienda": 3,
+    "precio": 34556,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 12,
+    "tienda": 3,
+    "precio": 34062,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 12,
+    "tienda": 3,
+    "precio": 33568,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 12,
+    "tienda": 3,
+    "precio": 32910,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 12,
+    "tienda": 3,
+    "precio": 32548,
+    "moneda": "UYU",
+    "disponible": false,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 13,
+    "tienda": 3,
+    "precio": 4990,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 13,
+    "tienda": 3,
+    "precio": 4919,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 13,
+    "tienda": 3,
+    "precio": 4847,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 13,
+    "tienda": 3,
+    "precio": 4752,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 13,
+    "tienda": 3,
+    "precio": 4700,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 13,
+    "tienda": 4,
+    "precio": 5140,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 13,
+    "tienda": 4,
+    "precio": 5066,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 13,
+    "tienda": 4,
+    "precio": 4993,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 13,
+    "tienda": 4,
+    "precio": 4895,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 13,
+    "tienda": 4,
+    "precio": 4841,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 13,
+    "tienda": 5,
+    "precio": 5289,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 13,
+    "tienda": 5,
+    "precio": 5214,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 13,
+    "tienda": 5,
+    "precio": 5138,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 13,
+    "tienda": 5,
+    "precio": 5037,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 13,
+    "tienda": 5,
+    "precio": 4982,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 14,
+    "tienda": 4,
+    "precio": 1890,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 14,
+    "tienda": 4,
+    "precio": 1863,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 14,
+    "tienda": 4,
+    "precio": 1836,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 14,
+    "tienda": 4,
+    "precio": 1800,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 14,
+    "tienda": 4,
+    "precio": 1800,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 14,
+    "tienda": 5,
+    "precio": 1947,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 14,
+    "tienda": 5,
+    "precio": 1919,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 14,
+    "tienda": 5,
+    "precio": 1891,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 14,
+    "tienda": 5,
+    "precio": 1854,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 14,
+    "tienda": 5,
+    "precio": 1854,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 15,
+    "tienda": 5,
+    "precio": 1977,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 15,
+    "tienda": 5,
+    "precio": 1949,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 15,
+    "tienda": 5,
+    "precio": 1921,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 15,
+    "tienda": 5,
+    "precio": 1883,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 15,
+    "tienda": 5,
+    "precio": 1900,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 15,
+    "tienda": 1,
+    "precio": 2037,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 15,
+    "tienda": 1,
+    "precio": 2007,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 15,
+    "tienda": 1,
+    "precio": 1978,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 15,
+    "tienda": 1,
+    "precio": 1940,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 15,
+    "tienda": 1,
+    "precio": 1957,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 15,
+    "tienda": 2,
+    "precio": 2096,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 15,
+    "tienda": 2,
+    "precio": 2066,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 15,
+    "tienda": 2,
+    "precio": 2036,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 15,
+    "tienda": 2,
+    "precio": 1996,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 15,
+    "tienda": 2,
+    "precio": 2014,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 16,
+    "tienda": 1,
+    "precio": 2786,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 16,
+    "tienda": 1,
+    "precio": 2746,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 16,
+    "tienda": 1,
+    "precio": 2706,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 16,
+    "tienda": 1,
+    "precio": 2653,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 16,
+    "tienda": 1,
+    "precio": 2600,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 16,
+    "tienda": 2,
+    "precio": 2869,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 16,
+    "tienda": 2,
+    "precio": 2828,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 16,
+    "tienda": 2,
+    "precio": 2787,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 16,
+    "tienda": 2,
+    "precio": 2733,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 16,
+    "tienda": 2,
+    "precio": 2678,
+    "moneda": "UYU",
+    "disponible": false,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 17,
+    "tienda": 2,
+    "precio": 8180,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 17,
+    "tienda": 2,
+    "precio": 8064,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 17,
+    "tienda": 2,
+    "precio": 7947,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 17,
+    "tienda": 2,
+    "precio": 7791,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 17,
+    "tienda": 2,
+    "precio": 7900,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 17,
+    "tienda": 3,
+    "precio": 8426,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 17,
+    "tienda": 3,
+    "precio": 8306,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 17,
+    "tienda": 3,
+    "precio": 8185,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 17,
+    "tienda": 3,
+    "precio": 8025,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 17,
+    "tienda": 3,
+    "precio": 8137,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 18,
+    "tienda": 3,
+    "precio": 4551,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 18,
+    "tienda": 3,
+    "precio": 4486,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 18,
+    "tienda": 3,
+    "precio": 4421,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 18,
+    "tienda": 3,
+    "precio": 4335,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 18,
+    "tienda": 3,
+    "precio": 4300,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 18,
+    "tienda": 4,
+    "precio": 4688,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 18,
+    "tienda": 4,
+    "precio": 4621,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 18,
+    "tienda": 4,
+    "precio": 4554,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 18,
+    "tienda": 4,
+    "precio": 4465,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 18,
+    "tienda": 4,
+    "precio": 4429,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 19,
+    "tienda": 4,
+    "precio": 3360,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 19,
+    "tienda": 4,
+    "precio": 3312,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 19,
+    "tienda": 4,
+    "precio": 3264,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 19,
+    "tienda": 4,
+    "precio": 3200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 19,
+    "tienda": 4,
+    "precio": 3200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  },
+  {
+    "producto": 19,
+    "tienda": 5,
+    "precio": 3461,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04"
+  },
+  {
+    "producto": 19,
+    "tienda": 5,
+    "precio": 3411,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09"
+  },
+  {
+    "producto": 19,
+    "tienda": 5,
+    "precio": 3362,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14"
+  },
+  {
+    "producto": 19,
+    "tienda": 5,
+    "precio": 3296,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18"
+  },
+  {
+    "producto": 19,
+    "tienda": 5,
+    "precio": 3296,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20"
+  }
+]
