@@ -5,7 +5,7 @@
  *
  *   node scripts/build-json-app.mjs
  */
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -117,6 +117,89 @@ const writeJson = (name, obj) => writeFileSync(resolve(OUT, "data", name), JSON.
 writeJson("productos.json", productosJson);
 writeJson("tiendas.json", tiendasJson);
 writeJson("precios.json", precios);
+
+/* ===================== SUPABASE (opcional, base online) ================== */
+const sql = (v) => (v === null || v === undefined ? "null" : "'" + String(v).replace(/'/g, "''") + "'");
+const jsonb = (o) => "'" + JSON.stringify(o || {}).replace(/'/g, "''") + "'::jsonb";
+
+const schemaSql = `-- Esquema para Supabase (Postgres). Pegalo en el "SQL Editor" de tu proyecto
+-- y ejecutá. Es re-ejecutable.
+
+create table if not exists tiendas (
+  id         int primary key,
+  nombre     text not null,
+  plataforma text
+);
+
+create table if not exists productos (
+  id        int primary key,
+  nombre    text not null,
+  marca     text,
+  categoria text not null,
+  imagen    text,
+  specs     jsonb default '{}'::jsonb
+);
+
+create table if not exists precios (
+  id         bigint generated always as identity primary key,
+  producto   int references productos(id) on delete cascade,
+  tienda     int references tiendas(id) on delete cascade,
+  precio     numeric not null,
+  moneda     text default 'UYU',
+  disponible boolean default true,
+  fecha      date not null
+);
+
+-- La página es solo de lectura desde el navegador: activamos RLS y permitimos
+-- únicamente SELECT con la clave pública "anon".
+alter table tiendas   enable row level security;
+alter table productos enable row level security;
+alter table precios   enable row level security;
+
+drop policy if exists "lectura publica tiendas"   on tiendas;
+drop policy if exists "lectura publica productos" on productos;
+drop policy if exists "lectura publica precios"   on precios;
+create policy "lectura publica tiendas"   on tiendas   for select using (true);
+create policy "lectura publica productos" on productos for select using (true);
+create policy "lectura publica precios"   on precios   for select using (true);
+`;
+
+const seedSql = `-- Datos de ejemplo para Supabase. Ejecutá esto DESPUÉS de schema.sql.
+-- Vacía las tablas y carga todo de nuevo (re-ejecutable).
+truncate precios, productos, tiendas restart identity cascade;
+
+insert into tiendas (id, nombre, plataforma) values
+${tiendasJson.map((t) => `(${t.id}, ${sql(t.nombre)}, ${sql(t.plataforma)})`).join(",\n")};
+
+insert into productos (id, nombre, marca, categoria, imagen, specs) values
+${productosJson.map((p) => `(${p.id}, ${sql(p.nombre)}, ${sql(p.marca)}, ${sql(p.categoria)}, ${p.imagen == null ? "null" : sql(p.imagen)}, ${jsonb(p.specs)})`).join(",\n")};
+
+insert into precios (producto, tienda, precio, moneda, disponible, fecha) values
+${precios.map((r) => `(${r.producto}, ${r.tienda}, ${r.precio}, ${sql(r.moneda)}, ${r.disponible}, ${sql(r.fecha)})`).join(",\n")};
+`;
+
+mkdirSync(resolve(OUT, "supabase"), { recursive: true });
+writeFileSync(resolve(OUT, "supabase/schema.sql"), schemaSql, "utf8");
+writeFileSync(resolve(OUT, "supabase/seed.sql"), seedSql, "utf8");
+
+// config.js: NO se sobreescribe si ya lo editaste con tus credenciales.
+const configPath = resolve(OUT, "js/config.js");
+if (!existsSync(configPath)) {
+  writeFileSync(
+    configPath,
+    `// Configuración de la página.
+//
+// Dejá esto vacío para usar los archivos JSON locales (data/*.json).
+// Para usar la base ONLINE de Supabase, pegá acá los datos de tu proyecto
+// (Supabase -> Project Settings -> API): la "Project URL" y la clave "anon public".
+window.TECHPRICE_CONFIG = {
+  supabaseUrl: "", // ej: https://abcdefgh.supabase.co
+  supabaseKey: "", // la clave anon public (empieza con eyJ...)
+};
+`,
+    "utf8",
+  );
+}
 
 /* ============================ CSS EXTRA ================================== */
 const extraCss = `
@@ -353,6 +436,7 @@ ${extraCss}
 
 <div class="modal-backdrop" id="modal-root" role="dialog" aria-modal="true" hidden></div>
 
+<script src="js/config.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>`;

@@ -21,6 +21,15 @@ doble clic (`file://`). Hay que servirlo por **HTTP**. Con **XAMPP** es directo:
 > terminal dentro de la carpeta: `python3 -m http.server 8090` y abrir
 > `http://localhost:8090/`.
 
+## Subirlo online (link público)
+
+- **Solo con archivos (sin base de datos):** arrastrá la carpeta `proyecto/` a
+  **https://app.netlify.com/drop** y te da un link. Los `data/*.json` se sirven
+  como archivos y alcanzan.
+- **Con base de datos online (Supabase):** seguí **[`SUPABASE.md`](./SUPABASE.md)**
+  — creás una base gratis, pegás dos archivos SQL y tus claves en `js/config.js`,
+  y la página lee de ahí. Sirve para editar los datos sin re-subir archivos.
+
 ## Estructura
 
 ```

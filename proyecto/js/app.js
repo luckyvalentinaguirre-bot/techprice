@@ -605,14 +605,34 @@
     const r2 = $("#reset-build-2"); if (r2) r2.addEventListener("click", resetBuild);
   }
 
+  /* =============================== DATOS ================================ */
+  // Lee de Supabase si hay credenciales en window.TECHPRICE_CONFIG; si no, de
+  // los archivos JSON locales (data/*.json).
+  async function loadData() {
+    const cfg = (typeof window !== "undefined" && window.TECHPRICE_CONFIG) || {};
+    if (cfg.supabaseUrl && cfg.supabaseKey) {
+      const base = cfg.supabaseUrl.replace(/\/$/, "") + "/rest/v1/";
+      const headers = { apikey: cfg.supabaseKey, Authorization: "Bearer " + cfg.supabaseKey };
+      const q = (t) => fetch(base + t + "?select=*", { headers }).then((r) => {
+        if (!r.ok) throw new Error("Supabase " + t + " HTTP " + r.status);
+        return r.json();
+      });
+      const [productos, tiendas, precios] = await Promise.all([q("productos"), q("tiendas"), q("precios")]);
+      return {
+        productos: productos.map((p) => ({ ...p, id: Number(p.id) })),
+        tiendas: tiendas.map((t) => ({ ...t, id: Number(t.id) })),
+        precios: precios.map((r) => ({ ...r, producto: Number(r.producto), tienda: Number(r.tienda), precio: Number(r.precio) })),
+      };
+    }
+    const j = (f) => fetch("data/" + f).then((r) => { if (!r.ok) throw new Error(f + " HTTP " + r.status); return r.json(); });
+    const [productos, tiendas, precios] = await Promise.all([j("productos.json"), j("tiendas.json"), j("precios.json")]);
+    return { productos, tiendas, precios };
+  }
+
   /* =============================== INIT ================================= */
   async function init() {
     try {
-      const [productos, tiendas, precios] = await Promise.all([
-        fetch("data/productos.json").then((r) => r.json()),
-        fetch("data/tiendas.json").then((r) => r.json()),
-        fetch("data/precios.json").then((r) => r.json()),
-      ]);
+      const { productos, tiendas, precios } = await loadData();
       construirModelo(productos, tiendas, precios);
       render();
       wireGlobal();
