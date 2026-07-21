@@ -372,13 +372,24 @@
     const m = MODEL.productos.find((p) => p.id === id);
     if (!m) return;
     const savings = m.highest - m.lowest;
+    const tieneLink = (o) => o.url && o.url !== "#";
+    const linkCell = (o) => tieneLink(o)
+      ? '<a class="store-link" href="' + esc(o.url) + '" target="_blank" rel="noopener noreferrer">Ir a la tienda ' + icon("arrowRight", 13) + "</a>"
+      : '<span class="store-link store-link--off">Sin enlace</span>';
     const filas = m.offers.map((o) =>
       '<tr class="' + (o.tiendaId === m.cheapestTiendaId ? "price-table__row--best" : "") + '">' +
         "<td>" + esc(o.tienda) + "</td>" +
         "<td>" + money(o.precio, o.moneda) + "</td>" +
         "<td>" + (o.disponible ? "En stock" : "Sin stock") + "</td>" +
-        '<td><a href="' + esc(o.url) + '" target="_blank" rel="noopener noreferrer">Ver en tienda</a></td>' +
+        "<td>" + linkCell(o) + "</td>" +
       "</tr>").join("");
+
+    // Oferta más barata con link real => botón grande para ir directo a la tienda.
+    const best = m.offers.find((o) => o.tiendaId === m.cheapestTiendaId) || m.offers[0];
+    const ctaTienda = best && tieneLink(best)
+      ? '<a class="btn btn--primary btn--store-cta" href="' + esc(best.url) + '" target="_blank" rel="noopener noreferrer">' +
+          icon("store", 16) + " Ver en " + esc(best.tienda) + " · " + money(best.precio, best.moneda) + " " + icon("arrowRight", 15) + "</a>"
+      : "";
 
     const root = $("#modal-root");
     root.innerHTML =
@@ -396,6 +407,7 @@
             '<div class="stat"><div class="stat__label">Precio más alto</div><div class="stat__value">' + money(m.highest, m.moneda) + "</div></div>" +
             '<div class="stat"><div class="stat__label">Ahorro máximo</div><div class="stat__value stat__value--good">' + money(savings, m.moneda) + "</div></div>" +
           "</div>" +
+          ctaTienda +
           "<div><div class=\"modal__section-title\">Precios por tienda</div>" +
             '<table class="price-table"><thead><tr><th>Tienda</th><th>Precio</th><th>Disponibilidad</th><th></th></tr></thead><tbody>' + filas + "</tbody></table></div>" +
           "<div><div class=\"modal__section-title\">Historial de precios (mejor precio por fecha)</div>" + sparkline(m.historia, m.moneda) + "</div>" +

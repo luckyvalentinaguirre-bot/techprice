@@ -253,7 +253,7 @@ function buildDataset(rawPorTienda, storesMeta, prev) {
       } else if (!productos.get(id).imagen && it.imagen) {
         productos.get(id).imagen = it.imagen; // completar imagen si faltaba
       }
-      preciosHoy.push({ producto: id, tienda: store.id, precio: Math.round(it.precio), moneda: it.moneda, disponible: it.disponible, fecha: HOY });
+      preciosHoy.push({ producto: id, tienda: store.id, precio: Math.round(it.precio), moneda: it.moneda, disponible: it.disponible, url: it.url || null, fecha: HOY });
     }
   }
 
@@ -325,8 +325,8 @@ ${ds.tiendas.map((t) => `(${t.id}, ${sqlv(t.nombre)}, ${sqlv(t.plataforma)})`).j
 insert into productos (id, nombre, marca, categoria, imagen, specs) values
 ${ds.productos.map((p) => `(${p.id}, ${sqlv(p.nombre)}, ${sqlv(p.marca)}, ${sqlv(p.categoria)}, ${sqlv(p.imagen)}, ${jsonbv(p.specs)})`).join(",\n")};
 
-insert into precios (producto, tienda, precio, moneda, disponible, fecha) values
-${ds.precios.map((r) => `(${r.producto}, ${r.tienda}, ${r.precio}, ${sqlv(r.moneda)}, ${r.disponible}, ${sqlv(r.fecha)})`).join(",\n")};
+insert into precios (producto, tienda, precio, moneda, disponible, url, fecha) values
+${ds.precios.map((r) => `(${r.producto}, ${r.tienda}, ${r.precio}, ${sqlv(r.moneda)}, ${r.disponible}, ${sqlv(r.url)}, ${sqlv(r.fecha)})`).join(",\n")};
 `;
   mkdirSync(resolve(ROOT, "supabase"), { recursive: true });
   writeFileSync(resolve(ROOT, "supabase", "seed-real.sql"), seed);

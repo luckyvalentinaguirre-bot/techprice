@@ -23,8 +23,12 @@ create table if not exists precios (
   precio     numeric not null,
   moneda     text default 'UYU',
   disponible boolean default true,
+  url        text,
   fecha      date not null
 );
+
+-- Si ya tenías la tabla creada de antes, agrega la columna sin borrar datos.
+alter table precios add column if not exists url text;
 
 -- La página es solo de lectura desde el navegador: activamos RLS y permitimos
 -- únicamente SELECT con la clave pública "anon".

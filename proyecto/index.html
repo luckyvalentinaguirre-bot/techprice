@@ -1226,6 +1226,35 @@ section.panel h2 {
   color: var(--brand);
   font-weight: 600;
 }
+.store-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--brand);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.store-link:hover {
+  text-decoration: underline;
+}
+.store-link--off {
+  color: var(--muted-2);
+  font-weight: 500;
+  cursor: default;
+}
+.store-link--off:hover {
+  text-decoration: none;
+}
+/* Botón grande para ir directo a la tienda más barata desde el detalle. */
+.btn--store-cta {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: var(--space-4) 0;
+  padding: 0.85rem 1rem;
+  font-size: 0.98rem;
+}
 
 .price-history__legend {
   list-style: none;
