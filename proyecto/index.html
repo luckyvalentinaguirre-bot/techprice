@@ -398,6 +398,14 @@ main {
   border-color: var(--border-strong);
   background: var(--surface-2);
 }
+.category-chip.is-active {
+  border-color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 8%, var(--surface));
+}
+.category-chip.is-active .category-chip__icon {
+  background: var(--brand);
+  color: #fff;
+}
 .category-chip__icon {
   display: grid;
   place-items: center;

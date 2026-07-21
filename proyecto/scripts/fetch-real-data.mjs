@@ -37,15 +37,39 @@ const CATS = [
   ["Gabinete", /gabinete|\bcase\b|chasis|\btorre\b/],
   ["Cooler", /cooler|disipador|refrigeraci[oó]n|water ?cooler|\baio\b/],
   ["Monitor", /monitor|\bpantalla\b/],
-  ["Notebook", /notebook|laptop|port[aá]til/],
   ["Teclado", /teclado|keyboard/],
   ["Mouse", /\bmouse\b|\brat[oó]n\b/],
   ["Auriculares", /auricular|headset|aud[ií]fono|headphone/],
 ];
-const NOISE = /pc gamer|pc armad|computadora armad|equipo gamer|pc completa|desktop armad|\bcombo\b|\bbundle\b|diferencia (de )?equipo|\bse[nñ]a\b|reserva\b|garant[ií]a extendida|servicio t[eé]cnico/;
+
+// Notebooks: se detectan ANTES que RAM/CPU/GPU, si no una "Notebook Ryzen 5 16GB"
+// caería en RAM o CPU por tener esos componentes en el nombre.
+const NOTEBOOK = /\bnotebook\b|\blaptop\b|port[aá]til|ultrabook|\bmacbook\b|\bnetbook\b|\b2 en 1\b|convertible/;
+
+// PC pre-armadas / de escritorio (equipo completo). También ANTES que los
+// componentes: una "PC Gamer Ryzen 5 + RTX 4060 + 16GB RAM" no es ni CPU ni GPU
+// ni RAM, es un equipo armado.
+const PREBUILT = /\bpc\s?gamer\b|\bpc\s?armad|\bpc\s?completa|\bpc\s?(de\s?)?escritorio|\bpc\s?oficina|\bpc\s?home\b|\bpc\s?full\b|\bpc\s?intel\b|\bpc\s?amd\b|\bpc\s?ryzen\b|computador(a)?\b|\bdesktop\b|equipo\s?(gamer|completo|armad|pc|de\s?escritorio)|combo\s?(pc|gamer)|mini\s?pc|all[\s-]?in[\s-]?one|\baio\s?pc\b|cpu\s?armad|torre\s?gamer/;
+
+// Basura real (no son productos comparables): se descartan por completo.
+const NOISE = /diferencia (de )?equipo|\bse[nñ]a\b|\breserva\b|garant[ií]a extendida|servicio t[eé]cnico|mano de obra|armado y (testeo|pruebas)|\bcuota[s]?\b|env[ií]o (gratis|a domicilio)?$/;
+
+function esNotebook(n) {
+  // Evitar accesorios: "soporte/base/cooler/funda para notebook" no es una notebook.
+  if (/(soporte|base|funda|maletin|malet[ií]n|mochila|cooler|almohadilla|cargador|bater[ií]a|teclado|filtro)\b.*\bnotebook\b/.test(n)) return false;
+  return NOTEBOOK.test(n);
+}
+function esPrebuilt(n) {
+  if (PREBUILT.test(n)) return true;
+  // "PC ..." al inicio del nombre + un componente de cómputo => equipo armado.
+  if (/^\s*pc\b/.test(n) && /(ryzen|core\s?i\d|intel|rtx|gtx|geforce|radeon|\d+\s?gb)/.test(n)) return true;
+  return false;
+}
 
 function clasificar(nombre) {
   const n = norm(nombre);
+  if (esNotebook(n)) return "Notebook";
+  if (esPrebuilt(n)) return "PC Armada";
   for (const [cat, re] of CATS) if (re.test(n)) return cat;
   return "Otros";
 }
@@ -281,7 +305,7 @@ async function main() {
   if (SELFTEST) {
     console.log("[selftest] " + resumen);
     console.log("[selftest] categorías:", JSON.stringify([...new Set(ds.productos.map((p) => p.categoria))]));
-    console.log("[selftest] ejemplo:", JSON.stringify(ds.productos[0]));
+    for (const p of ds.productos) console.log("  [" + p.categoria + "] " + p.nombre);
     return;
   }
   mkdirSync(DATA, { recursive: true });
@@ -319,6 +343,11 @@ const SAMPLE = [
   { nombre: "Memoria RAM Kingston Fury 16GB DDR5 6000MHz", precio: 60, moneda: "USD", imagen: "https://ej/ram.jpg", url: "#", disponible: true },
   { nombre: "Diferencia equipo orden 263366", precio: 1420, moneda: "USD", imagen: null, url: "#", disponible: true },
   { nombre: "PC Gamer Armada Ryzen 5 7600 + RTX 4060", precio: 1200, moneda: "USD", imagen: null, url: "#", disponible: true },
+  { nombre: "PC Gamer Ryzen 5 5600 / 16GB RAM / 500GB SSD / RTX 3060", precio: 1050, moneda: "USD", imagen: "https://ej/pc.jpg", url: "#", disponible: true },
+  { nombre: "Computadora de Escritorio Intel Core i5 8GB 240GB", precio: 620, moneda: "USD", imagen: "https://ej/comp.jpg", url: "#", disponible: true },
+  { nombre: "Notebook Lenovo IdeaPad Ryzen 5 7530U 16GB 512GB SSD 15.6\"", precio: 720, moneda: "USD", imagen: "https://ej/nb.jpg", url: "#", disponible: true },
+  { nombre: "Laptop HP 250 G9 Intel Core i5 8GB 256GB", precio: 650, moneda: "USD", imagen: "https://ej/hp.jpg", url: "#", disponible: true },
+  { nombre: "Base Cooler para Notebook con 5 ventiladores", precio: 25, moneda: "USD", imagen: "https://ej/base.jpg", url: "#", disponible: true },
 ];
 
 main().catch((e) => { console.error(e); process.exit(1); });

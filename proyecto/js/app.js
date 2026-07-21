@@ -57,6 +57,7 @@
     mouse: '<rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 7v3"/>',
     headphones: '<path d="M4 13a8 8 0 0 1 16 0M4 13v4a2 2 0 0 0 2 2h1v-6H6a2 2 0 0 0-2 2Zm16 0v4a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2Z"/>',
     laptop: '<path d="M5 6h14v10H5zM3 19h18M9 19l.5-3h5l.5 3"/>',
+    desktop: '<rect x="4" y="3" width="9" height="18" rx="1.5"/><path d="M7 6h3M7 9h3M7 12h2"/><circle cx="8.5" cy="17" r="1"/><path d="M16 8h4v9h-4M15 20h6M17 17v3"/>',
     box: '<path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3ZM4 7.5l8 4.5 8-4.5M12 12v9"/>',
   };
   const icon = (name, size = 16, cls = "") =>
@@ -67,6 +68,7 @@
     gpu: "gpu", cpu: "cpu", ram: "memory", ssd: "drive", hdd: "drive", monitor: "monitor",
     notebook: "laptop", teclado: "keyboard", mouse: "mouse", auriculares: "headphones",
     motherboard: "board", fuente: "power", gabinete: "case", cooler: "fan",
+    "pc armada": "desktop",
   };
   const catIcon = (cat) => CAT_ICON[String(cat).toLowerCase()] || "box";
 
@@ -283,28 +285,62 @@
 
     $("#year").textContent = new Date().getFullYear();
     wireCards();
+    wireCategorias();
+    marcarChipActivo();
     renderBuilder();
   }
 
-  /* =============================== BUSCADOR ============================= */
-  function buscar(q) {
-    const query = norm(q.trim());
+  /* ========================= BUSCADOR + FILTROS ======================== */
+  let filtroCat = null; // categoría activa (o null = todas)
+
+  function pintarResultados(list, titulo, subtitulo) {
     const grid = $("#grid-destacados");
-    const title = $("#title-destacados");
-    const subtitle = $("#subtitle-destacados");
-    if (!query) {
-      title.textContent = "Productos destacados";
-      subtitle.textContent = "El mejor precio, el promedio y cuánto se movió respecto al día anterior.";
-      const destacados = [...MODEL.productos].sort((a, b) => (b.lastFecha || "").localeCompare(a.lastFecha || "") || b.id - a.id).slice(0, 8);
-      grid.innerHTML = destacados.map(showcaseCard).join("");
-      wireCards();
-      return;
-    }
-    const res = MODEL.productos.filter((m) => m._buscable.includes(query));
-    title.textContent = 'Resultados para "' + q.trim() + '"';
-    subtitle.textContent = res.length + " " + (res.length === 1 ? "producto encontrado" : "productos encontrados");
-    grid.innerHTML = res.length ? res.map(showcaseCard).join("") : '<p class="empty-results">No encontramos productos que coincidan.</p>';
+    $("#title-destacados").textContent = titulo;
+    $("#subtitle-destacados").textContent = subtitulo;
+    grid.innerHTML = list.length
+      ? list.map(showcaseCard).join("")
+      : '<p class="empty-results">No encontramos productos que coincidan.</p>';
     wireCards();
+  }
+
+  function verDestacados() {
+    const destacados = [...MODEL.productos]
+      .sort((a, b) => (b.lastFecha || "").localeCompare(a.lastFecha || "") || b.id - a.id)
+      .slice(0, 8);
+    pintarResultados(destacados, "Productos destacados",
+      "El mejor precio, el promedio y cuánto se movió respecto al día anterior.");
+  }
+
+  function marcarChipActivo() {
+    document.querySelectorAll("[data-cat]").forEach((el) =>
+      el.classList.toggle("is-active", el.getAttribute("data-cat") === filtroCat));
+  }
+
+  // Búsqueda por texto: es global, así que quita el filtro de categoría.
+  function buscar(q) {
+    filtroCat = null;
+    marcarChipActivo();
+    const query = norm(q.trim());
+    if (!query) { verDestacados(); return; }
+    const res = MODEL.productos.filter((m) => m._buscable.includes(query));
+    pintarResultados(res, 'Resultados para "' + q.trim() + '"',
+      res.length + " " + (res.length === 1 ? "producto encontrado" : "productos encontrados"));
+  }
+
+  // Filtro por categoría EXACTA (no por texto): así "RAM" no arrastra notebooks
+  // que digan "16GB RAM" en el nombre. Volver a tocar la categoría lo quita.
+  function filtrarPorCategoria(cat) {
+    const input = $("#search-input");
+    if (input) input.value = "";
+    if (filtroCat === cat) { filtroCat = null; marcarChipActivo(); verDestacados(); return; }
+    filtroCat = cat;
+    marcarChipActivo();
+    const res = MODEL.productos
+      .filter((m) => m.categoria === cat)
+      .sort((a, b) => (a.lowest || Infinity) - (b.lowest || Infinity));
+    pintarResultados(res, cat,
+      res.length + " " + (res.length === 1 ? "producto" : "productos") +
+      " · tocá la categoría de nuevo para quitar el filtro");
   }
 
   /* ============================ MODAL DETALLE =========================== */
@@ -396,13 +432,19 @@
         b.style.color = !on ? "var(--brand)" : "";
         b.style.borderColor = !on ? "var(--brand)" : "";
       }));
-    document.querySelectorAll("[data-cat]").forEach((el) =>
-      el.addEventListener("click", () => {
-        const input = $("#search-input");
-        input.value = el.getAttribute("data-cat");
-        buscar(input.value);
+  }
+
+  // Los chips de categoría son persistentes (no se regeneran al filtrar), así que
+  // se cablean UNA sola vez desde render() para no acumular listeners duplicados.
+  function wireCategorias() {
+    document.querySelectorAll("[data-cat]").forEach((el) => {
+      const run = () => {
+        filtrarPorCategoria(el.getAttribute("data-cat"));
         $("#section-destacados").scrollIntoView({ behavior: "smooth", block: "start" });
-      }));
+      };
+      el.addEventListener("click", run);
+      el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); run(); } });
+    });
   }
 
   function wireGlobal() {
