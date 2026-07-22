@@ -86,23 +86,38 @@ function esNotebook(n) {
 }
 const esPrebuiltKw = (n) => PREBUILT.test(n) || (/^\s*pc\b/.test(n) && contarComponentes(n) >= 1);
 
+// Electrónica de consumo que ahora aparece con las tiendas grandes (celulares,
+// TVs, consolas…). Se chequea ANTES que los componentes de PC para que, por
+// ej., "iPhone 256GB" no caiga en una categoría de componente.
+const OTRAS_CATS = [
+  ["Tablet", /\btablet\b|\bipad\b|galaxy\s?tab\b/],
+  ["Celular", /\bcelular(es)?\b|smartphone|\biphone\b|galaxy\s?(a|s|z|m|note)\s?\d|\bredmi\b|\bpoco\s?[a-z]?\d|moto\s?(g|e|edge)\b|\binfinix\b|tecno\s?(spark|camon|pop)|\bzte\b|honor\s?\d/],
+  ["TV", /televisor|smart\s?tv|\bsmart-tv\b|\btv\b\s?\d{2}\s?("|”|pulg)/],
+  ["Consola", /playstation|\bps[45]\b|\bxbox\b|nintendo|\bswitch\b(?=[^.]*\b(nintendo|oled|lite|joy-?con)\b)/],
+  ["Smartwatch", /smart\s?watch|smartwatch|apple\s?watch|galaxy\s?watch|\bsmartband\b|reloj\s?intelig/],
+  ["Parlante", /\bparlante(s)?\b|soundbar|barra de sonido|\bbocina(s)?\b/],
+  ["Impresora", /\bimpresora(s)?\b|multifunci[oó]n/],
+];
+
 function clasificar(nombre) {
   const n = norm(nombre);
   // 1) Notebook explícita (por palabra clave o modelo conocido).
   if (esNotebook(n)) return "Notebook";
   // 2) PC pre-armada por palabra clave ("PC gamer", "computadora", "mini pc"…).
   if (esPrebuiltKw(n)) return "PC Armada";
-  // 3) Sin palabra clave pero menciona 2+ componentes distintos => es un equipo
+  // 3) Electrónica de consumo (celular/tablet/TV/consola…) antes que componentes.
+  for (const [cat, re] of OTRAS_CATS) if (re.test(n)) return cat;
+  // 4) Sin palabra clave pero menciona 2+ componentes distintos => es un equipo
   //    completo, no una pieza suelta. Si además trae medida de pantalla, es una
   //    notebook (portátil sin la palabra "notebook" en el título).
   if (contarComponentes(n) >= 2) return SCREEN.test(n) ? "Notebook" : "PC Armada";
-  // 4) Motherboard por chipset (B550, X670, Z790, H610, A520…) cuando el título
+  // 5) Motherboard por chipset (B550, X670, Z790, H610, A520…) cuando el título
   //    no dice "motherboard". Se descarta si el nombre es de gabinete/cooler/
   //    fuente (ej. gabinete NZXT H510, que comparte el código con un chipset H510).
   if (/\b[abxz][3-9]\d{2}m?\b|\bh[3-9]\d{2}m?\b/.test(n) &&
       !/gabinete|\bcase\b|\btorre\b|chasis|cooler|disipador|ventilador|\bfan\b|fuente|\bpsu\b/.test(n))
     return "Motherboard";
-  // 5) Pieza suelta: cae en su categoría por el primer patrón que coincide.
+  // 6) Pieza suelta: cae en su categoría por el primer patrón que coincide.
   for (const [cat, re] of CATS) if (re.test(n)) return cat;
   return "Otros";
 }
@@ -391,8 +406,34 @@ function sampleSpread(arr, n) {
 
 const FETCHERS = { woocommerce: fromWoo, shopify: fromShopify, tiendanube: fromShopify, vtex: fromVtex, mercadolibre: fromMercadoLibre, scrape: fromScrape };
 
+/* --------------------- normalización de moneda a USD --------------------- */
+const RATE_UYU_USD = 40; // pesos uruguayos por dólar (aprox)
+function mediana(nums) {
+  const a = nums.filter((n) => isFinite(n) && n > 0).sort((x, y) => x - y);
+  return a.length ? a[Math.floor(a.length / 2)] : 0;
+}
+// Detecta la moneda de cada tienda por la MAGNITUD de sus precios y pasa TODO a
+// dólares. Un catálogo de tecnología con mediana de miles está en pesos; de
+// decenas/cientos, en dólares. Así, aunque una tienda liste en USD y venga mal
+// etiquetada como pesos (o al revés), no quedan precios diminutos ni gigantes.
+function normalizarMonedas(rawPorTienda) {
+  for (const { store, items } of rawPorTienda) {
+    const enPesos = mediana(items.map((i) => i.precio)) >= 1500;
+    for (const it of items) {
+      let usd = enPesos ? it.precio / RATE_UYU_USD : it.precio;
+      // Guardas por ítem, para mezclas raras dentro de una misma tienda:
+      if (usd > 15000) usd = usd / RATE_UYU_USD;            // segurísimo eran pesos
+      else if (usd < 1 && it.precio >= 40) usd = it.precio; // segurísimo eran dólares
+      it.precio = Math.round(usd * 100) / 100;
+      it.moneda = "USD";
+    }
+    store._moneda = enPesos ? "pesos→USD" : "USD";
+  }
+}
+
 /* --------------------------- armar el dataset ---------------------------- */
 function buildDataset(rawPorTienda, storesMeta, prev) {
+  normalizarMonedas(rawPorTienda); // todo a USD antes de armar nada
   // prev = { productos, precios } existentes (para IDs estables + historial).
   const keyToId = new Map();
   let maxId = 0;
@@ -505,6 +546,12 @@ ${ds.precios.map((r) => `(${r.producto}, ${r.tienda}, ${r.precio}, ${sqlv(r.mone
 
 /* Datos de ejemplo para --selftest (forma real de la Store API de WooCommerce). */
 const SAMPLE = [
+  { nombre: "Apple iPhone 15 128GB Negro", precio: 899, moneda: "USD", imagen: "https://ej/ip.jpg", url: "#", disponible: true },
+  { nombre: "Samsung Galaxy A54 256GB 8GB", precio: 380, moneda: "USD", imagen: "https://ej/a54.jpg", url: "#", disponible: true },
+  { nombre: 'Smart TV Samsung 55" 4K UHD', precio: 620, moneda: "USD", imagen: "https://ej/tv.jpg", url: "#", disponible: true },
+  { nombre: "Consola Sony PlayStation 5 Slim 1TB", precio: 640, moneda: "USD", imagen: "https://ej/ps5.jpg", url: "#", disponible: true },
+  { nombre: "Nintendo Switch OLED", precio: 380, moneda: "USD", imagen: "https://ej/sw.jpg", url: "#", disponible: true },
+  { nombre: "Tablet Samsung Galaxy Tab A9 64GB", precio: 190, moneda: "USD", imagen: "https://ej/tab.jpg", url: "#", disponible: true },
   { nombre: 'Notebook Acer Swift 3 SF313-53 i7-1165G7/8Gb/512Gb 13.5" 2K', precio: 790, moneda: "USD", imagen: "https://ej/swift.jpg", url: "#", disponible: true },
   { nombre: "ASUS Dual GeForce RTX 4060 OC 8GB GDDR6", precio: 420, moneda: "USD", imagen: "https://ej/4060.jpg", url: "#", disponible: true },
   { nombre: "Placa de Video Asus Dual RTX 4060 8GB", precio: 415, moneda: "USD", imagen: "https://ej/4060b.jpg", url: "#", disponible: true },

@@ -58,6 +58,13 @@
     headphones: '<path d="M4 13a8 8 0 0 1 16 0M4 13v4a2 2 0 0 0 2 2h1v-6H6a2 2 0 0 0-2 2Zm16 0v4a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2Z"/>',
     laptop: '<path d="M5 6h14v10H5zM3 19h18M9 19l.5-3h5l.5 3"/>',
     desktop: '<rect x="4" y="3" width="9" height="18" rx="1.5"/><path d="M7 6h3M7 9h3M7 12h2"/><circle cx="8.5" cy="17" r="1"/><path d="M16 8h4v9h-4M15 20h6M17 17v3"/>',
+    phone: '<rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/>',
+    tablet: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M11 18h2"/>',
+    tv: '<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 21h8M12 6V3"/>',
+    gamepad: '<path d="M7 12h4M9 10v4"/><circle cx="16" cy="11" r="1"/><circle cx="18.5" cy="13.5" r="1"/><path d="M6 8h12a3 3 0 0 1 3 3l-.7 5a2.5 2.5 0 0 1-4.6.8L14 15h-4l-1.7 1.6a2.5 2.5 0 0 1-4.6-.8L3 11a3 3 0 0 1 3-3Z"/>',
+    watch: '<rect x="7" y="7" width="10" height="10" rx="3"/><path d="M9 7l.5-4h5l.5 4M9 17l.5 4h5l.5-4"/>',
+    speaker: '<rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="14" r="3"/><circle cx="12" cy="7" r="1"/>',
+    printer: '<path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/>',
     box: '<path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3ZM4 7.5l8 4.5 8-4.5M12 12v9"/>',
   };
   const icon = (name, size = 16, cls = "") =>
@@ -68,7 +75,8 @@
     gpu: "gpu", cpu: "cpu", ram: "memory", ssd: "drive", hdd: "drive", monitor: "monitor",
     notebook: "laptop", teclado: "keyboard", mouse: "mouse", auriculares: "headphones",
     motherboard: "board", fuente: "power", gabinete: "case", cooler: "fan",
-    "pc armada": "desktop",
+    "pc armada": "desktop", celular: "phone", tablet: "tablet", tv: "tv",
+    consola: "gamepad", smartwatch: "watch", parlante: "speaker", impresora: "printer",
   };
   const catIcon = (cat) => CAT_ICON[String(cat).toLowerCase()] || "box";
 
