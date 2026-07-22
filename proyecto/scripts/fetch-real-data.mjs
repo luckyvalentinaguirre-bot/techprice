@@ -45,7 +45,7 @@ const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-
 const CATS = [
   ["Motherboard", /motherboard|placa madre|mainboard|tarjeta madre|\bmother\b/],
   ["GPU", /\brtx\b|\bgtx\b|geforce|radeon|\brx ?\d{3,4}\b|placa de v[ií]deo|tarjeta gr[aá]fica|\bgpu\b|arc a\d/],
-  ["CPU", /procesador|\bryzen\b|core i\d|intel core|core ultra|\bcpu\b|athlon|pentium|celeron|threadripper/],
+  ["CPU", /\bprocesador(?:es)?\b|\bryzen\b|core i\d|intel core|core ultra|\bcpu\b|athlon|pentium|celeron|threadripper/],
   // RAM: la palabra RAM / DIMM, o capacidad en GB junto a DDR (así "DDR4" suelto
   // en un motherboard no la clasifica como RAM).
   ["RAM", /memoria\s?ram|\bram\b|\bso-?dimm\b|\bu?dimm\b|\d{1,3}\s?gb\b(?=.*\bddr[345]\b)|\bddr[345]\b(?=.*\d{1,3}\s?gb)/],
@@ -73,7 +73,7 @@ const SCREEN = /\b1[0-8](\.\d)?\s?("|”|''|pulg|pulgadas|inch)/;
 const NOISE = /diferencia (de )?equipo|\bse[nñ]a\b|\breserva\b|garant[ií]a extendida|servicio t[eé]cnico|mano de obra|armado y (testeo|pruebas)|\bcuota[s]?\b|env[ií]o (gratis|a domicilio)?$|cambio de producto|devoluci[oó]n|reintegro|reembolso|gift ?card|tarjeta de regalo/;
 
 // Electrodomésticos / hogar (no son tecnología para comparar): se descartan.
-const NONTECH = /termotanque|calef[oó]n|\bplancha\b|planchita|heladera|\bfreezer\b|lavarropa|secarropa|lavavajilla|microonda|\banafe\b|cocina (a gas|el[eé]ctrica|industrial|combinada)|horno( el[eé]ctrico| a gas)?|aire acondicionado|\bsplit\b|calefactor|calefacci[oó]n|\bestufa\b|licuadora|batidora|procesadora de alimentos|cafetera|pava el[eé]ctrica|tostadora|sandwichera|aspiradora|secador de pelo|afeitadora|depiladora|garrafa|colch[oó]n|\bsomier\b|sill[oó]n|\bpuff\b|l[aá]mpara(?! (gamer|rgb))|ventilador (de )?(pie|techo|pared|20|18|16)|bicicleta|spinning|cinta de correr|caminadora|trotadora|el[ií]ptic[ao]|mancuerna|\bgym\b|gimnasio|speediance|\bfitness\b|abdominal|escaladora|m[aá]quina (de )?gym/;
+const NONTECH = /termotanque|calef[oó]n|\bplancha\b|planchita|heladera|\bfreezer\b|lavarropa|secarropa|lavavajilla|microonda|\banafe\b|cocina (a gas|el[eé]ctrica|industrial|combinada)|horno( el[eé]ctrico| a gas)?|aire acondicionado|\bsplit\b|calefactor|calefacci[oó]n|\bestufa\b|licuadora|batidora|\bprocesadora\b|cafetera|pava el[eé]ctrica|tostadora|sandwichera|aspiradora|secador de pelo|afeitadora|depiladora|garrafa|colch[oó]n|\bsomier\b|sill[oó]n|\bpuff\b|l[aá]mpara(?! (gamer|rgb))|ventilador (de )?(pie|techo|pared|20|18|16)|bicicleta|spinning|cinta de correr|caminadora|trotadora|el[ií]ptic[ao]|mancuerna|\bgym\b|gimnasio|speediance|\bfitness\b|abdominal|escaladora|m[aá]quina (de )?gym/;
 
 // Detectores de componentes: cada uno responde "el nombre menciona este tipo de
 // pieza". La clave para no ensuciar las categorías es CONTAR cuántos aparecen:

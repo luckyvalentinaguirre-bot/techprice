@@ -305,7 +305,7 @@
   }
 
   /* ========================= BUSCADOR + FILTROS ======================== */
-  const filtros = { q: "", cat: "", marca: "", min: null, max: null, sort: "relevancia" };
+  const filtros = { q: "", cat: "", marca: "", min: null, max: null, sort: "relevancia", soloVarias: false };
   let mostrarN = 48; // paginación "cargar más"
 
   // Llena los <select> de categoría y marca con lo que hay en los datos.
@@ -334,6 +334,7 @@
     if (filtros.marca) list = list.filter((m) => m.marca === filtros.marca);
     if (filtros.min != null) list = list.filter((m) => m.lowest >= filtros.min);
     if (filtros.max != null) list = list.filter((m) => m.lowest <= filtros.max);
+    if (filtros.soloVarias) list = list.filter((m) => m.offers.length >= 2);
     const arr = [...list];
     switch (filtros.sort) {
       case "precio-asc": arr.sort((a, b) => (a.lowest || 1e12) - (b.lowest || 1e12)); break;
@@ -347,7 +348,7 @@
   }
 
   const hayFiltros = () =>
-    filtros.q || filtros.cat || filtros.marca || filtros.min != null || filtros.max != null || filtros.sort !== "relevancia";
+    filtros.q || filtros.cat || filtros.marca || filtros.min != null || filtros.max != null || filtros.sort !== "relevancia" || filtros.soloVarias;
 
   function aplicarFiltros(resetN) {
     if (resetN !== false) mostrarN = 48;
@@ -381,6 +382,7 @@
     const set = (sel, v) => { const el = $(sel); if (el) el.value = v; };
     set("#f-cat", filtros.cat); set("#f-marca", filtros.marca); set("#f-sort", filtros.sort);
     set("#f-min", filtros.min == null ? "" : filtros.min); set("#f-max", filtros.max == null ? "" : filtros.max);
+    const chk = $("#f-multi"); if (chk) chk.checked = filtros.soloVarias;
   }
 
   // La búsqueda del hero alimenta el filtro de texto.
@@ -403,8 +405,9 @@
     on("#f-sort", "change", (e) => { filtros.sort = e.target.value; aplicarFiltros(); });
     on("#f-min", "input", (e) => { filtros.min = num(e.target.value); aplicarFiltros(); });
     on("#f-max", "input", (e) => { filtros.max = num(e.target.value); aplicarFiltros(); });
+    on("#f-multi", "change", (e) => { filtros.soloVarias = e.target.checked; aplicarFiltros(); });
     on("#f-clear", "click", () => {
-      Object.assign(filtros, { q: "", cat: "", marca: "", min: null, max: null, sort: "relevancia" });
+      Object.assign(filtros, { q: "", cat: "", marca: "", min: null, max: null, sort: "relevancia", soloVarias: false });
       const inp = $("#search-input"); if (inp) inp.value = "";
       syncControles(); aplicarFiltros();
     });
