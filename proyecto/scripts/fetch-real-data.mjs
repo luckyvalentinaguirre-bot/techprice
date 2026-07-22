@@ -70,7 +70,7 @@ const PREBUILT = /\bpc\s?gamer\b|\bpc\s?armad|\bpc\s?completa|\bpc\s?(de\s?)?esc
 const SCREEN = /\b1[0-8](\.\d)?\s?("|”|''|pulg|pulgadas|inch)/;
 
 // Basura real (no son productos comparables): se descartan por completo.
-const NOISE = /diferencia (de )?equipo|\bse[nñ]a\b|\breserva\b|garant[ií]a extendida|servicio t[eé]cnico|mano de obra|armado y (testeo|pruebas)|\bcuota[s]?\b|env[ií]o (gratis|a domicilio)?$/;
+const NOISE = /diferencia (de )?equipo|\bse[nñ]a\b|\breserva\b|garant[ií]a extendida|servicio t[eé]cnico|mano de obra|armado y (testeo|pruebas)|\bcuota[s]?\b|env[ií]o (gratis|a domicilio)?$|cambio de producto|devoluci[oó]n|reintegro|reembolso|gift ?card|tarjeta de regalo/;
 
 // Detectores de componentes: cada uno responde "el nombre menciona este tipo de
 // pieza". La clave para no ensuciar las categorías es CONTAR cuántos aparecen:
@@ -380,7 +380,8 @@ async function fromScrape(store) {
     const xml = await getText(sm, 25000).catch(() => "");
     urls.push(...[...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/g)].map((m) => m[1]).filter((u) => !u.endsWith(".xml")));
   }
-  urls = [...new Set(urls)];
+  // Sacar la home (trae el nombre de la tienda como "producto").
+  urls = [...new Set(urls)].filter((u) => u.replace(/[/#]+$/, "") !== base);
   // Tope de seguridad: evita dispararle miles de requests a un catálogo enorme
   // (y controla la memoria). Se puede subir por tienda con "maxItems".
   urls = urls.slice(0, store.maxItems || 2500);
@@ -453,7 +454,9 @@ function buildDataset(rawPorTienda, storesMeta, prev) {
 
   for (const { store, items } of rawPorTienda) {
     for (const it of items) {
-      if (!it.nombre || !isFinite(it.precio) || it.precio <= 0) continue;
+      // Descarta basura: sin nombre, precio inválido, o precio ridículo (< USD 2,
+      // típico de páginas de inicio/políticas que se colaron como "producto").
+      if (!it.nombre || !isFinite(it.precio) || it.precio < 2) continue;
       if (esRuido(it.nombre)) continue;
       const categoria = clasificar(it.nombre);
       const key = claveModelo(it.nombre, categoria);

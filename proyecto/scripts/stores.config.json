@@ -15,7 +15,7 @@
     { "id": 12, "nombre": "Mundo PC", "plataforma": "auto", "baseUrl": "https://www.mundopc.com.uy", "moneda": "UYU", "enabled": true },
     { "id": 13, "nombre": "TvTerra", "plataforma": "auto", "baseUrl": "https://www.tvterra.uy", "moneda": "UYU", "enabled": true },
     { "id": 14, "nombre": "Newcom", "plataforma": "auto", "baseUrl": "https://www.newcom.com.uy", "moneda": "UYU", "enabled": true },
-    { "id": 15, "nombre": "Divino", "plataforma": "auto", "baseUrl": "https://www.divino.com.uy", "moneda": "UYU", "enabled": true },
+    { "_nota_divino": "Muebles/deco, no tecnología: apagada para no meter ruido.", "id": 15, "nombre": "Divino", "plataforma": "auto", "baseUrl": "https://www.divino.com.uy", "moneda": "UYU", "enabled": false },
     { "id": 16, "nombre": "Tienda Inglesa", "plataforma": "auto", "baseUrl": "https://www.tiendainglesa.com.uy", "moneda": "UYU", "maxItems": 800, "enabled": true },
     { "id": 17, "nombre": "Loi Tecnología", "plataforma": "auto", "baseUrl": "https://www.loi.com.uy", "moneda": "UYU", "enabled": true },
     { "id": 18, "nombre": "Punto Digital", "plataforma": "auto", "baseUrl": "https://www.puntodigital.com.uy", "moneda": "UYU", "enabled": true },
