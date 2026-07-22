@@ -254,9 +254,8 @@
           '<span class="category-chip__count">' + num(n) + " " + (n === 1 ? "producto" : "productos") + "</span></span></div>")
       .join("");
 
-    // Destacados (por fecha reciente, luego id)
-    const destacados = [...M].sort((a, b) => (b.lastFecha || "").localeCompare(a.lastFecha || "") || b.id - a.id).slice(0, 8);
-    $("#grid-destacados").innerHTML = destacados.map(showcaseCard).join("");
+    // Destacados / grilla filtrable (se llena vía aplicarFiltros al final).
+    poblarFiltros();
 
     // Bajaron de precio
     const drops = M.filter((m) => m.change && m.change.amount < 0).sort((a, b) => a.change.pct - b.change.pct).slice(0, 6);
@@ -298,64 +297,117 @@
     }).join("");
 
     $("#year").textContent = new Date().getFullYear();
-    wireCards();
     wireCategorias();
-    marcarChipActivo();
+    aplicarFiltros(); // llena la grilla (destacados si no hay filtros)
     renderBuilder();
     renderMisPcs();
   }
 
   /* ========================= BUSCADOR + FILTROS ======================== */
-  let filtroCat = null; // categoría activa (o null = todas)
+  const filtros = { q: "", cat: "", marca: "", min: null, max: null, sort: "relevancia" };
+  let mostrarN = 48; // paginación "cargar más"
 
-  function pintarResultados(list, titulo, subtitulo) {
-    const grid = $("#grid-destacados");
-    $("#title-destacados").textContent = titulo;
-    $("#subtitle-destacados").textContent = subtitulo;
-    grid.innerHTML = list.length
-      ? list.map(showcaseCard).join("")
-      : '<p class="empty-results">No encontramos productos que coincidan.</p>';
-    wireCards();
+  // Llena los <select> de categoría y marca con lo que hay en los datos.
+  function poblarFiltros() {
+    const cats = new Map(), marcas = new Map();
+    for (const m of MODEL.productos) {
+      cats.set(m.categoria, (cats.get(m.categoria) || 0) + 1);
+      if (m.marca) marcas.set(m.marca, (marcas.get(m.marca) || 0) + 1);
+    }
+    const fill = (sel, entries, labelAll) => {
+      const el = $(sel); if (!el) return;
+      const cur = el.value;
+      el.innerHTML = '<option value="">' + labelAll + "</option>" +
+        entries.sort((a, b) => b[1] - a[1] || String(a[0]).localeCompare(b[0]))
+          .map(([k, n]) => '<option value="' + esc(k) + '">' + esc(k) + " (" + n + ")</option>").join("");
+      el.value = cur;
+    };
+    fill("#f-cat", [...cats.entries()], "Todas las categorías");
+    fill("#f-marca", [...marcas.entries()], "Todas las marcas");
   }
 
-  function verDestacados() {
-    const destacados = [...MODEL.productos]
-      .sort((a, b) => (b.lastFecha || "").localeCompare(a.lastFecha || "") || b.id - a.id)
-      .slice(0, 8);
-    pintarResultados(destacados, "Productos destacados",
-      "El mejor precio, el promedio y cuánto se movió respecto al día anterior.");
+  function listaFiltrada() {
+    let list = MODEL.productos;
+    if (filtros.q) list = list.filter((m) => m._buscable.includes(filtros.q));
+    if (filtros.cat) list = list.filter((m) => m.categoria === filtros.cat);
+    if (filtros.marca) list = list.filter((m) => m.marca === filtros.marca);
+    if (filtros.min != null) list = list.filter((m) => m.lowest >= filtros.min);
+    if (filtros.max != null) list = list.filter((m) => m.lowest <= filtros.max);
+    const arr = [...list];
+    switch (filtros.sort) {
+      case "precio-asc": arr.sort((a, b) => (a.lowest || 1e12) - (b.lowest || 1e12)); break;
+      case "precio-desc": arr.sort((a, b) => (b.lowest || 0) - (a.lowest || 0)); break;
+      case "tiendas": arr.sort((a, b) => b.offers.length - a.offers.length || (a.lowest || 1e12) - (b.lowest || 1e12)); break;
+      case "descuento": arr.sort((a, b) => (a.change ? a.change.pct : 0) - (b.change ? b.change.pct : 0)); break;
+      case "nombre": arr.sort((a, b) => a.nombre.localeCompare(b.nombre)); break;
+      default: arr.sort((a, b) => (b.lastFecha || "").localeCompare(a.lastFecha || "") || b.id - a.id);
+    }
+    return arr;
+  }
+
+  const hayFiltros = () =>
+    filtros.q || filtros.cat || filtros.marca || filtros.min != null || filtros.max != null || filtros.sort !== "relevancia";
+
+  function aplicarFiltros(resetN) {
+    if (resetN !== false) mostrarN = 48;
+    const arr = listaFiltrada();
+    const activo = hayFiltros();
+    const visibles = activo ? arr.slice(0, mostrarN) : arr.slice(0, 8);
+    const title = $("#title-destacados"), sub = $("#subtitle-destacados");
+    if (!activo) {
+      title.textContent = "Productos destacados";
+      sub.textContent = "El mejor precio, el promedio y cuánto se movió respecto al día anterior.";
+    } else {
+      title.textContent = filtros.cat || (filtros.q ? 'Resultados para "' + filtros.q + '"' : "Resultados");
+      sub.textContent = arr.length + " producto" + (arr.length === 1 ? "" : "s") +
+        (arr.length > visibles.length ? " · mostrando " + visibles.length : "");
+    }
+    $("#grid-destacados").innerHTML = visibles.length
+      ? visibles.map(showcaseCard).join("")
+      : '<p class="empty-results">No hay productos con esos filtros.</p>';
+    const more = $("#load-more");
+    if (more) more.classList.toggle("is-hidden", !(activo && arr.length > visibles.length));
+    wireCards();
+    marcarChipActivo();
   }
 
   function marcarChipActivo() {
     document.querySelectorAll("[data-cat]").forEach((el) =>
-      el.classList.toggle("is-active", el.getAttribute("data-cat") === filtroCat));
+      el.classList.toggle("is-active", el.getAttribute("data-cat") === filtros.cat));
   }
 
-  // Búsqueda por texto: es global, así que quita el filtro de categoría.
-  function buscar(q) {
-    filtroCat = null;
-    marcarChipActivo();
-    const query = norm(q.trim());
-    if (!query) { verDestacados(); return; }
-    const res = MODEL.productos.filter((m) => m._buscable.includes(query));
-    pintarResultados(res, 'Resultados para "' + q.trim() + '"',
-      res.length + " " + (res.length === 1 ? "producto encontrado" : "productos encontrados"));
+  function syncControles() {
+    const set = (sel, v) => { const el = $(sel); if (el) el.value = v; };
+    set("#f-cat", filtros.cat); set("#f-marca", filtros.marca); set("#f-sort", filtros.sort);
+    set("#f-min", filtros.min == null ? "" : filtros.min); set("#f-max", filtros.max == null ? "" : filtros.max);
   }
 
-  // Filtro por categoría EXACTA (no por texto): así "RAM" no arrastra notebooks
-  // que digan "16GB RAM" en el nombre. Volver a tocar la categoría lo quita.
+  // La búsqueda del hero alimenta el filtro de texto.
+  function buscar(q) { filtros.q = norm(q.trim()); aplicarFiltros(); }
+  function verDestacados() { aplicarFiltros(); }
+  // Tocar un chip de categoría setea el filtro (toggle) y limpia la búsqueda.
   function filtrarPorCategoria(cat) {
-    const input = $("#search-input");
-    if (input) input.value = "";
-    if (filtroCat === cat) { filtroCat = null; marcarChipActivo(); verDestacados(); return; }
-    filtroCat = cat;
-    marcarChipActivo();
-    const res = MODEL.productos
-      .filter((m) => m.categoria === cat)
-      .sort((a, b) => (a.lowest || Infinity) - (b.lowest || Infinity));
-    pintarResultados(res, cat,
-      res.length + " " + (res.length === 1 ? "producto" : "productos") +
-      " · tocá la categoría de nuevo para quitar el filtro");
+    filtros.cat = (filtros.cat === cat) ? "" : cat;
+    const inp = $("#search-input"); if (inp) inp.value = "";
+    filtros.q = "";
+    syncControles();
+    aplicarFiltros();
+  }
+
+  function wireFiltros() {
+    const num = (v) => { v = parseFloat(v); return isFinite(v) ? v : null; };
+    const on = (sel, ev, fn) => { const el = $(sel); if (el) el.addEventListener(ev, fn); };
+    on("#f-cat", "change", (e) => { filtros.cat = e.target.value; aplicarFiltros(); });
+    on("#f-marca", "change", (e) => { filtros.marca = e.target.value; aplicarFiltros(); });
+    on("#f-sort", "change", (e) => { filtros.sort = e.target.value; aplicarFiltros(); });
+    on("#f-min", "input", (e) => { filtros.min = num(e.target.value); aplicarFiltros(); });
+    on("#f-max", "input", (e) => { filtros.max = num(e.target.value); aplicarFiltros(); });
+    on("#f-clear", "click", () => {
+      Object.assign(filtros, { q: "", cat: "", marca: "", min: null, max: null, sort: "relevancia" });
+      const inp = $("#search-input"); if (inp) inp.value = "";
+      syncControles(); aplicarFiltros();
+    });
+    on("#load-more", "click", () => { mostrarN += 48; aplicarFiltros(false); });
   }
 
   /* ============================ MODAL DETALLE =========================== */
@@ -445,20 +497,30 @@
   }
 
   /* ============================== EVENTOS =============================== */
+  // Delegación de eventos: se cablea UNA sola vez, así re-renderizar la grilla
+  // (al filtrar) no acumula listeners duplicados en las tarjetas.
+  let cardsWired = false;
   function wireCards() {
-    document.querySelectorAll("[data-open]").forEach((el) => {
-      const open = () => abrirDetalle(Number(el.getAttribute("data-open")));
-      el.addEventListener("click", open);
-      el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
-    });
-    document.querySelectorAll(".js-alert").forEach((b) =>
-      b.addEventListener("click", (e) => {
+    if (cardsWired) return;
+    cardsWired = true;
+    document.addEventListener("click", (e) => {
+      const alerta = e.target.closest(".js-alert");
+      if (alerta) {
         e.stopPropagation();
-        const on = b.getAttribute("aria-pressed") === "true";
-        b.setAttribute("aria-pressed", String(!on));
-        b.style.color = !on ? "var(--brand)" : "";
-        b.style.borderColor = !on ? "var(--brand)" : "";
-      }));
+        const on = alerta.getAttribute("aria-pressed") === "true";
+        alerta.setAttribute("aria-pressed", String(!on));
+        alerta.style.color = !on ? "var(--brand)" : "";
+        alerta.style.borderColor = !on ? "var(--brand)" : "";
+        return;
+      }
+      const el = e.target.closest("[data-open]");
+      if (el) abrirDetalle(Number(el.getAttribute("data-open")));
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const el = e.target.closest && e.target.closest("[data-open]");
+      if (el) { e.preventDefault(); abrirDetalle(Number(el.getAttribute("data-open"))); }
+    });
   }
 
   // Los chips de categoría son persistentes (no se regeneran al filtrar), así que
@@ -482,6 +544,7 @@
     const reset = $("#reset-build"); if (reset) reset.addEventListener("click", resetBuild);
     const clr = $("#clear-mis-pcs"); if (clr) clr.addEventListener("click", borrarTodasLasPcs);
     wireMenu();
+    wireFiltros();
   }
 
   /* ============================ MENÚ HAMBURGUESA ======================= */
