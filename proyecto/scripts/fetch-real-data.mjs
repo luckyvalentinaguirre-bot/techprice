@@ -116,6 +116,10 @@ function clasificar(nombre) {
   if (/auricular|headset|vincha|\bhandsfree\b|aud[ií]fono/.test(n)) return "Auriculares";
   if (/teclado|keyboard/.test(n)) return "Teclado";
   if (/\bmouse\b|\brat[oó]n\b/.test(n)) return "Mouse";
+  // Cooler/disipador/pasta térmica ANTES que CPU: si no, "cooler para procesador"
+  // o "pasta térmica para CPU" caían en CPU por decir "procesador"/"cpu".
+  if (/disipador|water\s?cooler|\baio\b|refrigeraci[oó]n l[ií]quida|pasta t[eé]rmica|cpu cooler|cooler para (cpu|procesador)/.test(n)) return "Cooler";
+  if (/\bcooler\b|\bventilador\b/.test(n) && !/gabinete|\bcase\b|chasis|\bpsu\b|fuente|\d{3,4}\s?w\b|\brtx\b|\bgtx\b|geforce|radeon|notebook|\btv\b/.test(n)) return "Cooler";
   // 4) Electrónica de consumo (celular/tablet/TV/consola…), salvo que el nombre
   //    sea claramente un ACCESORIO del dispositivo (cable/funda/joystick/…).
   const accesorio = /joystick|gamepad|\bcable\b|\bfunda\b|\bforro\b|cargador|adaptador|\bdock\b|base de carga|\bcover\b|estuche/.test(n);
@@ -229,7 +233,7 @@ async function fromWoo(store) {
         const minor = p.prices?.currency_minor_unit ?? 2;
         out.push({
           nombre: p.name, precio: parseFloat(p.prices?.price) / 10 ** minor,
-          moneda: p.prices?.currency_code || store.moneda || "UYU",
+          moneda: p.prices?.currency_code || store.moneda || "UYU", monedaOk: !!p.prices?.currency_code,
           imagen: p.images?.[0]?.src || null, url: p.permalink, disponible: p.is_in_stock !== false,
         });
       }
@@ -357,7 +361,10 @@ function parseNumero(s) {
 function parseSchemaProduct(h, url, store) {
   let price = attr1(/itemprop=["']price["'][^>]*content=["']([\d.,]+)["']/i, h)
     || attr1(/content=["']([\d.,]+)["'][^>]*itemprop=["']price["']/i, h);
-  let currency = attr1(/itemprop=["']priceCurrency["'][^>]*content=["']([A-Za-z]{3})["']/i, h) || store.moneda || "UYU";
+  // Moneda REAL del producto (confiable) desde la microdata; si no, del símbolo
+  // en el texto (U$S = dólares, $U/UYU = pesos). Solo si no hay nada, adivinamos.
+  let currency = attr1(/itemprop=["']priceCurrency["'][^>]*content=["']([A-Za-z]{3})["']/i, h);
+  let curOk = !!currency;
   if (!price) {
     for (const b of [...h.matchAll(/<script[^>]*ld\+json[^>]*>([\s\S]*?)<\/script>/gi)].map((m) => m[1])) {
       try {
@@ -365,9 +372,15 @@ function parseSchemaProduct(h, url, store) {
         const arr = Array.isArray(j) ? j : (j["@graph"] || [j]);
         const prod = arr.find((x) => /product/i.test([].concat(x["@type"] || "").join(" ")));
         const offer = prod && (Array.isArray(prod.offers) ? prod.offers[0] : prod.offers);
-        if (offer && offer.price != null) { price = String(offer.price); currency = offer.priceCurrency || currency; break; }
+        if (offer && offer.price != null) { price = String(offer.price); if (offer.priceCurrency) { currency = offer.priceCurrency; curOk = true; } break; }
       } catch { /* json roto, seguir */ }
     }
+  }
+  if (!curOk) {
+    // Símbolo en el HTML: "U$S"/"US$"/"USD" => dólares; "$U"/"UYU" => pesos.
+    if (/u\$s|us\$|\busd\b/i.test(h)) { currency = "USD"; curOk = true; }
+    else if (/\$u\b|\buyu\b/i.test(h)) { currency = "UYU"; curOk = true; }
+    else currency = store.moneda || "UYU";
   }
   if (!price) return null;
   const precio = parseNumero(price);
@@ -385,7 +398,7 @@ function parseSchemaProduct(h, url, store) {
 
   const inStock = /itemprop=["']availability["'][^>]*(InStock|in_stock)/i.test(h)
     || !/(OutOfStock|SoldOut|agotado|sin stock)/i.test(h);
-  return { nombre, precio, moneda: currency.toUpperCase(), imagen: img || null, url, disponible: inStock };
+  return { nombre, precio, moneda: currency.toUpperCase(), monedaOk: curOk, imagen: img || null, url, disponible: inStock };
 }
 
 async function fromScrape(store) {
@@ -446,22 +459,30 @@ function mediana(nums) {
   const a = nums.filter((n) => isFinite(n) && n > 0).sort((x, y) => x - y);
   return a.length ? a[Math.floor(a.length / 2)] : 0;
 }
-// Detecta la moneda de cada tienda por la MAGNITUD de sus precios y pasa TODO a
-// dólares. Un catálogo de tecnología con mediana de miles está en pesos; de
-// decenas/cientos, en dólares. Así, aunque una tienda liste en USD y venga mal
-// etiquetada como pesos (o al revés), no quedan precios diminutos ni gigantes.
+// Pasa TODO a dólares. Prioridad: (1) la moneda REAL del producto cuando la web
+// la declara (monedaOk: microdata/símbolo U$S/currency_code) — se respeta y no
+// se toca; (2) si no, se adivina por la MAGNITUD de los precios inciertos de esa
+// tienda (mediana de miles = pesos), con guardas para outliers.
 function normalizarMonedas(rawPorTienda) {
   for (const { store, items } of rawPorTienda) {
-    const enPesos = mediana(items.map((i) => i.precio)) >= 1500;
+    const inciertos = items.filter((i) => !i.monedaOk);
+    // Umbral según la pista del config: si la tienda está marcada en pesos, es
+    // más fácil concluir pesos; si en dólares, hace falta una mediana muy alta.
+    const umbral = (store.moneda || "UYU").toUpperCase() === "USD" ? 3000 : 500;
+    const inciertosEnPesos = mediana(inciertos.map((i) => i.precio)) >= umbral;
     for (const it of items) {
-      let usd = enPesos ? it.precio / RATE_UYU_USD : it.precio;
-      // Guardas por ítem, para mezclas raras dentro de una misma tienda:
-      if (usd > 15000) usd = usd / RATE_UYU_USD;            // segurísimo eran pesos
-      else if (usd < 1 && it.precio >= 40) usd = it.precio; // segurísimo eran dólares
+      const cur = it.monedaOk ? (it.moneda || "USD").toUpperCase() : (inciertosEnPesos ? "UYU" : "USD");
+      let usd = cur === "UYU" ? it.precio / RATE_UYU_USD : it.precio;
+      if (!it.monedaOk) {
+        // Guardas SOLO para los inciertos (no rompen precios con moneda confiable):
+        if (usd > 8000) usd = usd / RATE_UYU_USD;             // peso grande mal detectado
+        else if (usd < 1 && it.precio >= 40) usd = it.precio; // dólar mal dividido
+      } else if (usd > 20000) {
+        usd = usd / RATE_UYU_USD; // último recurso: ni un producto tech vale USD 20.000
+      }
       it.precio = Math.round(usd * 100) / 100;
       it.moneda = "USD";
     }
-    store._moneda = enPesos ? "pesos→USD" : "USD";
   }
 }
 
