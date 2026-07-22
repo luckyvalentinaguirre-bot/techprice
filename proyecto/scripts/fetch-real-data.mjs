@@ -260,7 +260,110 @@ async function fromVtex(store) {
   return out;
 }
 
-const FETCHERS = { woocommerce: fromWoo, shopify: fromShopify, tiendanube: fromShopify, vtex: fromVtex, mercadolibre: fromMercadoLibre };
+/* ----- Lector genérico por scraping de microdata schema.org (modo "scrape") -----
+ * Para tiendas sin API (Fenicio, sitios a medida, etc.) que igual publican los
+ * datos en el HTML con microdata (itemprop="price"…) para aparecer en Google.
+ * Baja el sitemap de productos, entra a cada ficha y extrae nombre/precio/etc.
+ */
+async function getText(url, timeoutMs = 15000) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, { headers: { ...UA, Accept: "text/html,application/xhtml+xml" }, signal: ctrl.signal, redirect: "follow" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    return await res.text();
+  } finally {
+    clearTimeout(t);
+  }
+}
+
+// Ejecuta fn sobre items con hasta `limit` en paralelo (para no disparar miles a la vez).
+async function mapPool(items, limit, fn) {
+  const out = new Array(items.length);
+  let i = 0;
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (i < items.length) { const idx = i++; out[idx] = await fn(items[idx], idx); }
+  }));
+  return out;
+}
+
+const attr1 = (re, h) => { const m = h.match(re); return m ? m[1] : null; };
+function parseNumero(s) {
+  s = String(s).trim();
+  if (/,\d{1,2}$/.test(s)) s = s.replace(/\./g, "").replace(",", "."); // formato 1.299,00
+  else s = s.replace(/,/g, "");
+  return parseFloat(s);
+}
+
+// Extrae un producto de una ficha HTML usando microdata schema.org (y JSON-LD de respaldo).
+function parseSchemaProduct(h, url, store) {
+  let price = attr1(/itemprop=["']price["'][^>]*content=["']([\d.,]+)["']/i, h)
+    || attr1(/content=["']([\d.,]+)["'][^>]*itemprop=["']price["']/i, h);
+  let currency = attr1(/itemprop=["']priceCurrency["'][^>]*content=["']([A-Za-z]{3})["']/i, h) || store.moneda || "UYU";
+  if (!price) {
+    for (const b of [...h.matchAll(/<script[^>]*ld\+json[^>]*>([\s\S]*?)<\/script>/gi)].map((m) => m[1])) {
+      try {
+        const j = JSON.parse(b.trim());
+        const arr = Array.isArray(j) ? j : (j["@graph"] || [j]);
+        const prod = arr.find((x) => /product/i.test([].concat(x["@type"] || "").join(" ")));
+        const offer = prod && (Array.isArray(prod.offers) ? prod.offers[0] : prod.offers);
+        if (offer && offer.price != null) { price = String(offer.price); currency = offer.priceCurrency || currency; break; }
+      } catch { /* json roto, seguir */ }
+    }
+  }
+  if (!price) return null;
+  const precio = parseNumero(price);
+  if (!isFinite(precio) || precio <= 0) return null;
+
+  let nombre = attr1(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i, h)
+    || attr1(/<h1[^>]*>\s*([^<]+?)\s*<\/h1>/i, h)
+    || attr1(/<title[^>]*>([^<]+)<\/title>/i, h);
+  if (nombre) nombre = nombre.replace(/\s*\|\s*[^|]*$/, "").replace(/&amp;/g, "&").trim();
+  if (!nombre) return null;
+
+  let img = attr1(/itemprop=["']image["'][^>]*src=["']([^"']+)["']/i, h)
+    || attr1(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i, h);
+  if (img && img.startsWith("//")) img = "https:" + img;
+
+  const inStock = /itemprop=["']availability["'][^>]*(InStock|in_stock)/i.test(h)
+    || !/(OutOfStock|SoldOut|agotado|sin stock)/i.test(h);
+  return { nombre, precio, moneda: currency.toUpperCase(), imagen: img || null, url, disponible: inStock };
+}
+
+async function fromScrape(store) {
+  const base = store.baseUrl.replace(/\/$/, "");
+  // 1) ubicar el/los sitemap(s) de productos
+  let sitemaps = [];
+  if (store.sitemap) {
+    sitemaps = [store.sitemap.startsWith("http") ? store.sitemap : base + store.sitemap];
+  } else {
+    const root = await getText(base + "/sitemap.xml").catch(() => "");
+    const subs = [...root.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/g)].map((m) => m[1]);
+    const xmlSubs = subs.filter((u) => u.endsWith(".xml"));
+    const prod = xmlSubs.filter((u) => /articulo|product|catalogo|item/i.test(u));
+    sitemaps = prod.length ? prod : (xmlSubs.length ? xmlSubs : [base + "/sitemap.xml"]);
+  }
+  // 2) juntar URLs de producto
+  let urls = [];
+  for (const sm of sitemaps) {
+    const xml = await getText(sm, 25000).catch(() => "");
+    urls.push(...[...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/g)].map((m) => m[1]).filter((u) => !u.endsWith(".xml")));
+  }
+  urls = [...new Set(urls)];
+  if (store.maxItems) urls = urls.slice(0, store.maxItems);
+  if (!urls.length) return [];
+  process.stdout.write(`(${urls.length} fichas) `);
+  // 3) scrapear cada ficha, con paralelismo moderado y aviso de progreso
+  let done = 0;
+  const items = await mapPool(urls, store.concurrency || 6, async (url) => {
+    const h = await getText(url).catch(() => null);
+    if (++done % 250 === 0) process.stdout.write(`${done}… `);
+    return h ? parseSchemaProduct(h, url, store) : null;
+  });
+  return items.filter(Boolean);
+}
+
+const FETCHERS = { woocommerce: fromWoo, shopify: fromShopify, tiendanube: fromShopify, vtex: fromVtex, mercadolibre: fromMercadoLibre, scrape: fromScrape };
 
 /* --------------------------- armar el dataset ---------------------------- */
 function buildDataset(rawPorTienda, storesMeta, prev) {

@@ -2,8 +2,8 @@
   "_ayuda": "Tiendas de tecnología de Uruguay. plataforma:'auto' → el script detecta solo si es WooCommerce/Tiendanube/VTEX y, si no tiene API, la saltea. Podés agregar/quitar tiendas o poner enabled:false. Ver REALES.md.",
   "stores": [
     { "id": 1, "nombre": "PC Store Uruguay", "plataforma": "auto", "baseUrl": "https://pcstore.com.uy", "moneda": "UYU", "enabled": true },
-    { "id": 2, "nombre": "Hard PC", "plataforma": "auto", "baseUrl": "https://www.hardpc.com.uy", "moneda": "UYU", "enabled": true },
-    { "id": 3, "nombre": "ZonaTecno", "plataforma": "auto", "baseUrl": "https://www.zonatecno.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 2, "nombre": "Hard PC", "plataforma": "scrape", "baseUrl": "https://www.hardpc.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 3, "nombre": "ZonaTecno", "plataforma": "scrape", "baseUrl": "https://www.zonatecno.com.uy", "sitemap": "/sitemap/catalogo-articulos.xml", "moneda": "USD", "concurrency": 6, "enabled": true },
     { "id": 4, "nombre": "Thot Computación", "plataforma": "woocommerce", "baseUrl": "https://thotcomputacion.com.uy", "moneda": "USD", "maxPages": 25, "enabled": true },
     { "id": 5, "nombre": "NNET", "plataforma": "auto", "baseUrl": "https://www.nnet.com.uy", "moneda": "UYU", "enabled": true },
     { "id": 6, "nombre": "Banifox", "plataforma": "auto", "baseUrl": "https://www.banifox.com.uy", "moneda": "UYU", "enabled": true },
