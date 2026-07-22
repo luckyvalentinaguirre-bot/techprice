@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Administrar tiendas · TechPrice</title>
+<style>
+:root {
+  --bg: #07070d; --surface: #101019; --surface-2: #191926; --border: #262636;
+  --border-strong: #3a3a52; --text: #f3f3f9; --muted: #9a9ab0; --muted-2: #676782;
+  --brand: #a855f7; --brand-hover: #c084fc; --negative: #ff5f7a; --positive: #2ee6a6;
+  --glow: 0 0 18px 2px color-mix(in srgb, var(--brand) 45%, transparent);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 780px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+h1 { font-size: 1.5rem; margin: 0; letter-spacing: -0.02em; }
+.brand-dot { color: var(--brand); }
+.sub { color: var(--muted); font-size: 0.95rem; margin: 0.4rem 0 1.5rem; line-height: 1.5; }
+.sub b { color: var(--text); }
+.back { color: var(--brand); font-weight: 600; text-decoration: none; white-space: nowrap; padding: 0.5rem 0.9rem; border: 1px solid color-mix(in srgb, var(--brand) 45%, var(--border-strong)); border-radius: 999px; font-size: 0.9rem; }
+.back:hover { box-shadow: var(--glow); }
+.bulk { display: flex; gap: 0.6rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+.btn { font: inherit; font-size: 0.85rem; font-weight: 600; padding: 0.55rem 1rem; border-radius: 999px; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); cursor: pointer; transition: all .18s; }
+.btn:hover { border-color: var(--brand); box-shadow: var(--glow); }
+.count { margin-left: auto; align-self: center; color: var(--muted); font-size: 0.9rem; }
+.count b { color: var(--positive); }
+.list { display: flex; flex-direction: column; gap: 0.6rem; }
+.store { display: flex; align-items: center; gap: 0.9rem; padding: 0.9rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; transition: opacity .18s, border-color .18s; }
+.store.off { opacity: 0.5; }
+.store__logo { width: 40px; height: 40px; border-radius: 10px; background: var(--surface-2); display: grid; place-items: center; font-weight: 700; color: var(--brand); flex-shrink: 0; }
+.store__body { flex: 1; min-width: 0; }
+.store__name { font-weight: 600; }
+.store__meta { font-size: 0.8rem; color: var(--muted-2); }
+.switch { flex-shrink: 0; width: 50px; height: 30px; border-radius: 999px; border: none; padding: 0; cursor: pointer; background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--border-strong); position: relative; transition: all .18s; }
+.switch__knob { position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: var(--muted); transition: all .18s; }
+.switch.on { background: var(--brand); box-shadow: inset 0 0 0 1px var(--brand), var(--glow); }
+.switch.on .switch__knob { transform: translateX(20px); background: #fff; }
+.hint { margin-top: 1.5rem; padding: 1rem 1.1rem; background: color-mix(in srgb, var(--brand) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--brand) 30%, var(--border)); border-radius: 12px; font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+.hint b { color: var(--text); }
+.empty { color: var(--muted); padding: 2rem 0; }
+kbd { background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 6px; padding: 1px 6px; font-size: 0.85em; color: var(--text); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>Administrar tiendas <span class="brand-dot">·</span> TechPrice</h1>
+    <a class="back" href="index.html">← Ir al comparador</a>
+  </div>
+  <p class="sub">Prendé o apagá las tiendas que querés ver. Se guarda en este navegador. Después, en el comparador, recargá con <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> y aparecen <b>solo las que dejaste activas</b>.</p>
+
+  <div class="bulk">
+    <button class="btn" id="all-on">Activar todas</button>
+    <button class="btn" id="all-off">Desactivar todas</button>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="list" id="list"><p class="empty">Cargando tiendas…</p></div>
+
+  <div class="hint">💡 Este panel controla <b>qué tiendas se muestran</b> en el comparador (no borra datos). Los cambios se aplican al recargar el comparador. Si querés que una tienda <b>ni se descargue</b> al generar los datos, eso se hace en <code>scripts/stores.config.json</code>.</div>
+</div>
+
+<script>
+(function () {
+  var KEY = "techprice_tiendas_off";
+  var $ = function (s) { return document.querySelector(s); };
+  var esc = function (s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); };
+
+  function leerOff() { try { return new Set((JSON.parse(localStorage.getItem(KEY)) || []).map(Number)); } catch (e) { return new Set(); } }
+  function guardarOff(set) { try { localStorage.setItem(KEY, JSON.stringify([].concat(Array.from(set)))); } catch (e) {} }
+
+  var off = leerOff();
+  var tiendas = [];
+
+  function iniciales(nombre) {
+    return String(nombre).replace(/\(demo\)/i, "").trim().split(/\s+/).slice(0, 2).map(function (w) { return w[0]; }).join("").toUpperCase();
+  }
+
+  function render() {
+    var list = $("#list");
+    if (!tiendas.length) { list.innerHTML = '<p class="empty">No se encontraron tiendas. Abrí esta página por HTTP (localhost), no con doble clic.</p>'; return; }
+    list.innerHTML = tiendas.map(function (t) {
+      var isOff = off.has(Number(t.id));
+      return '<div class="store' + (isOff ? " off" : "") + '">' +
+        '<span class="store__logo">' + esc(iniciales(t.nombre)) + "</span>" +
+        '<div class="store__body"><div class="store__name">' + esc(t.nombre) + "</div>" +
+        '<div class="store__meta">' + esc((t.plataforma || "").replace(/_/g, " ") || "tienda") + "</div></div>" +
+        '<button class="switch' + (isOff ? "" : " on") + '" data-id="' + t.id + '" role="switch" aria-checked="' + (!isOff) + '" aria-label="' + (isOff ? "Activar " : "Desactivar ") + esc(t.nombre) + '"><span class="switch__knob"></span></button>' +
+        "</div>";
+    }).join("");
+    var activas = tiendas.filter(function (t) { return !off.has(Number(t.id)); }).length;
+    $("#count").innerHTML = "<b>" + activas + "</b> de " + tiendas.length + " activas";
+  }
+
+  document.addEventListener("click", function (e) {
+    var sw = e.target.closest("[data-id]");
+    if (!sw) return;
+    var id = Number(sw.getAttribute("data-id"));
+    if (off.has(id)) off.delete(id); else off.add(id);
+    guardarOff(off);
+    render();
+  });
+  $("#all-on").addEventListener("click", function () { off = new Set(); guardarOff(off); render(); });
+  $("#all-off").addEventListener("click", function () { off = new Set(tiendas.map(function (t) { return Number(t.id); })); guardarOff(off); render(); });
+
+  fetch("data/tiendas.json")
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function (data) { tiendas = data.sort(function (a, b) { return String(a.nombre).localeCompare(b.nombre); }); render(); })
+    .catch(function () { $("#list").innerHTML = '<p class="empty">No se pudieron cargar las tiendas (data/tiendas.json). Abrí esta página por HTTP (localhost).</p>'; });
+})();
+</script>
+</body>
+</html>
