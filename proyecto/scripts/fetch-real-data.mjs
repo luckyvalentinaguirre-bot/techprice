@@ -34,7 +34,10 @@ const SELFTEST = process.argv.includes("--selftest");
 const FRESH = process.argv.includes("--fresh"); // ignora los datos previos (arranca de cero)
 // Cuántas fichas se piden en paralelo al scrapear. Más = más rápido (pero más
 // carga de red/servidor). Se puede ajustar: TP_CONCURRENCY=16 node scripts/...
-const CONCURRENCY = Math.max(1, Number(process.env.TP_CONCURRENCY) || 12);
+const CONCURRENCY = Math.max(1, Number(process.env.TP_CONCURRENCY) || 8);
+// Cuántas TIENDAS se procesan a la vez (en paralelo). TP_STORES para ajustar.
+const STORE_CONCURRENCY = Math.max(1, Number(process.env.TP_STORES) || 3);
+let PARALLEL = false; // cuando hay varias tiendas a la vez, no imprimimos el progreso por ficha (se mezclaría)
 
 /* ----------------------------- clasificación ----------------------------- */
 const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
@@ -387,15 +390,15 @@ async function fromScrape(store) {
   //    tienda no es scrapeable con este lector → la descartamos rápido.
   const muestra = sampleSpread(urls, 8);
   const probe = (await mapPool(muestra, 4, scrapeOne)).filter(Boolean);
-  if (!probe.length) { process.stdout.write("sin datos scrapeables, la salteo… "); return []; }
-  // 4) scrapear el resto con paralelismo moderado y aviso de progreso
-  process.stdout.write(`(${urls.length} fichas) `);
+  if (!probe.length) return [];
+  // 4) scrapear el resto (progreso por ficha solo si NO corren varias tiendas a la vez)
+  if (!PARALLEL) process.stdout.write(`(${urls.length} fichas) `);
   const enMuestra = new Set(muestra);
   const resto = urls.filter((u) => !enMuestra.has(u));
   let done = probe.length;
   const more = (await mapPool(resto, store.concurrency || CONCURRENCY, async (url) => {
     const r = await scrapeOne(url);
-    if (++done % 250 === 0) process.stdout.write(`${done}… `);
+    if (!PARALLEL && ++done % 250 === 0) process.stdout.write(`${done}… `);
     return r;
   })).filter(Boolean);
   return probe.concat(more);
@@ -483,27 +486,26 @@ async function main() {
     rawPorTienda.push({ store: { id: 4, nombre: "Thot (selftest)", plataforma: "woocommerce" }, items: SAMPLE });
   } else {
     if (enabled.length === 0) { console.error("No hay tiendas con enabled:true en scripts/stores.config.json"); process.exit(1); }
-    for (const store of enabled) {
+    PARALLEL = STORE_CONCURRENCY > 1;
+    const procesarTienda = async (store) => {
       let plataforma = store.plataforma;
       if (!plataforma || plataforma === "auto") {
-        process.stdout.write(`Detectando ${store.nombre}… `);
-        plataforma = await detectPlatform(store).catch(() => null);
-        if (!plataforma) {
-          // Sin API JSON: probamos scraping de microdata como último recurso.
-          // El sondeo dentro de fromScrape descarta rápido si no hay datos.
-          process.stdout.write("sin API, pruebo scraping… ");
-          plataforma = "scrape";
-        } else {
-          console.log("es " + plataforma);
-        }
+        // Sin API JSON: scraping de microdata como último recurso (el sondeo lo descarta rápido si no sirve).
+        plataforma = (await detectPlatform(store).catch(() => null)) || "scrape";
       }
       const fetcher = FETCHERS[plataforma];
-      if (!fetcher) { console.log(`Plataforma no soportada (${plataforma}) en ${store.nombre}, la salteo`); continue; }
+      if (!fetcher) { console.log(`•  ${store.nombre}: plataforma no soportada (${plataforma})`); return; }
       const s = { ...store, plataforma };
-      process.stdout.write(`Leyendo ${store.nombre} (${plataforma})… `);
-      try { const items = await fetcher(s); console.log(items.length + " productos"); if (items.length) rawPorTienda.push({ store: s, items }); }
-      catch (e) { console.log("ERROR: " + e.message); }
-    }
+      console.log(`→  Leyendo ${store.nombre} (${plataforma})…`);
+      try {
+        const items = await fetcher(s);
+        console.log(`✓  ${store.nombre}: ${items.length} productos`);
+        if (items.length) rawPorTienda.push({ store: s, items });
+      } catch (e) {
+        console.log(`✗  ${store.nombre}: ERROR ${e.message}`);
+      }
+    };
+    await mapPool(enabled, STORE_CONCURRENCY, procesarTienda);
   }
 
   const prev = FRESH || SELFTEST
