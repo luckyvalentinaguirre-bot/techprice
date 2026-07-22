@@ -20,6 +20,13 @@
     { "id": 17, "nombre": "Loi Tecnología", "plataforma": "auto", "baseUrl": "https://www.loi.com.uy", "moneda": "UYU", "enabled": true },
     { "id": 18, "nombre": "Punto Digital", "plataforma": "auto", "baseUrl": "https://www.puntodigital.com.uy", "moneda": "UYU", "enabled": true },
 
+    { "_nota_candidatas": "Tiendas candidatas: con auto-detección, si no exponen API (WooCommerce/Shopify/VTEX) se saltean solas. Podés cambiar el baseUrl o agregar las que quieras.", "id": 20, "nombre": "Multipoint", "plataforma": "auto", "baseUrl": "https://www.multipoint.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 21, "nombre": "El País Tienda", "plataforma": "auto", "baseUrl": "https://tienda.elpais.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 22, "nombre": "Sein", "plataforma": "auto", "baseUrl": "https://www.sein.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 23, "nombre": "Deragon", "plataforma": "auto", "baseUrl": "https://www.deragon.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 24, "nombre": "TechZone", "plataforma": "auto", "baseUrl": "https://www.techzone.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 25, "nombre": "Gaming City", "plataforma": "auto", "baseUrl": "https://www.gamingcity.com.uy", "moneda": "UYU", "enabled": true },
+
     { "_nota": "Mercado Libre restringió su API de búsqueda (403 aun con token). Queda apagado.", "id": 99, "nombre": "Mercado Libre UY", "plataforma": "mercadolibre", "site": "MLU", "moneda": "UYU", "token": "", "maxPorBusqueda": 100, "queries": ["placa de video rtx", "procesador ryzen", "memoria ram ddr5", "disco ssd nvme", "monitor gamer"], "enabled": false }
   ]
 }

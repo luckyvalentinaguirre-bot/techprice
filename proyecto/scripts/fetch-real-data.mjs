@@ -140,58 +140,70 @@ async function getJson(url, headers = {}, timeoutMs = 12000) {
 }
 
 // Detecta sola la plataforma de una tienda probando los endpoints conocidos.
+// Prueba varias variantes: WooCommerce (2 rutas), Shopify/products.json y VTEX.
 async function detectPlatform(store) {
   const base = store.baseUrl.replace(/\/$/, "");
+  const asArr = (d) => (Array.isArray(d) ? d : (d && d.products) || null);
   const tries = [
-    ["woocommerce", `${base}/wp-json/wc/store/v1/products?per_page=1`, (d) => d[0] && (d[0].prices || d[0].permalink)],
-    ["tiendanube", `${base}/products.json?page=1`, (d) => d[0] && (d[0].variants || d[0].handle || d[0].name)],
-    ["vtex", `${base}/api/catalog_system/pub/products/search?_from=0&_to=0`, (d) => d[0] && (d[0].items || d[0].productName || d[0].linkText)],
+    ["woocommerce", `${base}/wp-json/wc/store/v1/products?per_page=1`, (d) => Array.isArray(d) && d[0] && (d[0].prices || d[0].permalink)],
+    ["woocommerce", `${base}/wp-json/wc/store/products?per_page=1`, (d) => Array.isArray(d) && d[0] && (d[0].prices || d[0].permalink)],
+    ["shopify", `${base}/products.json?limit=1`, (d) => { const a = asArr(d); return a && a[0] && (a[0].variants || a[0].handle || a[0].title || a[0].name); }],
+    ["vtex", `${base}/api/catalog_system/pub/products/search?_from=0&_to=0`, (d) => Array.isArray(d) && d[0] && (d[0].items || d[0].productName || d[0].linkText)],
   ];
   for (const [plat, url, ok] of tries) {
     try {
       const data = await getJson(url, {}, 10000);
-      if (Array.isArray(data) && data.length > 0 && ok(data)) return plat;
+      if (ok(data)) return plat;
     } catch { /* probar la siguiente */ }
   }
   return null;
 }
 
 async function fromWoo(store) {
-  const out = [];
-  for (let page = 1; page <= (store.maxPages || 20); page++) {
-    const url = `${store.baseUrl.replace(/\/$/, "")}/wp-json/wc/store/v1/products?page=${page}&per_page=100`;
-    const arr = await getJson(url).catch(() => []);
-    if (!Array.isArray(arr) || arr.length === 0) break;
-    for (const p of arr) {
-      const minor = p.prices?.currency_minor_unit ?? 2;
-      out.push({
-        nombre: p.name, precio: parseFloat(p.prices?.price) / 10 ** minor,
-        moneda: p.prices?.currency_code || store.moneda || "UYU",
-        imagen: p.images?.[0]?.src || null, url: p.permalink, disponible: p.is_in_stock !== false,
-      });
+  const base = store.baseUrl.replace(/\/$/, "");
+  // Algunos WooCommerce exponen la Store API en /wc/store/v1 y otros en /wc/store.
+  for (const path of ["/wp-json/wc/store/v1/products", "/wp-json/wc/store/products"]) {
+    const out = [];
+    for (let page = 1; page <= (store.maxPages || 20); page++) {
+      const arr = await getJson(`${base}${path}?page=${page}&per_page=100`).catch(() => null);
+      if (!Array.isArray(arr) || arr.length === 0) break;
+      for (const p of arr) {
+        const minor = p.prices?.currency_minor_unit ?? 2;
+        out.push({
+          nombre: p.name, precio: parseFloat(p.prices?.price) / 10 ** minor,
+          moneda: p.prices?.currency_code || store.moneda || "UYU",
+          imagen: p.images?.[0]?.src || null, url: p.permalink, disponible: p.is_in_stock !== false,
+        });
+      }
+      if (arr.length < 100) break;
+      await new Promise((r) => setTimeout(r, 500));
     }
-    if (arr.length < 100) break;
-    await new Promise((r) => setTimeout(r, 500));
+    if (out.length) return out;
   }
-  return out;
+  return [];
 }
 
-async function fromTiendanube(store) {
+// Shopify (y Tiendanube que exponen /products.json). Acepta tanto un array
+// suelto como { products: [...] }.
+async function fromShopify(store) {
+  const base = store.baseUrl.replace(/\/$/, "");
   const out = [];
   for (let page = 1; page <= (store.maxPages || 20); page++) {
-    const url = `${store.baseUrl.replace(/\/$/, "")}/products.json?page=${page}`;
-    const arr = await getJson(url).catch(() => []);
-    if (!Array.isArray(arr) || arr.length === 0) break;
+    const data = await getJson(`${base}/products.json?limit=250&page=${page}`).catch(() => null);
+    const arr = Array.isArray(data) ? data : (data && data.products) || [];
+    if (!arr.length) break;
     for (const p of arr) {
       const v = (p.variants && p.variants[0]) || {};
-      const nombre = typeof p.name === "object" ? p.name.es || Object.values(p.name)[0] : p.name;
+      const nombre = typeof p.name === "object" ? p.name.es || Object.values(p.name)[0] : (p.title || p.name);
+      const handle = typeof p.handle === "object" ? p.handle.es || Object.values(p.handle)[0] : p.handle;
       out.push({
         nombre, precio: parseFloat(v.price), moneda: store.moneda || "UYU",
-        imagen: p.images?.[0]?.src || null, url: p.canonical_url || (store.baseUrl + "/" + (p.handle?.es || "")),
+        imagen: p.images?.[0]?.src || p.image?.src || null,
+        url: p.canonical_url || `${base}/products/${handle || ""}`,
         disponible: v.available !== false,
       });
     }
-    if (arr.length < 1) break;
+    if (arr.length < 250) break;
     await new Promise((r) => setTimeout(r, 500));
   }
   return out;
@@ -248,7 +260,7 @@ async function fromVtex(store) {
   return out;
 }
 
-const FETCHERS = { woocommerce: fromWoo, tiendanube: fromTiendanube, vtex: fromVtex, mercadolibre: fromMercadoLibre };
+const FETCHERS = { woocommerce: fromWoo, shopify: fromShopify, tiendanube: fromShopify, vtex: fromVtex, mercadolibre: fromMercadoLibre };
 
 /* --------------------------- armar el dataset ---------------------------- */
 function buildDataset(rawPorTienda, storesMeta, prev) {
