@@ -15,6 +15,16 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
+
+// Scrapear miles de páginas puede pasarse del tope de memoria por defecto de
+// Node (~2GB). Nos relanzamos una vez con más heap para no crashear, sin que
+// tengas que cambiar el comando.
+if (!process.env.__TP_HEAP) {
+  const r = spawnSync(process.execPath, ["--max-old-space-size=4096", fileURLToPath(import.meta.url), ...process.argv.slice(2)],
+    { stdio: "inherit", env: { ...process.env, __TP_HEAP: "1" } });
+  process.exit(r.status ?? 1);
+}
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, "..");
@@ -350,8 +360,9 @@ async function fromScrape(store) {
     urls.push(...[...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/g)].map((m) => m[1]).filter((u) => !u.endsWith(".xml")));
   }
   urls = [...new Set(urls)];
-  // Tope de seguridad: evita dispararle miles de requests a un catálogo enorme.
-  urls = urls.slice(0, store.maxItems || 3500);
+  // Tope de seguridad: evita dispararle miles de requests a un catálogo enorme
+  // (y controla la memoria). Se puede subir por tienda con "maxItems".
+  urls = urls.slice(0, store.maxItems || 2500);
   if (!urls.length) return [];
   const scrapeOne = async (url) => { const h = await getText(url).catch(() => null); return h ? parseSchemaProduct(h, url, store) : null; };
   // 3) SONDEO: probar unas pocas fichas repartidas. Si ninguna da datos, la
@@ -364,7 +375,7 @@ async function fromScrape(store) {
   const enMuestra = new Set(muestra);
   const resto = urls.filter((u) => !enMuestra.has(u));
   let done = probe.length;
-  const more = (await mapPool(resto, store.concurrency || 6, async (url) => {
+  const more = (await mapPool(resto, store.concurrency || 5, async (url) => {
     const r = await scrapeOne(url);
     if (++done % 250 === 0) process.stdout.write(`${done}… `);
     return r;
