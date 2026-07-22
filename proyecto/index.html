@@ -1450,6 +1450,31 @@ section.panel h2 {
 .pick-item__spec { font-size: 0.76rem; color: var(--muted-2); }
 .pick-item__price { font-size: 0.95rem; font-weight: 700; color: var(--positive); white-space: nowrap; }
 
+/* ---- Mis PCs (builds guardadas) ---- */
+.mypc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-4); }
+.mypc-empty { color: var(--muted); font-size: 0.92rem; padding: var(--space-5) 0; }
+.mypc-card {
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  background: var(--surface); padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3);
+}
+.mypc-card__head { display: flex; align-items: center; gap: var(--space-2); }
+.mypc-card__name { font-size: 1.05rem; font-weight: 650; flex: 1; min-width: 0; }
+.mypc-card__date { font-size: 0.76rem; color: var(--muted-2); white-space: nowrap; }
+.mypc-card__del { font: inherit; font-size: 0.78rem; color: var(--muted); background: none; border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 0.2rem 0.6rem; cursor: pointer; }
+.mypc-card__del:hover { color: var(--negative); border-color: var(--negative); }
+.mypc-parts { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+.mypc-part { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem var(--space-3); align-items: baseline; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+.mypc-part__cat { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--muted-2); font-weight: 600; }
+.mypc-part__name { font-size: 0.86rem; grid-column: 1; }
+.mypc-part__price { font-size: 0.9rem; font-weight: 700; color: var(--positive); white-space: nowrap; grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+.mypc-part__store { font-size: 0.76rem; grid-column: 1; }
+.mypc-part__store a { color: var(--brand); font-weight: 600; }
+.mypc-part__store a:hover { text-decoration: underline; }
+.mypc-part__store--off { color: var(--muted-2); }
+.mypc-card__foot { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); margin-top: auto; padding-top: var(--space-2); }
+.mypc-card__foot .lbl { font-size: 0.8rem; color: var(--muted); }
+.mypc-card__total { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+
 @media (max-width: 860px) {
   .builder { grid-template-columns: 1fr; }
   .builder__summary { position: static; }
@@ -1463,6 +1488,7 @@ section.panel h2 {
     <a href="#" class="brand"><span class="brand__mark"><svg class="" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4v16h16M8 15l3-4 3 2 4-6"/></svg></span>TechPrice <span>Uruguay</span></a>
     <nav class="site-nav">
       <a href="#section-destacados">Productos</a>
+      <a href="#section-mis-pcs">Mis PCs</a>
       <a href="#section-armar" class="site-nav__cta">Armá tu PC</a>
     </nav>
   </div>
@@ -1499,6 +1525,12 @@ section.panel h2 {
         <div class="builder__slots" id="builder-slots"></div>
         <aside class="builder__summary" id="builder-summary"></aside>
       </div>
+    </section>
+
+    <section class="section" id="section-mis-pcs">
+      <div class="section__head"><div><h2 class="section__title">Mis PCs</h2><p class="section__subtitle">Las PCs que armaste, con el precio de cada componente y el link a la tienda más barata. Se guardan en este navegador.</p></div>
+        <button class="section__link" id="clear-mis-pcs" type="button">Borrar todas</button></div>
+      <div class="mypc-grid" id="grid-mis-pcs"></div>
     </section>
 
     <section class="section" id="section-categorias">

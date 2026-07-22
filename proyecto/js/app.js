@@ -79,7 +79,13 @@
   /* =========================== MODELO EN MEMORIA ========================= */
   let MODEL = { productos: [], tiendas: new Map(), ultimaFecha: null };
 
+  // Todo se muestra en dólares. Los precios en pesos (UYU) se pasan a USD
+  // dividiendo por esta cotización aproximada.
+  const USD_RATE = 40;
+  const aUsd = (row) => (row.moneda === "USD" ? row : { ...row, precio: row.precio / USD_RATE, moneda: "USD" });
+
   function construirModelo(productos, tiendas, precios) {
+    precios = precios.map(aUsd); // normalizar a USD antes de construir el modelo
     const tiendasById = new Map(tiendas.map((t) => [t.id, t]));
     const preciosPorProducto = new Map();
     let ultimaFecha = null;
@@ -102,7 +108,7 @@
         tiendaId: r.tienda,
         tienda: (tiendasById.get(r.tienda) || {}).nombre || "Tienda " + r.tienda,
         precio: r.precio,
-        moneda: r.moneda || "UYU",
+        moneda: r.moneda || "USD",
         disponible: r.disponible !== false,
         url: r.url || "#",
         fecha: r.fecha,
@@ -114,7 +120,7 @@
       const lowest = precios_.length ? Math.min(...precios_) : 0;
       const highest = precios_.length ? Math.max(...precios_) : 0;
       const avg = precios_.length ? Math.round(precios_.reduce((a, b) => a + b, 0) / precios_.length) : 0;
-      const moneda = (ref[0] && ref[0].moneda) || "UYU";
+      const moneda = (ref[0] && ref[0].moneda) || "USD";
       const cheapest = ref.find((o) => o.precio === lowest);
 
       // Cambio reciente: menor precio de la última fecha vs la fecha anterior.
@@ -288,6 +294,7 @@
     wireCategorias();
     marcarChipActivo();
     renderBuilder();
+    renderMisPcs();
   }
 
   /* ========================= BUSCADOR + FILTROS ======================== */
@@ -465,6 +472,7 @@
     $("#modal-root").addEventListener("click", (e) => { if (e.target.id === "modal-root") closeModal(); });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
     const reset = $("#reset-build"); if (reset) reset.addEventListener("click", resetBuild);
+    const clr = $("#clear-mis-pcs"); if (clr) clr.addEventListener("click", borrarTodasLasPcs);
   }
 
   /* =============================== ARMADOR ============================= */
@@ -651,22 +659,101 @@
     let bestBox = "";
     if (elegidas.length) {
       if (single && single.suma > totalBest)
-        bestBox = '<div class="summary__best">' + icon("store", 14) + "<span>Comprando cada parte en la tienda más barata ahorrás <b>" + money(single.suma - totalBest, "UYU") + "</b> frente a comprar todo en " + esc(single.nombre) + " (" + money(single.suma, "UYU") + ").</span></div>";
+        bestBox = '<div class="summary__best">' + icon("store", 14) + "<span>Comprando cada parte en la tienda más barata ahorrás <b>" + money(single.suma - totalBest, "USD") + "</b> frente a comprar todo en " + esc(single.nombre) + " (" + money(single.suma, "USD") + ").</span></div>";
       else if (single)
-        bestBox = '<div class="summary__best">' + icon("store", 14) + "<span>" + esc(single.nombre) + " tiene todas las partes y es lo más conveniente: " + money(single.suma, "UYU") + ".</span></div>";
+        bestBox = '<div class="summary__best">' + icon("store", 14) + "<span>" + esc(single.nombre) + " tiene todas las partes y es lo más conveniente: " + money(single.suma, "USD") + ".</span></div>";
       else
         bestBox = '<div class="summary__note">' + icon("store", 14) + "<span>Ninguna tienda tiene todas las partes: el total es comprando cada una donde está más barata.</span></div>";
     }
 
     $("#builder-summary").innerHTML =
-      '<div><div class="summary__hint">Total (mejor precio por parte)</div><div class="summary__total">' + money(totalBest, "UYU") + "</div>" +
+      '<div><div class="summary__hint">Total (mejor precio por parte)</div><div class="summary__total">' + money(totalBest, "USD") + "</div>" +
       '<div class="summary__hint">' + elegidas.length + " de " + SLOTS.length + " partes elegidas</div></div>" +
       compatNote + psuNote + bestBox +
+      (elegidas.length ? '<button class="btn btn--primary" id="save-build" type="button" style="width:100%">' + icon("plus", 15) + " Guardar en Mis PCs</button>" : "") +
       (elegidas.length ? '<button class="btn" id="reset-build-2" type="button" style="width:100%">Vaciar selección</button>' : "");
 
     $("#builder-slots").querySelectorAll("[data-pick]").forEach((b) => b.addEventListener("click", () => openPicker(b.getAttribute("data-pick"))));
     $("#builder-slots").querySelectorAll("[data-remove]").forEach((b) => b.addEventListener("click", () => removePart(b.getAttribute("data-remove"))));
     const r2 = $("#reset-build-2"); if (r2) r2.addEventListener("click", resetBuild);
+    const sb = $("#save-build"); if (sb) sb.addEventListener("click", guardarBuild);
+  }
+
+  /* ============================== MIS PCs ============================== */
+  const MISPC_KEY = "techprice_mis_pcs";
+
+  function leerMisPcs() {
+    try { return JSON.parse(localStorage.getItem(MISPC_KEY)) || []; } catch { return []; }
+  }
+  function escribirMisPcs(lista) {
+    try { localStorage.setItem(MISPC_KEY, JSON.stringify(lista)); } catch { /* sin espacio: se ignora */ }
+  }
+
+  // Toma un "snapshot" de la build actual: precio y tienda más barata de cada
+  // parte, con su link. Se guarda tal cual, así queda aunque cambien los datos.
+  function guardarBuild() {
+    const elegidas = SLOTS.map((s) => ({ slot: s, m: build[s.cat] ? byId(build[s.cat]) : null })).filter((x) => x.m);
+    if (!elegidas.length) return;
+    const items = elegidas.map(({ slot, m }) => {
+      const o = bestOffer(m);
+      return {
+        categoria: m.categoria, label: slot.label, nombre: m.nombre,
+        precio: o ? o.precio : null, moneda: o ? o.moneda : m.moneda,
+        tienda: o ? o.tienda : null, url: o && o.url ? o.url : null,
+      };
+    });
+    const total = items.reduce((a, it) => a + (it.precio || 0), 0);
+    const moneda = (items.find((i) => i.moneda) || {}).moneda || "USD";
+    const lista = leerMisPcs();
+    const pc = { id: Date.now(), nombre: "Mi PC #" + (lista.length + 1), fecha: MODEL.ultimaFecha || new Date().toISOString().slice(0, 10), items, total, moneda };
+    lista.unshift(pc);
+    escribirMisPcs(lista);
+    renderMisPcs();
+    $("#section-mis-pcs").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function borrarBuild(id) {
+    escribirMisPcs(leerMisPcs().filter((p) => String(p.id) !== String(id)));
+    renderMisPcs();
+  }
+  function borrarTodasLasPcs() {
+    if (!leerMisPcs().length) return;
+    if (typeof confirm === "function" && !confirm("¿Borrar todas las PCs guardadas?")) return;
+    escribirMisPcs([]);
+    renderMisPcs();
+  }
+
+  function misPcCard(pc) {
+    const filas = pc.items.map((it) =>
+      '<li class="mypc-part">' +
+        '<span class="mypc-part__cat">' + esc(it.label || it.categoria) + "</span>" +
+        '<span class="mypc-part__name">' + esc(it.nombre) + "</span>" +
+        '<span class="mypc-part__price">' + (it.precio != null ? money(it.precio, it.moneda) : "—") + "</span>" +
+        '<span class="mypc-part__store">' +
+          (it.url ? '<a href="' + esc(it.url) + '" target="_blank" rel="noopener noreferrer">' + esc(it.tienda || "Ver en tienda") + " " + icon("arrowRight", 12) + "</a>"
+                  : '<span class="mypc-part__store--off">' + esc(it.tienda || "Sin tienda") + "</span>") +
+        "</span>" +
+      "</li>").join("");
+    return '<article class="mypc-card">' +
+      '<div class="mypc-card__head">' +
+        '<span class="mypc-card__name">' + esc(pc.nombre) + "</span>" +
+        '<span class="mypc-card__date">' + relativo(pc.fecha) + "</span>" +
+        '<button class="mypc-card__del" data-del-pc="' + pc.id + '">Borrar</button>' +
+      "</div>" +
+      '<ul class="mypc-parts">' + filas + "</ul>" +
+      '<div class="mypc-card__foot"><span class="lbl">Total (mejor precio por parte)</span>' +
+        '<span class="mypc-card__total">' + money(pc.total, pc.moneda) + "</span></div>" +
+    "</article>";
+  }
+
+  function renderMisPcs() {
+    const grid = $("#grid-mis-pcs");
+    if (!grid) return;
+    const lista = leerMisPcs();
+    grid.innerHTML = lista.length
+      ? lista.map(misPcCard).join("")
+      : '<p class="mypc-empty">Todavía no guardaste ninguna PC. Armá una en <b>“Armá tu PC”</b> y tocá <b>“Guardar en Mis PCs”</b>.</p>';
+    grid.querySelectorAll("[data-del-pc]").forEach((b) => b.addEventListener("click", () => borrarBuild(b.getAttribute("data-del-pc"))));
   }
 
   /* =============================== DATOS ================================ */
