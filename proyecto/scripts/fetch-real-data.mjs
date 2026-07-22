@@ -88,9 +88,13 @@ const SIG = {
 };
 const contarComponentes = (n) => (SIG.cpu(n) ? 1 : 0) + (SIG.gpu(n) ? 1 : 0) + (SIG.ram(n) ? 1 : 0) + (SIG.ssd(n) ? 1 : 0);
 
+// Accesorios/partes que aparecen ANTES de "notebook/laptop" => NO es la notebook,
+// es un repuesto/accesorio para notebook (memoria, ssd, cargador, pantalla…).
+// Como el sustantivo va antes, no rompe una notebook real ("Notebook … 512GB SSD",
+// donde 'ssd' va DESPUÉS de 'notebook').
+const NB_ACCESORIO = /(soporte|base|funda|maletin|malet[ií]n|mochila|cooler|almohadilla|cargador|bater[ií]a|\bpila\b|teclado|filtro|adaptador|memoria|\bram\b|\bssd\b|\bhdd\b|\bdisco\b|\bnvme\b|sodimm|\bcable\b|\bpantalla\b|\bdisplay\b|bisagra|\bflex\b|ventilador|disipador|webcam|c[aá]mara|micr[oó]fono|\bhub\b|\bdock\b|docking|\bfuente\b|\bmembrana\b|\bcarcasa\b|\bbezel\b|\bpad\b|limpia)\b.{0,45}\b(notebook|laptop|port[aá]til)\b/;
 function esNotebook(n) {
-  // Evitar accesorios: "soporte/base/cooler/funda para notebook" no es una notebook.
-  if (/(soporte|base|funda|maletin|malet[ií]n|mochila|cooler|almohadilla|cargador|bater[ií]a|teclado|filtro|adaptador)\b.*\bnotebook\b/.test(n)) return false;
+  if (NB_ACCESORIO.test(n)) return false;
   return NOTEBOOK.test(n);
 }
 const esPrebuiltKw = (n) => PREBUILT.test(n) || (/^\s*pc\b/.test(n) && contarComponentes(n) >= 1);

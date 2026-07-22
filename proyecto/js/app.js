@@ -358,6 +358,7 @@
     let list = MODEL.productos;
     if (filtros.q) list = list.filter((m) => m._buscable.includes(filtros.q));
     if (filtros.cat) list = list.filter((m) => m.categoria === filtros.cat);
+    else if (!filtros.q) list = list.filter((m) => m.categoria !== "Otros"); // sin categoría clara => fuera del listado general (la búsqueda sí llega a "Otros")
     if (filtros.marca) list = list.filter((m) => m.marca === filtros.marca);
     if (filtros.min != null) list = list.filter((m) => m.lowest >= filtros.min);
     if (filtros.max != null) list = list.filter((m) => m.lowest <= filtros.max);
