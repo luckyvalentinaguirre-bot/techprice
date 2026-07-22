@@ -148,12 +148,25 @@ const clean = (o) => { for (const k of Object.keys(o)) if (o[k] == null || o[k] 
 
 /* ------------------------- matching entre tiendas ------------------------ */
 const BRANDS = "asus msi gigabyte asrock intel amd ryzen corsair kingston samsung western wd nzxt lian deepcool noctua logitech hyperx lg acer lenovo sapphire evga zotac gainward palit xfx powercolor seasonic thermaltake redragon tp-link hp dell gskill crucial adata pny".split(" ");
+const STOP = new Set(("de del la el los las con para por sin y o u a e un una en al x cm mm mt mts mtr metro metros pulgadas pulg color negro negra blanco blanca gris azul roja rojo verde nuevo nueva original con para").split(" "));
+// Firma para emparejar el MISMO producto entre tiendas. Antes usaba solo "el
+// número más largo", y eso fusionaba cosas distintas que compartían un número
+// suelto (ej. "Cable 5 metros" y "Tira LED 5 metros"). Ahora usa TODOS los
+// modelos alfanuméricos distintivos (rtx4060, 5050, cat6…) + variantes (Ti/XT/
+// Super), y si no hay modelo, las palabras clave del nombre.
 function claveModelo(nombre, cat) {
   const toks = norm(nombre).replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter(Boolean);
   const brand = toks.find((t) => BRANDS.includes(t)) || "";
-  let model = "";
-  for (const t of toks) if (/\d/.test(t) && t.length > model.length) model = t;
-  return cat + "|" + brand + "|" + (model || toks.join(" "));
+  const modelos = [...new Set(toks.filter((t) => /\d/.test(t) && t.length >= 3))].sort();
+  let sig;
+  if (modelos.length) {
+    const variantes = [...new Set(toks.filter((t) => /^(ti|xt|super|max|pro|plus)$/.test(t)))].sort();
+    sig = modelos.join("-") + (variantes.length ? "+" + variantes.join("+") : "");
+  } else {
+    // Sin modelo claro: firma con las palabras significativas del nombre.
+    sig = [...new Set(toks.filter((t) => t.length >= 3 && !STOP.has(t) && !/^\d+$/.test(t)))].sort().slice(0, 8).join("-");
+  }
+  return cat + "|" + brand + "|" + (sig || toks.join(" "));
 }
 
 /* --------------------------------- fetch --------------------------------- */
