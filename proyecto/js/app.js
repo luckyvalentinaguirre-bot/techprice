@@ -473,6 +473,32 @@
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
     const reset = $("#reset-build"); if (reset) reset.addEventListener("click", resetBuild);
     const clr = $("#clear-mis-pcs"); if (clr) clr.addEventListener("click", borrarTodasLasPcs);
+    wireMenu();
+  }
+
+  /* ============================ MENÚ HAMBURGUESA ======================= */
+  function wireMenu() {
+    const drawer = $("#drawer");
+    const toggle = $("#menu-toggle");
+    if (!drawer || !toggle) return;
+    const closeBtn = $("#menu-close");
+    const abrir = () => {
+      drawer.hidden = false;
+      requestAnimationFrame(() => drawer.classList.add("is-open"));
+      toggle.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    };
+    const cerrar = () => {
+      drawer.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+      setTimeout(() => { drawer.hidden = true; }, 300);
+    };
+    toggle.addEventListener("click", () => (drawer.hidden ? abrir() : cerrar()));
+    if (closeBtn) closeBtn.addEventListener("click", cerrar);
+    drawer.querySelectorAll("[data-menu-close]").forEach((b) => b.addEventListener("click", cerrar));
+    drawer.querySelectorAll("[data-menu-link]").forEach((a) => a.addEventListener("click", cerrar));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !drawer.hidden) cerrar(); });
   }
 
   /* =============================== ARMADOR ============================= */
