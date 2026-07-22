@@ -73,7 +73,7 @@ const SCREEN = /\b1[0-8](\.\d)?\s?("|”|''|pulg|pulgadas|inch)/;
 const NOISE = /diferencia (de )?equipo|\bse[nñ]a\b|\breserva\b|garant[ií]a extendida|servicio t[eé]cnico|mano de obra|armado y (testeo|pruebas)|\bcuota[s]?\b|env[ií]o (gratis|a domicilio)?$|cambio de producto|devoluci[oó]n|reintegro|reembolso|gift ?card|tarjeta de regalo/;
 
 // Electrodomésticos / hogar (no son tecnología para comparar): se descartan.
-const NONTECH = /termotanque|calef[oó]n|\bplancha\b|planchita|heladera|\bfreezer\b|lavarropa|secarropa|lavavajilla|microonda|\banafe\b|cocina (a gas|el[eé]ctrica|industrial|combinada)|horno( el[eé]ctrico| a gas)?|aire acondicionado|\bsplit\b|calefactor|calefacci[oó]n|\bestufa\b|licuadora|batidora|procesadora de alimentos|cafetera|pava el[eé]ctrica|tostadora|sandwichera|aspiradora|secador de pelo|afeitadora|depiladora|garrafa|colch[oó]n|\bsomier\b|sill[oó]n|\bpuff\b|l[aá]mpara(?! (gamer|rgb))|ventilador (de )?(pie|techo|pared|20|18|16)/;
+const NONTECH = /termotanque|calef[oó]n|\bplancha\b|planchita|heladera|\bfreezer\b|lavarropa|secarropa|lavavajilla|microonda|\banafe\b|cocina (a gas|el[eé]ctrica|industrial|combinada)|horno( el[eé]ctrico| a gas)?|aire acondicionado|\bsplit\b|calefactor|calefacci[oó]n|\bestufa\b|licuadora|batidora|procesadora de alimentos|cafetera|pava el[eé]ctrica|tostadora|sandwichera|aspiradora|secador de pelo|afeitadora|depiladora|garrafa|colch[oó]n|\bsomier\b|sill[oó]n|\bpuff\b|l[aá]mpara(?! (gamer|rgb))|ventilador (de )?(pie|techo|pared|20|18|16)|bicicleta|spinning|cinta de correr|caminadora|trotadora|el[ií]ptic[ao]|mancuerna|\bgym\b|gimnasio|speediance|\bfitness\b|abdominal|escaladora|m[aá]quina (de )?gym/;
 
 // Detectores de componentes: cada uno responde "el nombre menciona este tipo de
 // pieza". La clave para no ensuciar las categorías es CONTAR cuántos aparecen:
@@ -336,7 +336,16 @@ async function getText(url, timeoutMs = 11000) {
   try {
     const res = await fetch(url, { headers: { ...UA, Accept: "text/html,application/xhtml+xml" }, signal: ctrl.signal, redirect: "follow" });
     if (!res.ok) throw new Error("HTTP " + res.status);
-    return await res.text();
+    // Decodifica con el charset real. Muchas webs UY vienen en latin-1/windows-1252;
+    // si se leyeran como UTF-8 salen caracteres rotos ("M�quina", "9700X � RTX").
+    const buf = new Uint8Array(await res.arrayBuffer());
+    const declarado = (res.headers.get("content-type") || "").match(/charset=([^;]+)/i)?.[1]?.trim().toLowerCase();
+    let text = new TextDecoder(declarado || "utf-8", { fatal: false }).decode(buf);
+    if (/�/.test(text.slice(0, 8000)) && declarado !== "windows-1252" && declarado !== "iso-8859-1") {
+      const alt = new TextDecoder("windows-1252").decode(buf); // reintento en latin-1
+      if (!/�/.test(alt.slice(0, 8000))) text = alt;
+    }
+    return text;
   } finally {
     clearTimeout(t);
   }
