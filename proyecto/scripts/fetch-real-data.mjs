@@ -72,6 +72,9 @@ const SCREEN = /\b1[0-8](\.\d)?\s?("|”|''|pulg|pulgadas|inch)/;
 // Basura real (no son productos comparables): se descartan por completo.
 const NOISE = /diferencia (de )?equipo|\bse[nñ]a\b|\breserva\b|garant[ií]a extendida|servicio t[eé]cnico|mano de obra|armado y (testeo|pruebas)|\bcuota[s]?\b|env[ií]o (gratis|a domicilio)?$|cambio de producto|devoluci[oó]n|reintegro|reembolso|gift ?card|tarjeta de regalo/;
 
+// Electrodomésticos / hogar (no son tecnología para comparar): se descartan.
+const NONTECH = /termotanque|calef[oó]n|\bplancha\b|planchita|heladera|\bfreezer\b|lavarropa|secarropa|lavavajilla|microonda|\banafe\b|cocina (a gas|el[eé]ctrica|industrial|combinada)|horno( el[eé]ctrico| a gas)?|aire acondicionado|\bsplit\b|calefactor|calefacci[oó]n|\bestufa\b|licuadora|batidora|procesadora de alimentos|cafetera|pava el[eé]ctrica|tostadora|sandwichera|aspiradora|secador de pelo|afeitadora|depiladora|garrafa|colch[oó]n|\bsomier\b|sill[oó]n|\bpuff\b|l[aá]mpara(?! (gamer|rgb))|ventilador (de )?(pie|techo|pared|20|18|16)/;
+
 // Detectores de componentes: cada uno responde "el nombre menciona este tipo de
 // pieza". La clave para no ensuciar las categorías es CONTAR cuántos aparecen:
 // una pieza suelta menciona 1; una PC armada o notebook menciona 2 o más.
@@ -377,9 +380,13 @@ function parseSchemaProduct(h, url, store) {
     }
   }
   if (!curOk) {
-    // Símbolo en el HTML: "U$S"/"US$"/"USD" => dólares; "$U"/"UYU" => pesos.
-    if (/u\$s|us\$|\busd\b/i.test(h)) { currency = "USD"; curOk = true; }
-    else if (/\$u\b|\buyu\b/i.test(h)) { currency = "UYU"; curOk = true; }
+    // Símbolo PEGADO al precio (más confiable que mirar toda la página, que puede
+    // mezclar monedas): "U$S"/"US$" => dólares; "$ 13.681" (peso) => pesos.
+    const idx = h.search(/itemprop=["']price["']/i);
+    const win = idx >= 0 ? h.slice(Math.max(0, idx - 200), idx + 200) : "";
+    if (/u\$s|us\$/i.test(win)) { currency = "USD"; curOk = true; }
+    else if (/\$\s?[\d]/.test(win)) { currency = "UYU"; curOk = true; }
+    else if (/u\$s|us\$/i.test(h)) { currency = "USD"; curOk = true; }
     else currency = store.moneda || "UYU";
   }
   if (!price) return null;
@@ -505,7 +512,7 @@ function buildDataset(rawPorTienda, storesMeta, prev) {
       // Descarta basura: sin nombre, precio inválido, o precio ridículo (< USD 2,
       // típico de páginas de inicio/políticas que se colaron como "producto").
       if (!it.nombre || !isFinite(it.precio) || it.precio < 2) continue;
-      if (esRuido(it.nombre)) continue;
+      if (esRuido(it.nombre) || NONTECH.test(norm(it.nombre))) continue;
       const categoria = clasificar(it.nombre);
       const key = claveModelo(it.nombre, categoria);
       let id = keyToId.get(key);
