@@ -21,7 +21,7 @@
     { "id": 18, "nombre": "Punto Digital", "plataforma": "auto", "baseUrl": "https://www.puntodigital.com.uy", "moneda": "UYU", "enabled": true },
 
     { "_nota_candidatas": "Tiendas candidatas: con auto-detección, si no exponen API (WooCommerce/Shopify/VTEX) se saltean solas. Podés cambiar el baseUrl o agregar las que quieras.", "id": 20, "nombre": "Multipoint", "plataforma": "auto", "baseUrl": "https://www.multipoint.com.uy", "moneda": "UYU", "enabled": true },
-    { "id": 21, "nombre": "El País Tienda", "plataforma": "auto", "baseUrl": "https://tienda.elpais.com.uy", "moneda": "UYU", "enabled": true },
+    { "id": 21, "nombre": "El País Tienda", "plataforma": "auto", "baseUrl": "https://tienda.elpais.com.uy", "moneda": "UYU", "enabled": false },
     { "id": 22, "nombre": "Sein", "plataforma": "auto", "baseUrl": "https://www.sein.com.uy", "moneda": "UYU", "enabled": true },
     { "id": 23, "nombre": "Deragon", "plataforma": "auto", "baseUrl": "https://www.deragon.com.uy", "moneda": "UYU", "enabled": true },
     { "id": 24, "nombre": "TechZone", "plataforma": "auto", "baseUrl": "https://www.techzone.com.uy", "moneda": "UYU", "enabled": true },
