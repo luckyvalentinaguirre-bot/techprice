@@ -379,6 +379,23 @@
 
   function aplicarFiltros(resetN) {
     if (resetN !== false) mostrarN = 48;
+    // Si no hay productos porque están todas (o casi) las tiendas apagadas, avisamos.
+    if (!MODEL.productos.length) {
+      const totalTiendas = (MODEL.tiendasList || []).length;
+      const activas = (MODEL.tiendasList || []).filter((t) => !tiendasOff.has(Number(t.id))).length;
+      $("#title-destacados").textContent = "No hay productos para mostrar";
+      $("#subtitle-destacados").textContent = activas === 0 && totalTiendas > 0
+        ? "Tenés todas las tiendas apagadas."
+        : "No se encontraron productos.";
+      $("#grid-destacados").innerHTML =
+        '<p class="empty-results">' +
+        (activas === 0 && totalTiendas > 0
+          ? 'Tenés <b>todas las tiendas apagadas</b>. Activá alguna en <a href="admin.html" style="color:var(--brand);font-weight:600">Administrar tiendas</a> (o abajo en la sección Tiendas) y recargá.'
+          : "No hay datos cargados.") +
+        "</p>";
+      const more = $("#load-more"); if (more) more.classList.add("is-hidden");
+      return;
+    }
     const arr = listaFiltrada();
     const activo = hayFiltros();
     const visibles = activo ? arr.slice(0, mostrarN) : arr.slice(0, 8);
