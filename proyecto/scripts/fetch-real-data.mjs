@@ -350,17 +350,32 @@ async function fromScrape(store) {
     urls.push(...[...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/g)].map((m) => m[1]).filter((u) => !u.endsWith(".xml")));
   }
   urls = [...new Set(urls)];
-  if (store.maxItems) urls = urls.slice(0, store.maxItems);
+  // Tope de seguridad: evita dispararle miles de requests a un catálogo enorme.
+  urls = urls.slice(0, store.maxItems || 3500);
   if (!urls.length) return [];
+  const scrapeOne = async (url) => { const h = await getText(url).catch(() => null); return h ? parseSchemaProduct(h, url, store) : null; };
+  // 3) SONDEO: probar unas pocas fichas repartidas. Si ninguna da datos, la
+  //    tienda no es scrapeable con este lector → la descartamos rápido.
+  const muestra = sampleSpread(urls, 8);
+  const probe = (await mapPool(muestra, 4, scrapeOne)).filter(Boolean);
+  if (!probe.length) { process.stdout.write("sin datos scrapeables, la salteo… "); return []; }
+  // 4) scrapear el resto con paralelismo moderado y aviso de progreso
   process.stdout.write(`(${urls.length} fichas) `);
-  // 3) scrapear cada ficha, con paralelismo moderado y aviso de progreso
-  let done = 0;
-  const items = await mapPool(urls, store.concurrency || 6, async (url) => {
-    const h = await getText(url).catch(() => null);
+  const enMuestra = new Set(muestra);
+  const resto = urls.filter((u) => !enMuestra.has(u));
+  let done = probe.length;
+  const more = (await mapPool(resto, store.concurrency || 6, async (url) => {
+    const r = await scrapeOne(url);
     if (++done % 250 === 0) process.stdout.write(`${done}… `);
-    return h ? parseSchemaProduct(h, url, store) : null;
-  });
-  return items.filter(Boolean);
+    return r;
+  })).filter(Boolean);
+  return probe.concat(more);
+}
+function sampleSpread(arr, n) {
+  if (arr.length <= n) return arr.slice();
+  const out = [];
+  for (let i = 0; i < n; i++) out.push(arr[Math.floor((i * arr.length) / n)]);
+  return [...new Set(out)];
 }
 
 const FETCHERS = { woocommerce: fromWoo, shopify: fromShopify, tiendanube: fromShopify, vtex: fromVtex, mercadolibre: fromMercadoLibre, scrape: fromScrape };
@@ -418,8 +433,14 @@ async function main() {
       if (!plataforma || plataforma === "auto") {
         process.stdout.write(`Detectando ${store.nombre}… `);
         plataforma = await detectPlatform(store).catch(() => null);
-        if (!plataforma) { console.log("sin API detectada, la salteo"); continue; }
-        console.log("es " + plataforma);
+        if (!plataforma) {
+          // Sin API JSON: probamos scraping de microdata como último recurso.
+          // El sondeo dentro de fromScrape descarta rápido si no hay datos.
+          process.stdout.write("sin API, pruebo scraping… ");
+          plataforma = "scrape";
+        } else {
+          console.log("es " + plataforma);
+        }
       }
       const fetcher = FETCHERS[plataforma];
       if (!fetcher) { console.log(`Plataforma no soportada (${plataforma}) en ${store.nombre}, la salteo`); continue; }
