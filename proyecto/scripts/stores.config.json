@@ -26,11 +26,14 @@
     { "id": 23, "nombre": "Deragon", "plataforma": "auto", "baseUrl": "https://www.deragon.com.uy", "moneda": "UYU", "enabled": true },
     { "id": 24, "nombre": "TechZone", "plataforma": "auto", "baseUrl": "https://www.techzone.com.uy", "moneda": "UYU", "enabled": true },
     { "id": 25, "nombre": "Gaming City", "plataforma": "auto", "baseUrl": "https://www.gamingcity.com.uy", "moneda": "UYU", "enabled": true },
-    { "_nota_tech": "Tiendas de tecnología (SOLO tech). Auto-detección; si no exponen datos se saltean. Agregá acá las que quieras con su baseUrl.", "id": 26, "nombre": "Reign", "plataforma": "auto", "baseUrl": "https://reign.uy", "moneda": "USD", "enabled": true },
-    { "id": 27, "nombre": "Pcoutlet", "plataforma": "auto", "baseUrl": "https://www.pcoutlet.com.uy", "moneda": "UYU", "enabled": true },
-    { "id": 28, "nombre": "Xtreme Store", "plataforma": "auto", "baseUrl": "https://www.xtremestore.com.uy", "moneda": "UYU", "enabled": true },
-    { "id": 29, "nombre": "Nucleo Digital", "plataforma": "auto", "baseUrl": "https://www.nucleodigital.com.uy", "moneda": "UYU", "enabled": true },
-    { "id": 30, "nombre": "Cyberpuerta UY", "plataforma": "auto", "baseUrl": "https://www.cyber.com.uy", "moneda": "UYU", "enabled": true },
+    { "_nota_tech": "Tiendas de tecnología REALES de Uruguay (encontradas por búsqueda). Auto-detección: prueban WooCommerce/Shopify/scraping; si no exponen datos se saltean.", "id": 26, "nombre": "Reign", "plataforma": "auto", "baseUrl": "https://reign.uy", "moneda": "USD", "enabled": true },
+    { "id": 27, "nombre": "TComponentes", "plataforma": "auto", "baseUrl": "https://www.tcomponentes.com.uy", "moneda": "USD", "enabled": true },
+    { "id": 28, "nombre": "Tecsys", "plataforma": "auto", "baseUrl": "https://tecsys.com.uy", "moneda": "USD", "enabled": true },
+    { "id": 29, "nombre": "Mundo Gamer", "plataforma": "auto", "baseUrl": "https://www.mundogamer.com.uy", "moneda": "USD", "enabled": true },
+    { "id": 30, "nombre": "PC Compu", "plataforma": "auto", "baseUrl": "https://www.pccompu.com.uy", "moneda": "USD", "enabled": true },
+    { "id": 31, "nombre": "PC Parts", "plataforma": "auto", "baseUrl": "https://pcparts.com.uy", "moneda": "USD", "enabled": true },
+    { "id": 32, "nombre": "PC Gamer UY", "plataforma": "auto", "baseUrl": "https://www.pcgamer-uy.com", "moneda": "USD", "enabled": true },
+    { "id": 33, "nombre": "Infinit", "plataforma": "auto", "baseUrl": "https://www.infinit.com.uy", "moneda": "USD", "enabled": true },
 
     { "_nota": "Mercado Libre restringió su API de búsqueda (403 aun con token). Queda apagado.", "id": 99, "nombre": "Mercado Libre UY", "plataforma": "mercadolibre", "site": "MLU", "moneda": "UYU", "token": "", "maxPorBusqueda": 100, "queries": ["placa de video rtx", "procesador ryzen", "memoria ram ddr5", "disco ssd nvme", "monitor gamer"], "enabled": false }
   ]
