@@ -66,6 +66,7 @@
     speaker: '<rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="14" r="3"/><circle cx="12" cy="7" r="1"/>',
     printer: '<path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/>',
     box: '<path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3ZM4 7.5l8 4.5 8-4.5M12 12v9"/>',
+    trash: '<path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13M10 11v6M14 11v6"/>',
   };
   const icon = (name, size = 16, cls = "") =>
     '<svg class="' + cls + '" width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
@@ -814,8 +815,9 @@
     renderMisPcs();
   }
   function borrarTodasLasPcs() {
-    if (!leerMisPcs().length) return;
-    if (typeof confirm === "function" && !confirm("¿Borrar todas las PCs guardadas?")) return;
+    const n = leerMisPcs().length;
+    if (!n) return;
+    if (typeof confirm === "function" && !confirm("¿Vaciar Mis PCs? Se van a borrar las " + n + " PC" + (n === 1 ? "" : "s") + " guardada" + (n === 1 ? "" : "s") + ". Esto no se puede deshacer.")) return;
     escribirMisPcs([]);
     renderMisPcs();
   }
@@ -835,7 +837,7 @@
       '<div class="mypc-card__head">' +
         '<span class="mypc-card__name">' + esc(pc.nombre) + "</span>" +
         '<span class="mypc-card__date">' + relativo(pc.fecha) + "</span>" +
-        '<button class="mypc-card__del" data-del-pc="' + pc.id + '">Borrar</button>' +
+        '<button class="mypc-card__del" data-del-pc="' + pc.id + '" title="Borrar esta PC" aria-label="Borrar esta PC">' + icon("trash", 14) + "</button>" +
       "</div>" +
       '<ul class="mypc-parts">' + filas + "</ul>" +
       '<div class="mypc-card__foot"><span class="lbl">Total (mejor precio por parte)</span>' +
@@ -851,6 +853,12 @@
       ? lista.map(misPcCard).join("")
       : '<p class="mypc-empty">Todavía no guardaste ninguna PC. Armá una en <b>“Armá tu PC”</b> y tocá <b>“Guardar en Mis PCs”</b>.</p>';
     grid.querySelectorAll("[data-del-pc]").forEach((b) => b.addEventListener("click", () => borrarBuild(b.getAttribute("data-del-pc"))));
+    // El botón "Vaciar" solo aparece si hay PCs guardadas, con el conteo.
+    const clr = $("#clear-mis-pcs");
+    if (clr) {
+      clr.classList.toggle("is-hidden", lista.length === 0);
+      clr.innerHTML = icon("trash", 15) + " Vaciar Mis PCs (" + lista.length + ")";
+    }
   }
 
   /* =============================== DATOS ================================ */

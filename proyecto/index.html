@@ -1507,8 +1507,11 @@ section.panel h2 {
 .mypc-card__head { display: flex; align-items: center; gap: var(--space-2); }
 .mypc-card__name { font-size: 1.05rem; font-weight: 650; flex: 1; min-width: 0; }
 .mypc-card__date { font-size: 0.76rem; color: var(--muted-2); white-space: nowrap; }
-.mypc-card__del { font: inherit; font-size: 0.78rem; color: var(--muted); background: none; border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 0.2rem 0.6rem; cursor: pointer; }
-.mypc-card__del:hover { color: var(--negative); border-color: var(--negative); }
+.mypc-card__del { display: inline-grid; place-items: center; color: var(--muted); background: none; border: 1px solid var(--border); border-radius: 9px; width: 32px; height: 32px; cursor: pointer; transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur) var(--ease); }
+.mypc-card__del:hover { color: var(--negative); border-color: var(--negative); background: color-mix(in srgb, var(--negative) 12%, transparent); }
+/* Botón de peligro (vaciar) */
+.btn--danger { color: var(--negative); border-color: color-mix(in srgb, var(--negative) 45%, var(--border-strong)); background: color-mix(in srgb, var(--negative) 8%, var(--surface)); }
+.btn--danger:hover { color: #fff; background: var(--negative); border-color: var(--negative); box-shadow: 0 0 18px 2px color-mix(in srgb, var(--negative) 40%, transparent); }
 .mypc-parts { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
 .mypc-part { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem var(--space-3); align-items: baseline; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
 .mypc-part__cat { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--muted-2); font-weight: 600; }
@@ -1657,7 +1660,7 @@ body::before {
 
     <section class="section" id="section-mis-pcs">
       <div class="section__head"><div><h2 class="section__title">Mis PCs</h2><p class="section__subtitle">Las PCs que armaste, con el precio de cada componente y el link a la tienda más barata. Se guardan en este navegador.</p></div>
-        <button class="section__link" id="clear-mis-pcs" type="button">Borrar todas</button></div>
+        <button class="btn btn--danger is-hidden" id="clear-mis-pcs" type="button">Vaciar Mis PCs</button></div>
       <div class="mypc-grid" id="grid-mis-pcs"></div>
     </section>
 
