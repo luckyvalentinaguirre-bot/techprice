@@ -111,8 +111,15 @@ function clasificar(nombre) {
   if (esNotebook(n)) return "Notebook";
   // 2) PC pre-armada por palabra clave ("PC gamer", "computadora", "mini pc"…).
   if (esPrebuiltKw(n)) return "PC Armada";
-  // 3) Electrónica de consumo (celular/tablet/TV/consola…) antes que componentes.
-  for (const [cat, re] of OTRAS_CATS) if (re.test(n)) return cat;
+  // 3) Periféricos/accesorios PRIMERO: unos "auriculares para PS5" son auriculares,
+  //    no una consola. Evita fusionar accesorios con el dispositivo.
+  if (/auricular|headset|vincha|\bhandsfree\b|aud[ií]fono/.test(n)) return "Auriculares";
+  if (/teclado|keyboard/.test(n)) return "Teclado";
+  if (/\bmouse\b|\brat[oó]n\b/.test(n)) return "Mouse";
+  // 4) Electrónica de consumo (celular/tablet/TV/consola…), salvo que el nombre
+  //    sea claramente un ACCESORIO del dispositivo (cable/funda/joystick/…).
+  const accesorio = /joystick|gamepad|\bcable\b|\bfunda\b|\bforro\b|cargador|adaptador|\bdock\b|base de carga|\bcover\b|estuche/.test(n);
+  if (!accesorio) for (const [cat, re] of OTRAS_CATS) if (re.test(n)) return cat;
   // 4) Sin palabra clave pero menciona 2+ componentes distintos => es un equipo
   //    completo, no una pieza suelta. Si además trae medida de pantalla, es una
   //    notebook (portátil sin la palabra "notebook" en el título).
@@ -147,24 +154,31 @@ function inferSpecs(cat, nombre) {
 const clean = (o) => { for (const k of Object.keys(o)) if (o[k] == null || o[k] === "") delete o[k]; return o; };
 
 /* ------------------------- matching entre tiendas ------------------------ */
-const BRANDS = "asus msi gigabyte asrock intel amd ryzen corsair kingston samsung western wd nzxt lian deepcool noctua logitech hyperx lg acer lenovo sapphire evga zotac gainward palit xfx powercolor seasonic thermaltake redragon tp-link hp dell gskill crucial adata pny".split(" ");
+const BRANDS = "asus msi gigabyte asrock intel amd ryzen corsair kingston samsung western wd nzxt lian deepcool noctua logitech hyperx lg acer lenovo sapphire evga zotac gainward palit xfx powercolor seasonic thermaltake redragon tp-link hp dell gskill crucial adata pny sony microsoft apple xiaomi motorola nokia jbl nintendo philips tcl huawei realme oppo honor genius nisuta ugreen razer aoc viewsonic gateway epson canon brother tplink xion".split(" ");
 const STOP = new Set(("de del la el los las con para por sin y o u a e un una en al x cm mm mt mts mtr metro metros pulgadas pulg color negro negra blanco blanca gris azul roja rojo verde nuevo nueva original con para").split(" "));
 // Firma para emparejar el MISMO producto entre tiendas. Antes usaba solo "el
 // número más largo", y eso fusionaba cosas distintas que compartían un número
 // suelto (ej. "Cable 5 metros" y "Tira LED 5 metros"). Ahora usa TODOS los
 // modelos alfanuméricos distintivos (rtx4060, 5050, cat6…) + variantes (Ti/XT/
 // Super), y si no hay modelo, las palabras clave del nombre.
+const esCapacidad = (t) => /^\d{1,4}(gb|tb|mhz|hz|w|mah|ml|k)$/.test(t);
 function claveModelo(nombre, cat) {
   const toks = norm(nombre).replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter(Boolean);
   const brand = toks.find((t) => BRANDS.includes(t)) || "";
-  const modelos = [...new Set(toks.filter((t) => /\d/.test(t) && t.length >= 3))].sort();
+  // Modelos FUERTES: mezcla de letras y números (rtx4060, x1504va, h510, cat6) o
+  // número de 4+ dígitos (3060, 5050). Se excluyen capacidades sueltas (1tb, 256gb),
+  // porque distintos productos las comparten y se fusionaban mal (PS5 1TB = Xbox 1TB).
+  const modelos = [...new Set(toks.filter((t) =>
+    !esCapacidad(t) && ((/[a-z]/.test(t) && /\d/.test(t) && t.length >= 3) || /^\d{4,}$/.test(t))))].sort();
+  const caps = [...new Set(toks.filter(esCapacidad))].sort();
   let sig;
   if (modelos.length) {
     const variantes = [...new Set(toks.filter((t) => /^(ti|xt|super|max|pro|plus)$/.test(t)))].sort();
-    sig = modelos.join("-") + (variantes.length ? "+" + variantes.join("+") : "");
+    sig = modelos.join("-") + (variantes.length ? "+" + variantes.join("+") : "") + (caps.length ? "_" + caps.join("_") : "");
   } else {
-    // Sin modelo claro: firma con las palabras significativas del nombre.
-    sig = [...new Set(toks.filter((t) => t.length >= 3 && !STOP.has(t) && !/^\d+$/.test(t)))].sort().slice(0, 8).join("-");
+    // Sin modelo fuerte: firma con las palabras significativas del nombre (+ capacidad).
+    const words = [...new Set(toks.filter((t) => t.length >= 3 && !STOP.has(t) && !/^\d+$/.test(t) && !esCapacidad(t)))].sort().slice(0, 8);
+    sig = words.join("-") + (caps.length ? "_" + caps.join("_") : "");
   }
   return cat + "|" + brand + "|" + (sig || toks.join(" "));
 }
