@@ -32,6 +32,9 @@ const DATA = resolve(ROOT, "data");
 const HOY = new Date().toISOString().slice(0, 10);
 const SELFTEST = process.argv.includes("--selftest");
 const FRESH = process.argv.includes("--fresh"); // ignora los datos previos (arranca de cero)
+// Cuántas fichas se piden en paralelo al scrapear. Más = más rápido (pero más
+// carga de red/servidor). Se puede ajustar: TP_CONCURRENCY=16 node scripts/...
+const CONCURRENCY = Math.max(1, Number(process.env.TP_CONCURRENCY) || 12);
 
 /* ----------------------------- clasificación ----------------------------- */
 const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
@@ -290,7 +293,7 @@ async function fromVtex(store) {
  * datos en el HTML con microdata (itemprop="price"…) para aparecer en Google.
  * Baja el sitemap de productos, entra a cada ficha y extrae nombre/precio/etc.
  */
-async function getText(url, timeoutMs = 15000) {
+async function getText(url, timeoutMs = 11000) {
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
@@ -390,7 +393,7 @@ async function fromScrape(store) {
   const enMuestra = new Set(muestra);
   const resto = urls.filter((u) => !enMuestra.has(u));
   let done = probe.length;
-  const more = (await mapPool(resto, store.concurrency || 5, async (url) => {
+  const more = (await mapPool(resto, store.concurrency || CONCURRENCY, async (url) => {
     const r = await scrapeOne(url);
     if (++done % 250 === 0) process.stdout.write(`${done}… `);
     return r;
