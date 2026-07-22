@@ -162,7 +162,28 @@
       };
     });
 
-    MODEL = { productos: modelos, tiendas: tiendasById, ultimaFecha, tiendasList: tiendas };
+    // Solo entran productos con al menos una oferta (de tienda activa).
+    MODEL = { productos: modelos.filter((m) => m.offers.length > 0), tiendas: tiendasById, ultimaFecha, tiendasList: tiendas };
+  }
+
+  /* ====================== TIENDAS ACTIVAS (on/off) ===================== */
+  let RAW = { productos: [], tiendas: [], precios: [] };
+  const TIENDAS_OFF_KEY = "techprice_tiendas_off";
+  function leerTiendasOff() { try { return new Set((JSON.parse(localStorage.getItem(TIENDAS_OFF_KEY)) || []).map(Number)); } catch { return new Set(); } }
+  let tiendasOff = new Set();
+  function guardarTiendasOff() { try { localStorage.setItem(TIENDAS_OFF_KEY, JSON.stringify([...tiendasOff])); } catch { /* sin espacio */ } }
+
+  // Reconstruye el modelo usando solo las tiendas activas y vuelve a renderizar.
+  function reconstruir() {
+    const activos = RAW.precios.filter((r) => !tiendasOff.has(Number(r.tienda)));
+    construirModelo(RAW.productos, RAW.tiendas, activos);
+    render();
+  }
+  function toggleTienda(id) {
+    id = Number(id);
+    if (tiendasOff.has(id)) tiendasOff.delete(id); else tiendasOff.add(id);
+    guardarTiendasOff();
+    reconstruir();
   }
 
   /* ============================== FRAGMENTOS ============================= */
@@ -239,7 +260,7 @@
 
     // Stats
     $("#stat-productos").textContent = num(M.length);
-    $("#stat-tiendas").textContent = num(MODEL.tiendas.size);
+    $("#stat-tiendas").textContent = num(MODEL.tiendasList.filter((t) => !tiendasOff.has(Number(t.id))).length);
     $("#stat-actualizacion").innerHTML = icon("clock", 16) + " " + relativo(MODEL.ultimaFecha);
     $("#stat-usuarios").textContent = num(1200 + M.length * 180); // dato ficticio
 
@@ -280,8 +301,9 @@
         recientes.map((m, i) => trendRow(m, i, m.offers.length + " " + (m.offers.length === 1 ? "tienda" : "tiendas"), money(m.lowest, m.moneda))).join("")) +
       "</div>";
 
-    // Tiendas
+    // Tiendas (con switch on/off por tienda)
     $("#grid-tiendas").innerHTML = MODEL.tiendasList.map((t) => {
+      const off = tiendasOff.has(Number(t.id));
       let count = 0, lastSync = null;
       for (const m of M) {
         const o = m.offers.find((o) => o.tiendaId === t.id);
@@ -289,12 +311,17 @@
       }
       const fresh = lastSync === MODEL.ultimaFecha;
       const ini = t.nombre.replace(/\(demo\)/i, "").trim().split(/\s+/).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
-      return '<div class="store-card"><div class="store-card__top">' +
+      return '<div class="store-card' + (off ? " store-card--off" : "") + '"><div class="store-card__top">' +
         '<span class="store-card__logo" aria-hidden>' + esc(ini) + "</span>" +
-        '<div style="min-width:0"><div class="store-card__name">' + esc(t.nombre) + "</div>" +
-        '<div class="store-card__platform">' + esc((t.plataforma || "").replace(/_/g, " ")) + "</div></div></div>" +
-        '<div class="store-card__foot"><span class="store-card__count"><b>' + num(count) + "</b> " + (count === 1 ? "producto" : "productos") + "</span>" +
-        '<span class="store-status ' + (fresh ? "store-status--ok" : "store-status--stale") + '"><span class="dot"></span>' + (fresh ? "Actualizada" : relativo(lastSync)) + "</span></div></div>";
+        '<div style="min-width:0;flex:1"><div class="store-card__name">' + esc(t.nombre) + "</div>" +
+        '<div class="store-card__platform">' + esc((t.plataforma || "").replace(/_/g, " ")) + "</div></div>" +
+        '<button class="switch' + (off ? "" : " switch--on") + '" role="switch" aria-checked="' + (!off) + '" data-tienda-toggle="' + t.id + '" aria-label="' + (off ? "Activar" : "Desactivar") + " " + esc(t.nombre) + '"><span class="switch__knob"></span></button>' +
+        "</div>" +
+        '<div class="store-card__foot">' +
+          (off ? '<span class="store-card__count">Desactivada · no se muestra</span>'
+               : '<span class="store-card__count"><b>' + num(count) + "</b> " + (count === 1 ? "producto" : "productos") + "</span>" +
+                 '<span class="store-status ' + (fresh ? "store-status--ok" : "store-status--stale") + '"><span class="dot"></span>' + (fresh ? "Actualizada" : relativo(lastSync)) + "</span>") +
+        "</div></div>";
     }).join("");
 
     $("#year").textContent = new Date().getFullYear();
@@ -547,6 +574,11 @@
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
     const reset = $("#reset-build"); if (reset) reset.addEventListener("click", resetBuild);
     const clr = $("#clear-mis-pcs"); if (clr) clr.addEventListener("click", borrarTodasLasPcs);
+    // Switches on/off de tiendas (delegado, porque la grilla se re-renderiza).
+    document.addEventListener("click", (e) => {
+      const sw = e.target.closest("[data-tienda-toggle]");
+      if (sw) toggleTienda(sw.getAttribute("data-tienda-toggle"));
+    });
     wireMenu();
     wireFiltros();
   }
@@ -891,9 +923,9 @@
   /* =============================== INIT ================================= */
   async function init() {
     try {
-      const { productos, tiendas, precios } = await loadData();
-      construirModelo(productos, tiendas, precios);
-      render();
+      RAW = await loadData();
+      tiendasOff = leerTiendasOff();
+      reconstruir(); // construye el modelo (solo tiendas activas) y renderiza
       wireGlobal();
     } catch (err) {
       document.querySelector("main .container").insertAdjacentHTML(
