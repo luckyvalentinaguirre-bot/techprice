@@ -11,3 +11,6 @@ coverage/
 .turbo/
 prisma/dev.db
 *.tsbuildinfo
+
+# Artefactos de build (ZIP de distribución generado localmente)
+*.zip
