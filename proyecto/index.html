@@ -23,27 +23,28 @@
 :root {
   color-scheme: dark;
 
-  /* Neutrals — tema oscuro slate, sobrio y profesional */
-  --bg: #0a0c11;
-  --surface: #12151d;
-  --surface-2: #1a1e28;
-  --border: #232834;
-  --border-strong: #333a49;
-  --text: #e9ecf3;
-  --muted: #99a1b2;
-  --muted-2: #646d7f;
+  /* Neutrals — monocromático negro/gris, austero y minimalista */
+  --bg: #0a0a0b;
+  --surface: #141416;
+  --surface-2: #1c1c1f;
+  --border: #262629;
+  --border-strong: #37373b;
+  --text: #ededee;
+  --muted: #9a9a9e;
+  --muted-2: #66666b;
 
-  /* Acento índigo profesional + semánticos */
-  --brand: #6366f1;
-  --brand-hover: #818cf8;
-  --positive: #34d399;
-  --positive-soft: #10241d;
-  --negative: #f2637a;
-  --negative-soft: #2a1219;
+  /* Acento NEUTRO (gris claro casi blanco) — sin color de marca. Semánticos
+     mínimos: verde/rojo apagados solo para subas/bajas de precio. */
+  --brand: #d8d8dc;
+  --brand-hover: #ffffff;
+  --positive: #5cc98d;
+  --positive-soft: #14231c;
+  --negative: #dd6b7c;
+  --negative-soft: #241318;
 
-  /* Elevación sutil (sin neón): sombra suave + ring de foco discreto */
-  --glow: 0 10px 28px rgba(0, 0, 0, 0.4);
-  --glow-ring: 0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent);
+  /* Elevación sutil (sin glow): sombra suave + ring de foco discreto */
+  --glow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  --glow-ring: 0 0 0 3px color-mix(in srgb, var(--brand) 16%, transparent);
 
   /* Typography */
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
@@ -168,7 +169,7 @@ main {
   height: 30px;
   border-radius: 9px;
   background: var(--brand);
-  color: #fff;
+  color: var(--bg);
 }
 .brand__mark svg {
   width: 18px;
@@ -325,8 +326,8 @@ main {
   padding: 0 1.2rem;
   border: none;
   border-radius: var(--radius-pill);
-  background: linear-gradient(135deg, var(--brand), #4f46e5);
-  color: #fff;
+  background: var(--brand);
+  color: var(--bg);
   font: inherit;
   font-weight: 600;
   font-size: 0.95rem;
@@ -334,7 +335,7 @@ main {
   transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease), background var(--dur) var(--ease);
 }
 .searchbar__submit:hover {
-  background: linear-gradient(135deg, var(--brand-hover), #6366f1);
+  background: var(--brand-hover);
   box-shadow: var(--glow);
   transform: translateY(-1px);
 }
@@ -445,7 +446,7 @@ main {
 }
 .category-chip.is-active .category-chip__icon {
   background: var(--brand);
-  color: #fff;
+  color: var(--bg);
 }
 .category-chip__icon {
   display: grid;
@@ -640,12 +641,12 @@ main {
 }
 .btn--primary {
   flex: 1;
-  background: linear-gradient(135deg, var(--brand), #4f46e5);
+  background: var(--brand);
   border-color: transparent;
-  color: #fff;
+  color: var(--bg);
 }
 .btn--primary:hover {
-  background: linear-gradient(135deg, var(--brand-hover), #6366f1);
+  background: var(--brand-hover);
   border-color: transparent;
   box-shadow: var(--glow);
   transform: translateY(-1px);
@@ -910,7 +911,7 @@ main {
 .switch { flex-shrink: 0; width: 44px; height: 26px; border-radius: 999px; border: none; padding: 0; cursor: pointer; background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--border-strong); transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease); position: relative; }
 .switch__knob { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--muted); transition: transform var(--dur) var(--ease), background var(--dur) var(--ease); }
 .switch--on { background: var(--brand); box-shadow: inset 0 0 0 1px var(--brand), var(--glow); }
-.switch--on .switch__knob { transform: translateX(18px); background: #fff; }
+.switch--on .switch__knob { transform: translateX(18px); background: var(--bg); }
 .store-card__top {
   display: flex;
   align-items: center;
@@ -1116,7 +1117,7 @@ main {
   font-weight: 600;
   background: var(--brand);
   border-color: var(--brand);
-  color: #fff;
+  color: var(--bg);
 }
 .toolbar button:hover {
   background: var(--brand-hover);
@@ -1353,7 +1354,7 @@ section.panel h2 {
 }
 .pagination .is-current {
   background: var(--brand);
-  color: #fff;
+  color: var(--bg);
   border-color: var(--brand);
 }
 
@@ -1496,7 +1497,7 @@ section.panel h2 {
 .pick-count { font-size: 0.78rem; color: var(--muted-2); margin-bottom: var(--space-2); }
 .pick-tabs { display: flex; gap: var(--space-2); margin-bottom: var(--space-3); }
 .pick-tab { font: inherit; font-size: 0.85rem; font-weight: 550; padding: 0.35rem 0.8rem; border-radius: var(--radius-pill); border: 1px solid var(--border-strong); background: var(--surface); color: var(--muted); cursor: pointer; }
-.pick-tab.is-active { background: var(--brand); border-color: var(--brand); color: #fff; }
+.pick-tab.is-active { background: var(--brand); border-color: var(--brand); color: var(--bg); }
 .pick-list { display: flex; flex-direction: column; gap: var(--space-2); max-height: 52vh; overflow: auto; }
 .pick-item {
   display: flex; align-items: center; gap: var(--space-3);
@@ -1602,7 +1603,7 @@ body::before {
 .fcheck:hover { background: var(--surface-2); color: var(--text); }
 .fcheck input { position: absolute; opacity: 0; width: 0; height: 0; }
 .fcheck__box { width: 18px; height: 18px; border-radius: 5px; border: 1.5px solid var(--border-strong); display: inline-grid; place-items: center; flex-shrink: 0; transition: all var(--dur); }
-.fcheck__box::after { content: "✓"; color: #fff; font-size: 12px; font-weight: 700; opacity: 0; transform: scale(.5); transition: all var(--dur); }
+.fcheck__box::after { content: "✓"; color: var(--bg); font-size: 12px; font-weight: 700; opacity: 0; transform: scale(.5); transition: all var(--dur); }
 .fcheck input:checked + .fcheck__box { background: var(--brand); border-color: var(--brand); }
 .fcheck input:checked + .fcheck__box::after { opacity: 1; transform: scale(1); }
 .fcheck input:checked ~ * { color: var(--text); }
@@ -1669,7 +1670,6 @@ body::before {
     <nav class="drawer__nav">
       <a href="#section-armar" data-menu-link><span class="drawer__ico">🛠️</span> Armá tu PC</a>
       <a href="#section-mis-pcs" data-menu-link><span class="drawer__ico">🖥️</span> Mis PCs</a>
-      <a href="#section-categorias" data-menu-link><span class="drawer__ico">📂</span> Categorías</a>
       <a href="#section-destacados" data-menu-link><span class="drawer__ico">⭐</span> Productos destacados</a>
       <a href="#section-bajaron" data-menu-link><span class="drawer__ico">📉</span> Bajaron de precio</a>
       <a href="#section-tendencias" data-menu-link><span class="drawer__ico">🔥</span> Tendencias</a>
@@ -1716,11 +1716,6 @@ body::before {
       <div class="section__head"><div><h2 class="section__title">Mis PCs</h2><p class="section__subtitle">Las PCs que armaste, con el precio de cada componente y el link a la tienda más barata. Se guardan en este navegador.</p></div>
         <button class="btn btn--danger is-hidden" id="clear-mis-pcs" type="button">Vaciar Mis PCs</button></div>
       <div class="mypc-grid" id="grid-mis-pcs"></div>
-    </section>
-
-    <section class="section" id="section-categorias">
-      <div class="section__head"><div><h2 class="section__title">Explorá por categoría</h2><p class="section__subtitle">Componentes y productos individuales, con la cantidad de productos comparados.</p></div></div>
-      <div class="category-strip" id="grid-categorias"></div>
     </section>
 
     <section class="section" id="section-destacados">

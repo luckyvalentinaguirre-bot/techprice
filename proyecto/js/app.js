@@ -264,17 +264,8 @@
     $("#stat-actualizacion").innerHTML = icon("clock", 16) + " " + relativo(MODEL.ultimaFecha);
     $("#stat-usuarios").textContent = num(1200 + M.length * 180); // dato ficticio
 
-    // Categorías
-    const porCat = new Map();
-    for (const m of M) porCat.set(m.categoria, (porCat.get(m.categoria) || 0) + 1);
-    $("#grid-categorias").innerHTML = [...porCat.entries()]
-      .sort((a, b) => b[1] - a[1])
-      .map(([cat, n]) =>
-        '<div class="category-chip" data-cat="' + esc(cat) + '" role="button" tabindex="0">' +
-          '<span class="category-chip__icon">' + icon(catIcon(cat), 20) + "</span>" +
-          '<span class="category-chip__body"><span class="category-chip__name">' + esc(cat) + "</span>" +
-          '<span class="category-chip__count">' + num(n) + " " + (n === 1 ? "producto" : "productos") + "</span></span></div>")
-      .join("");
+    // (La sección "Explorá por categoría" se quitó; ahora las categorías están
+    //  en la barra lateral de filtros.)
 
     // Destacados / grilla filtrable con facetas (se llena vía aplicarFiltros al final).
     renderFacetas();
