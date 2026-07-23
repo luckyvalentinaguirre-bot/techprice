@@ -23,28 +23,27 @@
 :root {
   color-scheme: dark;
 
-  /* Neutrals — tema oscuro (casi negro) */
-  --bg: #07070d;
-  --surface: #101019;
-  --surface-2: #191926;
-  --border: #262636;
-  --border-strong: #3a3a52;
-  --text: #f3f3f9;
-  --muted: #9a9ab0;
-  --muted-2: #676782;
+  /* Neutrals — tema oscuro slate, sobrio y profesional */
+  --bg: #0a0c11;
+  --surface: #12151d;
+  --surface-2: #1a1e28;
+  --border: #232834;
+  --border-strong: #333a49;
+  --text: #e9ecf3;
+  --muted: #99a1b2;
+  --muted-2: #646d7f;
 
-  /* Neón violeta + acentos semánticos */
-  --brand: #a855f7;
-  --brand-hover: #c084fc;
-  --positive: #2ee6a6;
-  --positive-soft: #0f2a22;
-  --negative: #ff5f7a;
-  --negative-soft: #2a1019;
+  /* Acento índigo profesional + semánticos */
+  --brand: #6366f1;
+  --brand-hover: #818cf8;
+  --positive: #34d399;
+  --positive-soft: #10241d;
+  --negative: #f2637a;
+  --negative-soft: #2a1219;
 
-  /* Glow neón violeta para hover */
-  --glow: 0 0 18px 2px color-mix(in srgb, var(--brand) 45%, transparent),
-          0 0 42px 6px color-mix(in srgb, var(--brand) 20%, transparent);
-  --glow-ring: 0 0 0 1px color-mix(in srgb, var(--brand) 60%, transparent);
+  /* Elevación sutil (sin neón): sombra suave + ring de foco discreto */
+  --glow: 0 10px 28px rgba(0, 0, 0, 0.4);
+  --glow-ring: 0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent);
 
   /* Typography */
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
@@ -326,7 +325,7 @@ main {
   padding: 0 1.2rem;
   border: none;
   border-radius: var(--radius-pill);
-  background: linear-gradient(135deg, var(--brand), #7c3aed);
+  background: linear-gradient(135deg, var(--brand), #4f46e5);
   color: #fff;
   font: inherit;
   font-weight: 600;
@@ -335,7 +334,7 @@ main {
   transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease), background var(--dur) var(--ease);
 }
 .searchbar__submit:hover {
-  background: linear-gradient(135deg, var(--brand-hover), #8b5cf6);
+  background: linear-gradient(135deg, var(--brand-hover), #6366f1);
   box-shadow: var(--glow);
   transform: translateY(-1px);
 }
@@ -641,12 +640,12 @@ main {
 }
 .btn--primary {
   flex: 1;
-  background: linear-gradient(135deg, var(--brand), #7c3aed);
+  background: linear-gradient(135deg, var(--brand), #4f46e5);
   border-color: transparent;
   color: #fff;
 }
 .btn--primary:hover {
-  background: linear-gradient(135deg, var(--brand-hover), #8b5cf6);
+  background: linear-gradient(135deg, var(--brand-hover), #6366f1);
   border-color: transparent;
   box-shadow: var(--glow);
   transform: translateY(-1px);
@@ -1562,14 +1561,11 @@ section.panel h2 {
 .brand__mark { box-shadow: var(--glow); }
 .trend-item__body:hover .trend-item__name { color: var(--brand); }
 
-/* Resplandor violeta decorativo detrás del hero */
+/* Fondo sutil y sobrio detrás del hero (nada de neón fuerte) */
 body::before {
-  content: ""; position: fixed; inset: -20% 0 auto 0; height: 60vh; z-index: -1; pointer-events: none;
-  background:
-    radial-gradient(60% 60% at 30% 0%, color-mix(in srgb, var(--brand) 22%, transparent), transparent 70%),
-    radial-gradient(50% 50% at 85% 10%, color-mix(in srgb, #6d28d9 18%, transparent), transparent 70%);
+  content: ""; position: fixed; inset: 0 0 auto 0; height: 480px; z-index: -1; pointer-events: none;
+  background: radial-gradient(70% 60% at 50% -10%, color-mix(in srgb, var(--brand) 9%, transparent), transparent 70%);
 }
-.hero h1 { text-shadow: 0 0 40px color-mix(in srgb, var(--brand) 30%, transparent); }
 
 /* En pantallas grandes el hamburguesa queda igual (menú siempre en drawer) */
 .hamburger { flex: 0 0 auto; }
