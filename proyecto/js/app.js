@@ -765,37 +765,60 @@
   function openPicker(cat) {
     const slot = SLOTS.find((s) => s.cat === cat);
     const items = partsOf(cat).map((m) => ({ m, c: compat(m, build) })).filter((x) => x.c.ok);
-    items.sort((a, b) => (bestOffer(a.m) ? bestOffer(a.m).precio : 1e12) - (bestOffer(b.m) ? bestOffer(b.m).precio : 1e12));
+    let plat = "all", q = "", ord = "precio-asc";
+
+    const filtrados = () => {
+      let arr = items.filter((x) => plat === "all" || !plat || x.m.specs.plataforma === plat);
+      if (q) arr = arr.filter((x) => x.m._buscable.includes(q));
+      const pr = (x) => (bestOffer(x.m) ? bestOffer(x.m).precio : 1e12);
+      arr.sort((a, b) => ord === "precio-desc" ? pr(b) - pr(a) : ord === "nombre" ? a.m.nombre.localeCompare(b.m.nombre) : pr(a) - pr(b));
+      return arr;
+    };
+    const listHTML = () => {
+      const arr = filtrados();
+      if (!arr.length) return '<p class="empty-results">No hay opciones compatibles con lo que elegiste.</p>';
+      return arr.map((x) => {
+        const o = bestOffer(x.m);
+        return '<div class="pick-item"><div class="pick-item__main"><div class="pick-item__name">' + esc(x.m.nombre) + "</div>" +
+          '<div class="pick-item__spec">' + esc(specLine(x.m)) + (o ? " · " + esc(o.tienda) + " · " + x.m.offers.length + (x.m.offers.length === 1 ? " tienda" : " tiendas") : "") + "</div></div>" +
+          '<div class="pick-item__price">' + (o ? money(o.precio, x.m.moneda) : "—") + "</div>" +
+          '<button class="btn btn--primary" data-choose="' + x.m.id + '">Elegir</button></div>';
+      }).join("");
+    };
 
     const tabs = cat === "CPU"
       ? '<div class="pick-tabs"><button class="pick-tab is-active" data-plat="all">Todos</button><button class="pick-tab" data-plat="Intel">Intel</button><button class="pick-tab" data-plat="AMD">AMD (Ryzen)</button></div>'
       : "";
-    const renderList = (plat) =>
-      items.filter((x) => plat === "all" || !plat || x.m.specs.plataforma === plat).map((x) => {
-        const o = bestOffer(x.m);
-        return '<div class="pick-item"><div class="pick-item__main"><div class="pick-item__name">' + esc(x.m.nombre) + "</div>" +
-          '<div class="pick-item__spec">' + esc(specLine(x.m)) + (o ? " · " + esc(o.tienda) : "") + "</div></div>" +
-          '<div class="pick-item__price">' + (o ? money(o.precio, x.m.moneda) : "—") + "</div>" +
-          '<button class="btn btn--primary" data-choose="' + x.m.id + '">Elegir</button></div>';
-      }).join("") || '<p class="empty-results">No hay opciones compatibles con lo que elegiste.</p>';
+    const toolbar =
+      '<div class="pick-toolbar">' +
+        '<input class="pick-search" id="pick-search" type="search" placeholder="Buscar ' + esc(slot.label.toLowerCase()) + '…" autocomplete="off">' +
+        '<select class="pick-sort" id="pick-sort">' +
+          '<option value="precio-asc">Precio ↑</option><option value="precio-desc">Precio ↓</option><option value="nombre">Nombre</option>' +
+        "</select>" +
+      "</div>";
 
     const inner =
       '<div class="modal__head"><div><div class="modal__brand">Armá tu PC</div><h2 class="modal__title">Elegí ' + slot.label.toLowerCase() + "</h2></div>" +
       '<button class="btn btn--icon" data-close aria-label="Cerrar">' + icon("close", 16) + "</button></div>" +
-      '<div class="modal__body">' + tabs + '<div class="pick-list" id="pick-list">' + renderList("all") + "</div></div>";
+      '<div class="modal__body">' + tabs + toolbar + '<div class="pick-count" id="pick-count"></div><div class="pick-list" id="pick-list"></div></div>';
 
     const root = $("#modal-root");
     root.innerHTML = '<div class="modal" role="document">' + inner + "</div>";
     openModalWired();
-    const list = $("#pick-list");
-    const wireChoose = () => list.querySelectorAll("[data-choose]").forEach((b) =>
-      b.addEventListener("click", () => selectPart(cat, Number(b.getAttribute("data-choose")))));
-    wireChoose();
+    const list = $("#pick-list"), count = $("#pick-count");
+    const refresh = () => {
+      list.innerHTML = listHTML();
+      count.textContent = filtrados().length + " opciones compatibles";
+      list.querySelectorAll("[data-choose]").forEach((b) => b.addEventListener("click", () => selectPart(cat, Number(b.getAttribute("data-choose")))));
+    };
+    refresh();
+    const si = $("#pick-search"); if (si) si.addEventListener("input", (e) => { q = norm(e.target.value.trim()); refresh(); });
+    const so = $("#pick-sort"); if (so) so.addEventListener("change", (e) => { ord = e.target.value; refresh(); });
     root.querySelectorAll("[data-plat]").forEach((t) => t.addEventListener("click", () => {
       root.querySelectorAll(".pick-tab").forEach((x) => x.classList.remove("is-active"));
       t.classList.add("is-active");
-      list.innerHTML = renderList(t.getAttribute("data-plat"));
-      wireChoose();
+      plat = t.getAttribute("data-plat");
+      refresh();
     }));
   }
 
