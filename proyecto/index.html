@@ -1569,39 +1569,78 @@ body::before {
 /* En pantallas grandes el hamburguesa queda igual (menú siempre en drawer) */
 .hamburger { flex: 0 0 auto; }
 
-/* ---------------------------- barra de filtros --------------------------- */
-.filters {
-  display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: flex-end;
-  padding: var(--space-4); margin-bottom: var(--space-5);
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+/* ==================== catálogo profesional (facetas) ==================== */
+.catalog { display: grid; grid-template-columns: 258px 1fr; gap: var(--space-6); align-items: start; }
+.facets {
+  position: sticky; top: 84px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: var(--space-4);
+  display: flex; flex-direction: column; gap: var(--space-2); max-height: calc(100vh - 100px); overflow: auto;
 }
-.filter { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
-.filter label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted-2); font-weight: 700; }
-.filter select, .filter input {
-  font: inherit; font-size: 0.9rem; color: var(--text);
-  background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 10px;
-  padding: 0.5rem 0.7rem; min-height: 40px;
-  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-}
-.filter select { min-width: 150px; cursor: pointer; }
-.filter select:focus, .filter input:focus { outline: none; border-color: var(--brand); box-shadow: var(--glow); }
-.filter--price .filter__range { display: flex; align-items: center; gap: 0.4rem; }
-.filter--price input { width: 84px; }
-.filter--price span { color: var(--muted-2); }
-.filter--check .check { display: inline-flex; align-items: center; gap: 0.45rem; cursor: pointer; font-size: 0.9rem; min-height: 40px; user-select: none; }
-.filter--check input { position: absolute; opacity: 0; width: 0; height: 0; }
-.filter--check .check__box { width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid var(--border-strong); display: inline-grid; place-items: center; transition: all var(--dur) var(--ease); flex-shrink: 0; }
-.filter--check .check__box::after { content: "✓"; color: #fff; font-size: 13px; font-weight: 700; opacity: 0; transform: scale(.5); transition: all var(--dur) var(--ease); }
-.filter--check input:checked + .check__box { background: var(--brand); border-color: var(--brand); box-shadow: var(--glow); }
-.filter--check input:checked + .check__box::after { opacity: 1; transform: scale(1); }
-.filter__clear { margin-left: auto; align-self: flex-end; height: 40px; }
+.facets__head { display: flex; align-items: center; justify-content: space-between; padding-bottom: var(--space-2); }
+.facets__title { font-weight: 700; font-size: 1.05rem; }
+.facets__clear { background: none; border: none; color: var(--brand); font: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+.facets__clear:hover { text-decoration: underline; }
+.fgroup { border-top: 1px solid var(--border); padding: var(--space-2) 0; }
+.fgroup__title { width: 100%; display: flex; align-items: center; justify-content: space-between; background: none; border: none; color: var(--text); font: inherit; font-weight: 650; font-size: 0.92rem; cursor: pointer; padding: 0.4rem 0; }
+.fgroup__title svg { transition: transform var(--dur) var(--ease); color: var(--muted-2); }
+.fgroup.collapsed .fgroup__title svg { transform: rotate(-90deg); }
+.fgroup__body { display: flex; flex-direction: column; gap: 0.15rem; padding-top: 0.4rem; }
+.fgroup.collapsed .fgroup__body { display: none; }
+/* lista de categorías */
+.fcat { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.42rem 0.6rem; border-radius: 9px; cursor: pointer; font-size: 0.9rem; color: var(--muted); transition: background var(--dur), color var(--dur); }
+.fcat:hover { background: var(--surface-2); color: var(--text); }
+.fcat.is-active { background: color-mix(in srgb, var(--brand) 14%, transparent); color: var(--text); font-weight: 600; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand) 45%, transparent); }
+.fcat__n { font-size: 0.78rem; color: var(--muted-2); }
+.fcat.is-active .fcat__n { color: var(--brand); }
+/* buscador de marca */
+.fsearch { font: inherit; font-size: 0.85rem; color: var(--text); background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 9px; padding: 0.45rem 0.6rem; margin-bottom: 0.4rem; }
+.fsearch:focus { outline: none; border-color: var(--brand); box-shadow: var(--glow); }
+.fchecks { display: flex; flex-direction: column; gap: 0.1rem; max-height: 220px; overflow: auto; }
+/* checkbox custom */
+.fcheck { display: flex; align-items: center; gap: 0.55rem; padding: 0.32rem 0.4rem; border-radius: 8px; cursor: pointer; font-size: 0.88rem; color: var(--muted); user-select: none; }
+.fcheck:hover { background: var(--surface-2); color: var(--text); }
+.fcheck input { position: absolute; opacity: 0; width: 0; height: 0; }
+.fcheck__box { width: 18px; height: 18px; border-radius: 5px; border: 1.5px solid var(--border-strong); display: inline-grid; place-items: center; flex-shrink: 0; transition: all var(--dur); }
+.fcheck__box::after { content: "✓"; color: #fff; font-size: 12px; font-weight: 700; opacity: 0; transform: scale(.5); transition: all var(--dur); }
+.fcheck input:checked + .fcheck__box { background: var(--brand); border-color: var(--brand); }
+.fcheck input:checked + .fcheck__box::after { opacity: 1; transform: scale(1); }
+.fcheck input:checked ~ * { color: var(--text); }
+.fcheck__n { margin-left: auto; font-size: 0.76rem; color: var(--muted-2); }
+.fcheck--solo { font-weight: 550; color: var(--text); }
+/* rango de precio */
+.frange { display: flex; align-items: center; gap: 0.4rem; }
+.frange input { width: 100%; font: inherit; font-size: 0.88rem; color: var(--text); background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 9px; padding: 0.45rem 0.55rem; min-width: 0; }
+.frange input:focus { outline: none; border-color: var(--brand); box-shadow: var(--glow); }
+.frange span { color: var(--muted-2); }
+/* barra de resultados */
+.catalog__bar { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4); flex-wrap: wrap; }
+.catalog__titles { flex: 1; min-width: 0; }
+.catalog__titles .section__title { font-size: 1.3rem; }
+.catalog__sort { display: flex; align-items: center; gap: 0.5rem; }
+.catalog__sort label { font-size: 0.8rem; color: var(--muted-2); }
+.catalog__sort select { font: inherit; font-size: 0.88rem; color: var(--text); background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 9px; padding: 0.5rem 0.7rem; cursor: pointer; }
+.catalog__sort select:focus { outline: none; border-color: var(--brand); box-shadow: var(--glow); }
+.facets__toggle { display: none; }
+/* chips de filtros activos */
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: var(--space-4); }
+.chips:empty { display: none; }
+.chip { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.3rem 0.7rem; border-radius: 999px; font-size: 0.82rem; font-weight: 550; background: color-mix(in srgb, var(--brand) 12%, var(--surface)); border: 1px solid color-mix(in srgb, var(--brand) 40%, transparent); color: var(--text); cursor: pointer; }
+.chip:hover { box-shadow: var(--glow); }
+.chip__x { font-size: 1rem; line-height: 1; color: var(--muted); }
+.chip:hover .chip__x { color: var(--negative); }
 .load-more-wrap { display: flex; justify-content: center; margin-top: var(--space-6); }
 #load-more { min-width: 260px; }
-@media (max-width: 640px) {
-  .filters { gap: var(--space-2); padding: var(--space-3); }
-  .filter { flex: 1 1 45%; }
-  .filter select { min-width: 0; width: 100%; }
-  .filter__clear { margin-left: 0; flex-basis: 100%; }
+/* backdrop del drawer de filtros en mobile */
+.facets-backdrop { display: none; }
+@media (max-width: 900px) {
+  .catalog { grid-template-columns: 1fr; }
+  .facets__toggle { display: inline-flex; }
+  .facets {
+    position: fixed; top: 0; left: 0; height: 100%; width: min(320px, 88vw); z-index: 110; max-height: none;
+    border-radius: 0; transform: translateX(-100%); transition: transform 0.28s var(--ease); box-shadow: 20px 0 60px rgba(0,0,0,.6);
+  }
+  .facets.open { transform: translateX(0); }
+  .facets-backdrop.show { display: block; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 105; }
 }
 
 </style>
@@ -1684,24 +1723,64 @@ body::before {
     </section>
 
     <section class="section" id="section-destacados">
-      <div class="section__head"><div><h2 class="section__title" id="title-destacados">Productos destacados</h2><p class="section__subtitle" id="subtitle-destacados">El mejor precio, el promedio y cuánto se movió respecto al día anterior.</p></div></div>
-      <div class="filters" id="filters">
-        <div class="filter"><label for="f-cat">Categoría</label><select id="f-cat"><option value="">Todas</option></select></div>
-        <div class="filter"><label for="f-marca">Marca</label><select id="f-marca"><option value="">Todas</option></select></div>
-        <div class="filter filter--price"><label>Precio (US$)</label><div class="filter__range"><input type="number" id="f-min" min="0" placeholder="mín" inputmode="numeric"><span>—</span><input type="number" id="f-max" min="0" placeholder="máx" inputmode="numeric"></div></div>
-        <div class="filter"><label for="f-sort">Ordenar por</label><select id="f-sort">
-          <option value="relevancia">Relevancia</option>
-          <option value="precio-asc">Precio: menor a mayor</option>
-          <option value="precio-desc">Precio: mayor a menor</option>
-          <option value="tiendas">Más tiendas</option>
-          <option value="descuento">Mayor descuento</option>
-          <option value="nombre">Nombre (A-Z)</option>
-        </select></div>
-        <label class="filter filter--check" for="f-multi"><span>Comparables</span><span class="check"><input type="checkbox" id="f-multi"><span class="check__box"></span>En 2+ tiendas</span></label>
-        <button class="btn filter__clear" id="f-clear" type="button">Limpiar filtros</button>
+      <div class="catalog">
+        <!-- Sidebar de filtros (facetas) -->
+        <aside class="facets" id="facets">
+          <div class="facets__head">
+            <span class="facets__title">Filtros</span>
+            <button class="facets__clear" id="f-clear" type="button">Limpiar todo</button>
+          </div>
+
+          <div class="fgroup">
+            <button class="fgroup__title" data-fgroup type="button">Categoría <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="fgroup__body" id="f-cats"></div>
+          </div>
+
+          <div class="fgroup">
+            <button class="fgroup__title" data-fgroup type="button">Marca <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="fgroup__body">
+              <input class="fsearch" id="f-marca-search" type="search" placeholder="Buscar marca…" autocomplete="off">
+              <div class="fchecks" id="f-marcas"></div>
+            </div>
+          </div>
+
+          <div class="fgroup">
+            <button class="fgroup__title" data-fgroup type="button">Precio (US$) <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="fgroup__body">
+              <div class="frange"><input type="number" id="f-min" min="0" placeholder="mín" inputmode="numeric"><span>—</span><input type="number" id="f-max" min="0" placeholder="máx" inputmode="numeric"></div>
+            </div>
+          </div>
+
+          <div class="fgroup">
+            <label class="fcheck fcheck--solo" for="f-multi"><input type="checkbox" id="f-multi"><span class="fcheck__box"></span> Solo en 2+ tiendas</label>
+          </div>
+        </aside>
+
+        <div class="facets-backdrop" id="facets-backdrop"></div>
+        <!-- Resultados -->
+        <div class="catalog__main">
+          <div class="catalog__bar">
+            <button class="btn facets__toggle" id="facets-toggle" type="button">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg> Filtros
+            </button>
+            <div class="catalog__titles"><h2 class="section__title" id="title-destacados">Productos destacados</h2><p class="section__subtitle" id="subtitle-destacados">El mejor precio, el promedio y cuánto se movió respecto al día anterior.</p></div>
+            <div class="catalog__sort">
+              <label for="f-sort">Ordenar</label>
+              <select id="f-sort">
+                <option value="relevancia">Relevancia</option>
+                <option value="precio-asc">Precio: menor a mayor</option>
+                <option value="precio-desc">Precio: mayor a menor</option>
+                <option value="tiendas">Más tiendas</option>
+                <option value="descuento">Mayor descuento</option>
+                <option value="nombre">Nombre (A-Z)</option>
+              </select>
+            </div>
+          </div>
+          <div class="chips" id="active-chips"></div>
+          <div class="showcase-grid" id="grid-destacados"></div>
+          <div class="load-more-wrap"><button class="btn btn--primary is-hidden" id="load-more" type="button">Cargar más productos</button></div>
+        </div>
       </div>
-      <div class="showcase-grid" id="grid-destacados"></div>
-      <div class="load-more-wrap"><button class="btn btn--primary is-hidden" id="load-more" type="button">Cargar más productos</button></div>
     </section>
 
     <section class="section" id="section-bajaron">

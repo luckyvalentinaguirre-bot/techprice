@@ -276,8 +276,8 @@
           '<span class="category-chip__count">' + num(n) + " " + (n === 1 ? "producto" : "productos") + "</span></span></div>")
       .join("");
 
-    // Destacados / grilla filtrable (se llena vía aplicarFiltros al final).
-    poblarFiltros();
+    // Destacados / grilla filtrable con facetas (se llena vía aplicarFiltros al final).
+    renderFacetas();
 
     // Bajaron de precio
     const drops = M.filter((m) => m.change && m.change.amount < 0).sort((a, b) => a.change.pct - b.change.pct).slice(0, 6);
@@ -331,35 +331,61 @@
     renderMisPcs();
   }
 
-  /* ========================= BUSCADOR + FILTROS ======================== */
-  const filtros = { q: "", cat: "", marca: "", min: null, max: null, sort: "relevancia", soloVarias: false };
-  let mostrarN = 48; // paginación "cargar más"
+  /* ==================== BUSCADOR + FILTROS (facetas pro) ==================== */
+  const filtros = { q: "", cat: "", marcas: new Set(), min: null, max: null, sort: "relevancia", soloVarias: false };
+  let mostrarN = 48;      // paginación "cargar más"
+  let marcaQuery = "";    // texto del buscador de marcas
 
-  // Llena los <select> de categoría y marca con lo que hay en los datos.
-  function poblarFiltros() {
+  function facetasData() {
     const cats = new Map(), marcas = new Map();
     for (const m of MODEL.productos) {
-      cats.set(m.categoria, (cats.get(m.categoria) || 0) + 1);
+      if (m.categoria !== "Otros") cats.set(m.categoria, (cats.get(m.categoria) || 0) + 1);
       if (m.marca) marcas.set(m.marca, (marcas.get(m.marca) || 0) + 1);
     }
-    const fill = (sel, entries, labelAll) => {
-      const el = $(sel); if (!el) return;
-      const cur = el.value;
-      el.innerHTML = '<option value="">' + labelAll + "</option>" +
-        entries.sort((a, b) => b[1] - a[1] || String(a[0]).localeCompare(b[0]))
-          .map(([k, n]) => '<option value="' + esc(k) + '">' + esc(k) + " (" + n + ")</option>").join("");
-      el.value = cur;
-    };
-    fill("#f-cat", [...cats.entries()], "Todas las categorías");
-    fill("#f-marca", [...marcas.entries()], "Todas las marcas");
+    const ord = (a, b) => b[1] - a[1] || String(a[0]).localeCompare(b[0]);
+    return { cats: [...cats.entries()].sort(ord), marcas: [...marcas.entries()].sort(ord) };
+  }
+
+  // Dibuja la lista de categorías y los checkboxes de marca en la barra lateral.
+  function renderFacetas() {
+    const { cats, marcas } = facetasData();
+    const catsEl = $("#f-cats");
+    if (catsEl) {
+      const total = MODEL.productos.filter((m) => m.categoria !== "Otros").length;
+      catsEl.innerHTML =
+        '<div class="fcat' + (filtros.cat ? "" : " is-active") + '" data-fcat=""><span>Todas</span><span class="fcat__n">' + num(total) + "</span></div>" +
+        cats.map(([k, n]) => '<div class="fcat' + (filtros.cat === k ? " is-active" : "") + '" data-fcat="' + esc(k) + '"><span>' + esc(k) + '</span><span class="fcat__n">' + num(n) + "</span></div>").join("");
+    }
+    const marcasEl = $("#f-marcas");
+    if (marcasEl) {
+      const vis = marcas.filter(([k]) => !marcaQuery || norm(k).includes(marcaQuery));
+      marcasEl.innerHTML = vis.length
+        ? vis.slice(0, marcaQuery ? 300 : 80).map(([k, n]) =>
+            '<label class="fcheck"><input type="checkbox" data-fmarca="' + esc(k) + '"' + (filtros.marcas.has(k) ? " checked" : "") +
+            '><span class="fcheck__box"></span><span>' + esc(k) + '</span><span class="fcheck__n">' + num(n) + "</span></label>").join("")
+        : '<p class="fcat__n" style="padding:.4rem .6rem">Sin coincidencias.</p>';
+    }
+  }
+
+  // Chips de filtros activos (cada uno se puede quitar con la ✕).
+  function renderChips() {
+    const el = $("#active-chips"); if (!el) return;
+    const chips = [];
+    if (filtros.q) chips.push(["q", 'Búsqueda: "' + filtros.q + '"']);
+    if (filtros.cat) chips.push(["cat", filtros.cat]);
+    filtros.marcas.forEach((m) => chips.push(["marca:" + m, m]));
+    if (filtros.min != null) chips.push(["min", "Desde US$ " + filtros.min]);
+    if (filtros.max != null) chips.push(["max", "Hasta US$ " + filtros.max]);
+    if (filtros.soloVarias) chips.push(["multi", "En 2+ tiendas"]);
+    el.innerHTML = chips.map(([k, label]) => '<button class="chip" data-chip="' + esc(k) + '">' + esc(label) + '<span class="chip__x">×</span></button>').join("");
   }
 
   function listaFiltrada() {
     let list = MODEL.productos;
     if (filtros.q) list = list.filter((m) => m._buscable.includes(filtros.q));
     if (filtros.cat) list = list.filter((m) => m.categoria === filtros.cat);
-    else if (!filtros.q) list = list.filter((m) => m.categoria !== "Otros"); // sin categoría clara => fuera del listado general (la búsqueda sí llega a "Otros")
-    if (filtros.marca) list = list.filter((m) => m.marca === filtros.marca);
+    else if (!filtros.q) list = list.filter((m) => m.categoria !== "Otros"); // sin categoría clara => fuera (la búsqueda sí llega a "Otros")
+    if (filtros.marcas.size) list = list.filter((m) => filtros.marcas.has(m.marca));
     if (filtros.min != null) list = list.filter((m) => m.lowest >= filtros.min);
     if (filtros.max != null) list = list.filter((m) => m.lowest <= filtros.max);
     if (filtros.soloVarias) list = list.filter((m) => m.offers.length >= 2);
@@ -376,48 +402,46 @@
   }
 
   const hayFiltros = () =>
-    filtros.q || filtros.cat || filtros.marca || filtros.min != null || filtros.max != null || filtros.sort !== "relevancia" || filtros.soloVarias;
+    filtros.q || filtros.cat || filtros.marcas.size || filtros.min != null || filtros.max != null || filtros.sort !== "relevancia" || filtros.soloVarias;
 
   function aplicarFiltros(resetN) {
     if (resetN !== false) mostrarN = 48;
-    // Si no hay productos porque están todas (o casi) las tiendas apagadas, avisamos.
     if (!MODEL.productos.length) {
       const totalTiendas = (MODEL.tiendasList || []).length;
       const activas = (MODEL.tiendasList || []).filter((t) => !tiendasOff.has(Number(t.id))).length;
       $("#title-destacados").textContent = "No hay productos para mostrar";
-      $("#subtitle-destacados").textContent = activas === 0 && totalTiendas > 0
-        ? "Tenés todas las tiendas apagadas."
-        : "No se encontraron productos.";
-      $("#grid-destacados").innerHTML =
-        '<p class="empty-results">' +
+      $("#subtitle-destacados").textContent = activas === 0 && totalTiendas > 0 ? "Tenés todas las tiendas apagadas." : "No se encontraron productos.";
+      $("#grid-destacados").innerHTML = '<p class="empty-results">' +
         (activas === 0 && totalTiendas > 0
-          ? 'Tenés <b>todas las tiendas apagadas</b>. Activá alguna en <a href="admin.html" style="color:var(--brand);font-weight:600">Administrar tiendas</a> (o abajo en la sección Tiendas) y recargá.'
-          : "No hay datos cargados.") +
-        "</p>";
-      const more = $("#load-more"); if (more) more.classList.add("is-hidden");
+          ? 'Tenés <b>todas las tiendas apagadas</b>. Activá alguna en <a href="admin.html" style="color:var(--brand);font-weight:600">Administrar tiendas</a> y recargá.'
+          : "No hay datos cargados.") + "</p>";
+      const more0 = $("#load-more"); if (more0) more0.classList.add("is-hidden");
+      renderChips();
       return;
     }
     const arr = listaFiltrada();
     const activo = hayFiltros();
     const visibles = activo ? arr.slice(0, mostrarN) : arr.slice(0, 8);
-    const title = $("#title-destacados"), sub = $("#subtitle-destacados");
     if (!activo) {
-      title.textContent = "Productos destacados";
-      sub.textContent = "El mejor precio, el promedio y cuánto se movió respecto al día anterior.";
+      $("#title-destacados").textContent = "Productos destacados";
+      $("#subtitle-destacados").textContent = "El mejor precio, el promedio y cuánto se movió respecto al día anterior.";
     } else {
-      title.textContent = filtros.cat || (filtros.q ? 'Resultados para "' + filtros.q + '"' : "Resultados");
-      sub.textContent = arr.length + " producto" + (arr.length === 1 ? "" : "s") +
+      $("#title-destacados").textContent = filtros.cat || (filtros.q ? 'Resultados para "' + filtros.q + '"' : "Resultados");
+      $("#subtitle-destacados").textContent = arr.length + " producto" + (arr.length === 1 ? "" : "s") +
         (arr.length > visibles.length ? " · mostrando " + visibles.length : "");
     }
     $("#grid-destacados").innerHTML = visibles.length
       ? visibles.map(showcaseCard).join("")
-      : '<p class="empty-results">No hay productos con esos filtros.</p>';
+      : '<p class="empty-results">No hay productos con esos filtros. Probá aflojar alguno.</p>';
     const more = $("#load-more");
     if (more) more.classList.toggle("is-hidden", !(activo && arr.length > visibles.length));
     wireCards();
     marcarChipActivo();
+    renderFacetas();
+    renderChips();
   }
 
+  // Resalta la categoría activa en los chips de la sección "Explorá por categoría".
   function marcarChipActivo() {
     document.querySelectorAll("[data-cat]").forEach((el) =>
       el.classList.toggle("is-active", el.getAttribute("data-cat") === filtros.cat));
@@ -425,38 +449,58 @@
 
   function syncControles() {
     const set = (sel, v) => { const el = $(sel); if (el) el.value = v; };
-    set("#f-cat", filtros.cat); set("#f-marca", filtros.marca); set("#f-sort", filtros.sort);
-    set("#f-min", filtros.min == null ? "" : filtros.min); set("#f-max", filtros.max == null ? "" : filtros.max);
+    set("#f-sort", filtros.sort);
+    set("#f-min", filtros.min == null ? "" : filtros.min);
+    set("#f-max", filtros.max == null ? "" : filtros.max);
     const chk = $("#f-multi"); if (chk) chk.checked = filtros.soloVarias;
   }
 
-  // La búsqueda del hero alimenta el filtro de texto.
   function buscar(q) { filtros.q = norm(q.trim()); aplicarFiltros(); }
   function verDestacados() { aplicarFiltros(); }
-  // Tocar un chip de categoría setea el filtro (toggle) y limpia la búsqueda.
-  function filtrarPorCategoria(cat) {
-    filtros.cat = (filtros.cat === cat) ? "" : cat;
-    const inp = $("#search-input"); if (inp) inp.value = "";
-    filtros.q = "";
-    syncControles();
-    aplicarFiltros();
+  function filtrarPorCategoria(cat) { filtros.cat = (filtros.cat === cat) ? "" : cat; aplicarFiltros(); }
+
+  function limpiarFiltros() {
+    filtros.q = ""; filtros.cat = ""; filtros.marcas = new Set(); filtros.min = null; filtros.max = null; filtros.sort = "relevancia"; filtros.soloVarias = false;
+    marcaQuery = "";
+    const ms = $("#f-marca-search"); if (ms) ms.value = "";
+    const si = $("#search-input"); if (si) si.value = "";
+    syncControles(); aplicarFiltros();
+  }
+
+  function quitarChip(key) {
+    if (key === "q") { filtros.q = ""; const si = $("#search-input"); if (si) si.value = ""; }
+    else if (key === "cat") filtros.cat = "";
+    else if (key.indexOf("marca:") === 0) filtros.marcas.delete(key.slice(6));
+    else if (key === "min") filtros.min = null;
+    else if (key === "max") filtros.max = null;
+    else if (key === "multi") filtros.soloVarias = false;
+    syncControles(); aplicarFiltros();
   }
 
   function wireFiltros() {
-    const num = (v) => { v = parseFloat(v); return isFinite(v) ? v : null; };
+    const parseN = (v) => { v = parseFloat(v); return isFinite(v) ? v : null; };
     const on = (sel, ev, fn) => { const el = $(sel); if (el) el.addEventListener(ev, fn); };
-    on("#f-cat", "change", (e) => { filtros.cat = e.target.value; aplicarFiltros(); });
-    on("#f-marca", "change", (e) => { filtros.marca = e.target.value; aplicarFiltros(); });
-    on("#f-sort", "change", (e) => { filtros.sort = e.target.value; aplicarFiltros(); });
-    on("#f-min", "input", (e) => { filtros.min = num(e.target.value); aplicarFiltros(); });
-    on("#f-max", "input", (e) => { filtros.max = num(e.target.value); aplicarFiltros(); });
-    on("#f-multi", "change", (e) => { filtros.soloVarias = e.target.checked; aplicarFiltros(); });
-    on("#f-clear", "click", () => {
-      Object.assign(filtros, { q: "", cat: "", marca: "", min: null, max: null, sort: "relevancia", soloVarias: false });
-      const inp = $("#search-input"); if (inp) inp.value = "";
-      syncControles(); aplicarFiltros();
+    on("#f-cats", "click", (e) => { const c = e.target.closest("[data-fcat]"); if (c) { filtros.cat = c.getAttribute("data-fcat"); aplicarFiltros(); } });
+    on("#f-marcas", "change", (e) => {
+      const cb = e.target.closest("[data-fmarca]"); if (!cb) return;
+      const m = cb.getAttribute("data-fmarca");
+      if (cb.checked) filtros.marcas.add(m); else filtros.marcas.delete(m);
+      aplicarFiltros();
     });
+    on("#f-marca-search", "input", (e) => { marcaQuery = norm(e.target.value.trim()); renderFacetas(); });
+    on("#f-sort", "change", (e) => { filtros.sort = e.target.value; aplicarFiltros(); });
+    on("#f-min", "input", (e) => { filtros.min = parseN(e.target.value); aplicarFiltros(); });
+    on("#f-max", "input", (e) => { filtros.max = parseN(e.target.value); aplicarFiltros(); });
+    on("#f-multi", "change", (e) => { filtros.soloVarias = e.target.checked; aplicarFiltros(); });
+    on("#f-clear", "click", limpiarFiltros);
     on("#load-more", "click", () => { mostrarN += 48; aplicarFiltros(false); });
+    on("#active-chips", "click", (e) => { const c = e.target.closest("[data-chip]"); if (c) quitarChip(c.getAttribute("data-chip")); });
+    document.querySelectorAll("[data-fgroup]").forEach((b) => b.addEventListener("click", () => b.closest(".fgroup").classList.toggle("collapsed")));
+    // sidebar de filtros en mobile (drawer)
+    const facets = $("#facets"), backdrop = $("#facets-backdrop");
+    const cerrarFacets = () => { if (facets) facets.classList.remove("open"); if (backdrop) backdrop.classList.remove("show"); };
+    on("#facets-toggle", "click", () => { if (facets) facets.classList.add("open"); if (backdrop) backdrop.classList.add("show"); });
+    if (backdrop) backdrop.addEventListener("click", cerrarFacets);
   }
 
   /* ============================ MODAL DETALLE =========================== */
