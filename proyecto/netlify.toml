@@ -1,0 +1,13 @@
+# Deploy en Netlify de la versión estática (solo archivos, sin build).
+#
+# Al conectar el repo en Netlify:
+#   - Base directory:    proyecto
+#   - Build command:     (vacío)
+#   - Publish directory: proyecto   (o "." si ya pusiste base = proyecto)
+#
+# Con "arrastrar y soltar" en https://app.netlify.com/drop no hace falta nada de
+# esto: soltás la carpeta proyecto/ y queda publicada.
+
+[build]
+  publish = "."
+  command = ""

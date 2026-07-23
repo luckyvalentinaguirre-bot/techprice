@@ -1,4 +1,4 @@
-import type { Category, ComparisonCard } from "@techprice/shared";
+import type { Category, ComparisonCard, HomeOverview } from "@techprice/shared";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
 
@@ -31,6 +31,10 @@ async function apiFetch<T>(path: string, revalidateSeconds = 60): Promise<T> {
 
 export function getCategories(): Promise<CategoryOption[]> {
   return apiFetch<CategoryOption[]>("/api/categories", 3600);
+}
+
+export function getHomeOverview(): Promise<HomeOverview> {
+  return apiFetch<HomeOverview>("/api/home", 60);
 }
 
 export function getStores(): Promise<StoreOption[]> {

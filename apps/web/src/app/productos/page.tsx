@@ -37,7 +37,7 @@ export default async function ProductsPage({ searchParams }: PageProps) {
   }
 
   return (
-    <div>
+    <div className="productos-page">
       <h1>Productos</h1>
 
       <form className="toolbar" action="/productos" method="get">

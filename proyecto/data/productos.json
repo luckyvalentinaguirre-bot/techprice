@@ -1,0 +1,456 @@
+[
+  {
+    "id": 1,
+    "nombre": "Intel Core i3-12100F",
+    "marca": "Intel",
+    "categoria": "CPU",
+    "imagen": null,
+    "specs": {
+      "plataforma": "Intel",
+      "socket": "LGA1700",
+      "tdp": 58
+    }
+  },
+  {
+    "id": 2,
+    "nombre": "Intel Core i5-12400F",
+    "marca": "Intel",
+    "categoria": "CPU",
+    "imagen": null,
+    "specs": {
+      "plataforma": "Intel",
+      "socket": "LGA1700",
+      "tdp": 65
+    }
+  },
+  {
+    "id": 3,
+    "nombre": "Intel Core i5-13400F",
+    "marca": "Intel",
+    "categoria": "CPU",
+    "imagen": null,
+    "specs": {
+      "plataforma": "Intel",
+      "socket": "LGA1700",
+      "tdp": 65
+    }
+  },
+  {
+    "id": 4,
+    "nombre": "Intel Core i7-13700K",
+    "marca": "Intel",
+    "categoria": "CPU",
+    "imagen": null,
+    "specs": {
+      "plataforma": "Intel",
+      "socket": "LGA1700",
+      "tdp": 125
+    }
+  },
+  {
+    "id": 5,
+    "nombre": "AMD Ryzen 5 5500",
+    "marca": "AMD",
+    "categoria": "CPU",
+    "imagen": null,
+    "specs": {
+      "plataforma": "AMD",
+      "socket": "AM4",
+      "tdp": 65
+    }
+  },
+  {
+    "id": 6,
+    "nombre": "AMD Ryzen 5 5600",
+    "marca": "AMD",
+    "categoria": "CPU",
+    "imagen": null,
+    "specs": {
+      "plataforma": "AMD",
+      "socket": "AM4",
+      "tdp": 65
+    }
+  },
+  {
+    "id": 7,
+    "nombre": "AMD Ryzen 5 7500F",
+    "marca": "AMD",
+    "categoria": "CPU",
+    "imagen": null,
+    "specs": {
+      "plataforma": "AMD",
+      "socket": "AM5",
+      "tdp": 65
+    }
+  },
+  {
+    "id": 8,
+    "nombre": "AMD Ryzen 5 7600",
+    "marca": "AMD",
+    "categoria": "CPU",
+    "imagen": null,
+    "specs": {
+      "plataforma": "AMD",
+      "socket": "AM5",
+      "tdp": 65
+    }
+  },
+  {
+    "id": 9,
+    "nombre": "AMD Ryzen 7 7700",
+    "marca": "AMD",
+    "categoria": "CPU",
+    "imagen": null,
+    "specs": {
+      "plataforma": "AMD",
+      "socket": "AM5",
+      "tdp": 65
+    }
+  },
+  {
+    "id": 10,
+    "nombre": "ASRock H610M-HDV/M.2",
+    "marca": "ASRock",
+    "categoria": "Motherboard",
+    "imagen": null,
+    "specs": {
+      "plataforma": "Intel",
+      "socket": "LGA1700",
+      "chipset": "H610",
+      "ramType": "DDR4",
+      "formFactor": "mATX"
+    }
+  },
+  {
+    "id": 11,
+    "nombre": "MSI PRO B660M-A DDR4",
+    "marca": "MSI",
+    "categoria": "Motherboard",
+    "imagen": null,
+    "specs": {
+      "plataforma": "Intel",
+      "socket": "LGA1700",
+      "chipset": "B660",
+      "ramType": "DDR4",
+      "formFactor": "mATX"
+    }
+  },
+  {
+    "id": 12,
+    "nombre": "Gigabyte B760 Gaming X DDR5",
+    "marca": "Gigabyte",
+    "categoria": "Motherboard",
+    "imagen": null,
+    "specs": {
+      "plataforma": "Intel",
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "ramType": "DDR5",
+      "formFactor": "ATX"
+    }
+  },
+  {
+    "id": 13,
+    "nombre": "ASUS TUF Gaming B650-PLUS",
+    "marca": "ASUS",
+    "categoria": "Motherboard",
+    "imagen": null,
+    "specs": {
+      "plataforma": "AMD",
+      "socket": "AM5",
+      "chipset": "B650",
+      "ramType": "DDR5",
+      "formFactor": "ATX"
+    }
+  },
+  {
+    "id": 14,
+    "nombre": "Gigabyte X670 AORUS Elite AX",
+    "marca": "Gigabyte",
+    "categoria": "Motherboard",
+    "imagen": null,
+    "specs": {
+      "plataforma": "AMD",
+      "socket": "AM5",
+      "chipset": "X670",
+      "ramType": "DDR5",
+      "formFactor": "ATX"
+    }
+  },
+  {
+    "id": 15,
+    "nombre": "MSI B550-A PRO",
+    "marca": "MSI",
+    "categoria": "Motherboard",
+    "imagen": null,
+    "specs": {
+      "plataforma": "AMD",
+      "socket": "AM4",
+      "chipset": "B550",
+      "ramType": "DDR4",
+      "formFactor": "ATX"
+    }
+  },
+  {
+    "id": 16,
+    "nombre": "ASRock A520M-HDV",
+    "marca": "ASRock",
+    "categoria": "Motherboard",
+    "imagen": null,
+    "specs": {
+      "plataforma": "AMD",
+      "socket": "AM4",
+      "chipset": "A520",
+      "ramType": "DDR4",
+      "formFactor": "mATX"
+    }
+  },
+  {
+    "id": 17,
+    "nombre": "Kingston Fury Beast 16GB DDR5 6000MHz",
+    "marca": "Kingston",
+    "categoria": "RAM",
+    "imagen": null,
+    "specs": {
+      "ramType": "DDR5",
+      "capacidadGb": 16
+    }
+  },
+  {
+    "id": 18,
+    "nombre": "Corsair Vengeance 32GB (2x16) DDR5 6000MHz",
+    "marca": "Corsair",
+    "categoria": "RAM",
+    "imagen": null,
+    "specs": {
+      "ramType": "DDR5",
+      "capacidadGb": 32
+    }
+  },
+  {
+    "id": 19,
+    "nombre": "Kingston Fury Beast 16GB DDR4 3200MHz",
+    "marca": "Kingston",
+    "categoria": "RAM",
+    "imagen": null,
+    "specs": {
+      "ramType": "DDR4",
+      "capacidadGb": 16
+    }
+  },
+  {
+    "id": 20,
+    "nombre": "Corsair Vengeance LPX 8GB DDR4 3200MHz",
+    "marca": "Corsair",
+    "categoria": "RAM",
+    "imagen": null,
+    "specs": {
+      "ramType": "DDR4",
+      "capacidadGb": 8
+    }
+  },
+  {
+    "id": 21,
+    "nombre": "Asus Dual RTX 4060 OC 8GB",
+    "marca": "Asus",
+    "categoria": "GPU",
+    "imagen": null,
+    "specs": {
+      "tdp": 115
+    }
+  },
+  {
+    "id": 22,
+    "nombre": "Sapphire Pulse Radeon RX 7600 8GB",
+    "marca": "Sapphire",
+    "categoria": "GPU",
+    "imagen": null,
+    "specs": {
+      "tdp": 165
+    }
+  },
+  {
+    "id": 23,
+    "nombre": "MSI Gaming X RTX 4060 Ti 16GB",
+    "marca": "MSI",
+    "categoria": "GPU",
+    "imagen": null,
+    "specs": {
+      "tdp": 165
+    }
+  },
+  {
+    "id": 24,
+    "nombre": "Gigabyte RTX 4070 WINDFORCE 12GB",
+    "marca": "Gigabyte",
+    "categoria": "GPU",
+    "imagen": null,
+    "specs": {
+      "tdp": 200
+    }
+  },
+  {
+    "id": 25,
+    "nombre": "Kingston A400 480GB SATA",
+    "marca": "Kingston",
+    "categoria": "SSD",
+    "imagen": null,
+    "specs": {
+      "interfaz": "SATA"
+    }
+  },
+  {
+    "id": 26,
+    "nombre": "WD Black SN770 1TB NVMe",
+    "marca": "Western Digital",
+    "categoria": "SSD",
+    "imagen": null,
+    "specs": {
+      "interfaz": "NVMe"
+    }
+  },
+  {
+    "id": 27,
+    "nombre": "Samsung 990 Pro 2TB NVMe",
+    "marca": "Samsung",
+    "categoria": "SSD",
+    "imagen": null,
+    "specs": {
+      "interfaz": "NVMe"
+    }
+  },
+  {
+    "id": 28,
+    "nombre": "Corsair CV550 550W",
+    "marca": "Corsair",
+    "categoria": "Fuente",
+    "imagen": null,
+    "specs": {
+      "watts": 550,
+      "cert": "80+ White"
+    }
+  },
+  {
+    "id": 29,
+    "nombre": "Corsair RM650e 650W 80+ Gold",
+    "marca": "Corsair",
+    "categoria": "Fuente",
+    "imagen": null,
+    "specs": {
+      "watts": 650,
+      "cert": "80+ Gold"
+    }
+  },
+  {
+    "id": 30,
+    "nombre": "Corsair RM750e 750W 80+ Gold",
+    "marca": "Corsair",
+    "categoria": "Fuente",
+    "imagen": null,
+    "specs": {
+      "watts": 750,
+      "cert": "80+ Gold"
+    }
+  },
+  {
+    "id": 31,
+    "nombre": "Corsair RM850e 850W 80+ Gold",
+    "marca": "Corsair",
+    "categoria": "Fuente",
+    "imagen": null,
+    "specs": {
+      "watts": 850,
+      "cert": "80+ Gold"
+    }
+  },
+  {
+    "id": 32,
+    "nombre": "Cooler Master MasterBox MB311L (mATX)",
+    "marca": "Cooler Master",
+    "categoria": "Gabinete",
+    "imagen": null,
+    "specs": {
+      "formFactor": "mATX"
+    }
+  },
+  {
+    "id": 33,
+    "nombre": "NZXT H5 Flow (ATX)",
+    "marca": "NZXT",
+    "categoria": "Gabinete",
+    "imagen": null,
+    "specs": {
+      "formFactor": "ATX"
+    }
+  },
+  {
+    "id": 34,
+    "nombre": "Lian Li A4-H2O (ITX)",
+    "marca": "Lian Li",
+    "categoria": "Gabinete",
+    "imagen": null,
+    "specs": {
+      "formFactor": "ITX"
+    }
+  },
+  {
+    "id": 35,
+    "nombre": "DeepCool AK400",
+    "marca": "DeepCool",
+    "categoria": "Cooler",
+    "imagen": null,
+    "specs": {
+      "sockets": [
+        "LGA1700",
+        "AM5",
+        "AM4"
+      ]
+    }
+  },
+  {
+    "id": 36,
+    "nombre": "Noctua NH-U12S redux",
+    "marca": "Noctua",
+    "categoria": "Cooler",
+    "imagen": null,
+    "specs": {
+      "sockets": [
+        "LGA1700",
+        "AM5",
+        "AM4"
+      ]
+    }
+  },
+  {
+    "id": 37,
+    "nombre": "LG UltraGear 27GP850 27\" 165Hz",
+    "marca": "LG",
+    "categoria": "Monitor",
+    "imagen": null,
+    "specs": {}
+  },
+  {
+    "id": 38,
+    "nombre": "Logitech G Pro X Mecánico",
+    "marca": "Logitech",
+    "categoria": "Teclado",
+    "imagen": null,
+    "specs": {}
+  },
+  {
+    "id": 39,
+    "nombre": "Logitech G502 Hero",
+    "marca": "Logitech",
+    "categoria": "Mouse",
+    "imagen": null,
+    "specs": {}
+  },
+  {
+    "id": 40,
+    "nombre": "HyperX Cloud II",
+    "marca": "HyperX",
+    "categoria": "Auriculares",
+    "imagen": null,
+    "specs": {}
+  }
+]

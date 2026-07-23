@@ -1,6 +1,7 @@
 import cors from "@fastify/cors";
 import Fastify from "fastify";
 import { categoryRoutes } from "./routes/categories.js";
+import { homeRoutes } from "./routes/home.js";
 import { productRoutes } from "./routes/products.js";
 import { storeRoutes } from "./routes/stores.js";
 
@@ -15,6 +16,7 @@ app.get("/health", async () => ({ status: "ok" }));
 await app.register(categoryRoutes);
 await app.register(storeRoutes);
 await app.register(productRoutes);
+await app.register(homeRoutes);
 
 // Most PaaS providers (Render, Railway, Heroku) inject PORT; API_PORT stays
 // as the override for local dev via .env.

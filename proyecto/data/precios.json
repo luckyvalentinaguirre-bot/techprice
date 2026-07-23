@@ -1,0 +1,4817 @@
+[
+  {
+    "producto": 1,
+    "tienda": 1,
+    "precio": 5543,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 1,
+    "precio": 5464,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 1,
+    "precio": 5385,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 1,
+    "precio": 5279,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 1,
+    "precio": 5200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 4,
+    "precio": 5349,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 4,
+    "precio": 5273,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 4,
+    "precio": 5196,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 4,
+    "precio": 5094,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 4,
+    "precio": 5018,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 2,
+    "precio": 5460,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 2,
+    "precio": 5382,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 2,
+    "precio": 5304,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 2,
+    "precio": 5200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 1,
+    "tienda": 2,
+    "precio": 5122,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i3-12100F%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 1,
+    "precio": 8795,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 1,
+    "precio": 8669,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 1,
+    "precio": 8543,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 1,
+    "precio": 8376,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 1,
+    "precio": 8200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 2,
+    "precio": 8663,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 2,
+    "precio": 8539,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 2,
+    "precio": 8415,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 2,
+    "precio": 8250,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 2,
+    "precio": 8077,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 3,
+    "precio": 9015,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 3,
+    "precio": 8886,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 3,
+    "precio": 8757,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 3,
+    "precio": 8585,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 2,
+    "tienda": 3,
+    "precio": 8405,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-12400F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 1,
+    "precio": 11861,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 1,
+    "precio": 11692,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 1,
+    "precio": 11523,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 1,
+    "precio": 11297,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 1,
+    "precio": 11500,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 3,
+    "precio": 12158,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 3,
+    "precio": 11984,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 3,
+    "precio": 11811,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 3,
+    "precio": 11579,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 3,
+    "precio": 11787,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 5,
+    "precio": 11956,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 5,
+    "precio": 11786,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 5,
+    "precio": 11615,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 5,
+    "precio": 11387,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 5,
+    "precio": 11592,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 4,
+    "precio": 11446,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 4,
+    "precio": 11283,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 4,
+    "precio": 11119,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 4,
+    "precio": 10901,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 3,
+    "tienda": 4,
+    "precio": 11098,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i5-13400F%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 1,
+    "precio": 22318,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 1,
+    "precio": 21999,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 1,
+    "precio": 21680,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 1,
+    "precio": 21255,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 1,
+    "precio": 21000,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 5,
+    "precio": 22496,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 5,
+    "precio": 22175,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 5,
+    "precio": 21854,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 5,
+    "precio": 21425,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 5,
+    "precio": 21168,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 4,
+    "precio": 21537,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 4,
+    "precio": 21229,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 4,
+    "precio": 20921,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 4,
+    "precio": 20511,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 4,
+    "tienda": 4,
+    "precio": 20265,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Intel%20Core%20i7-13700K%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 1,
+    "precio": 5629,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 1,
+    "precio": 5548,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 1,
+    "precio": 5468,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 1,
+    "precio": 5361,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 1,
+    "precio": 5200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 4,
+    "precio": 5432,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 4,
+    "precio": 5354,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 4,
+    "precio": 5277,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 4,
+    "precio": 5173,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 4,
+    "precio": 5018,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 2,
+    "precio": 5544,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 2,
+    "precio": 5465,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 2,
+    "precio": 5386,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 2,
+    "precio": 5280,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 5,
+    "tienda": 2,
+    "precio": 5122,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205500%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 1,
+    "precio": 7746,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 1,
+    "precio": 7635,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 1,
+    "precio": 7525,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 1,
+    "precio": 7377,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 1,
+    "precio": 7200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 2,
+    "precio": 7630,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 2,
+    "precio": 7521,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 2,
+    "precio": 7412,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 2,
+    "precio": 7266,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 2,
+    "precio": 7092,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 3,
+    "precio": 7940,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 3,
+    "precio": 7826,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 3,
+    "precio": 7713,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 3,
+    "precio": 7561,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 6,
+    "tienda": 3,
+    "precio": 7380,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%205600%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 1,
+    "precio": 11136,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 1,
+    "precio": 10977,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 1,
+    "precio": 10818,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 1,
+    "precio": 10606,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 1,
+    "precio": 10500,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 3,
+    "precio": 11415,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 3,
+    "precio": 11252,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 3,
+    "precio": 11089,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 3,
+    "precio": 10871,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 3,
+    "precio": 10762,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 5,
+    "precio": 11225,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 5,
+    "precio": 11065,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 5,
+    "precio": 10905,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 5,
+    "precio": 10691,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 7,
+    "tienda": 5,
+    "precio": 10584,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207500F%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 1,
+    "precio": 13545,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 1,
+    "precio": 13351,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 1,
+    "precio": 13158,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 1,
+    "precio": 12900,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 1,
+    "precio": 12900,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 5,
+    "precio": 13653,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 5,
+    "precio": 13458,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 5,
+    "precio": 13263,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 5,
+    "precio": 13003,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 5,
+    "precio": 13003,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 4,
+    "precio": 13071,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 4,
+    "precio": 12884,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 4,
+    "precio": 12697,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 4,
+    "precio": 12449,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 8,
+    "tienda": 4,
+    "precio": 12449,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%205%207600%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 9,
+    "tienda": 1,
+    "precio": 19582,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%207%207700%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 9,
+    "tienda": 1,
+    "precio": 19302,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%207%207700%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 9,
+    "tienda": 1,
+    "precio": 19022,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%207%207700%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 9,
+    "tienda": 1,
+    "precio": 18649,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%207%207700%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 9,
+    "tienda": 1,
+    "precio": 18500,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%207%207700%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 9,
+    "tienda": 4,
+    "precio": 18896,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%207%207700%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 9,
+    "tienda": 4,
+    "precio": 18626,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%207%207700%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 9,
+    "tienda": 4,
+    "precio": 18356,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%207%207700%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 9,
+    "tienda": 4,
+    "precio": 17996,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%207%207700%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 9,
+    "tienda": 4,
+    "precio": 17853,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=AMD%20Ryzen%207%207700%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 1,
+    "precio": 4136,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 1,
+    "precio": 4077,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 1,
+    "precio": 4018,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 1,
+    "precio": 3939,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 1,
+    "precio": 3900,
+    "moneda": "UYU",
+    "disponible": false,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 2,
+    "precio": 4074,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 2,
+    "precio": 4016,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 2,
+    "precio": 3958,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 2,
+    "precio": 3880,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 2,
+    "precio": 3842,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 3,
+    "precio": 4240,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 3,
+    "precio": 4179,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 3,
+    "precio": 4119,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 3,
+    "precio": 4038,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 10,
+    "tienda": 3,
+    "precio": 3997,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=ASRock%20H610M-HDV%2FM.2%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 1,
+    "precio": 5976,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 1,
+    "precio": 5890,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 1,
+    "precio": 5805,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 1,
+    "precio": 5691,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 1,
+    "precio": 5600,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 3,
+    "precio": 6125,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 3,
+    "precio": 6037,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 3,
+    "precio": 5950,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 3,
+    "precio": 5833,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 3,
+    "precio": 5740,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 5,
+    "precio": 6023,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 5,
+    "precio": 5937,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 5,
+    "precio": 5851,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 5,
+    "precio": 5737,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 11,
+    "tienda": 5,
+    "precio": 5645,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=MSI%20PRO%20B660M-A%20DDR4%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 1,
+    "precio": 9555,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 1,
+    "precio": 9419,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 1,
+    "precio": 9282,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 1,
+    "precio": 9100,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 1,
+    "precio": 8900,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 5,
+    "precio": 9632,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 5,
+    "precio": 9494,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 5,
+    "precio": 9356,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 5,
+    "precio": 9173,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 5,
+    "precio": 8971,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 4,
+    "precio": 9221,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 4,
+    "precio": 9089,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 4,
+    "precio": 8957,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 4,
+    "precio": 8782,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 12,
+    "tienda": 4,
+    "precio": 8589,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Gigabyte%20B760%20Gaming%20X%20DDR5%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 1,
+    "precio": 8180,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 1,
+    "precio": 8064,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 1,
+    "precio": 7947,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 1,
+    "precio": 7791,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 1,
+    "precio": 7900,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 4,
+    "precio": 7894,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 4,
+    "precio": 7781,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 4,
+    "precio": 7669,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 4,
+    "precio": 7518,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 4,
+    "precio": 7624,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 2,
+    "precio": 8058,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 2,
+    "precio": 7943,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 2,
+    "precio": 7828,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 2,
+    "precio": 7674,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 13,
+    "tienda": 2,
+    "precio": 7782,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=ASUS%20TUF%20Gaming%20B650-PLUS%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 14,
+    "tienda": 1,
+    "precio": 15317,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Gigabyte%20X670%20AORUS%20Elite%20AX%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 14,
+    "tienda": 1,
+    "precio": 15098,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Gigabyte%20X670%20AORUS%20Elite%20AX%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 14,
+    "tienda": 1,
+    "precio": 14879,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Gigabyte%20X670%20AORUS%20Elite%20AX%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 14,
+    "tienda": 1,
+    "precio": 14588,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Gigabyte%20X670%20AORUS%20Elite%20AX%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 14,
+    "tienda": 1,
+    "precio": 14500,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Gigabyte%20X670%20AORUS%20Elite%20AX%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 14,
+    "tienda": 2,
+    "precio": 15087,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Gigabyte%20X670%20AORUS%20Elite%20AX%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 14,
+    "tienda": 2,
+    "precio": 14872,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Gigabyte%20X670%20AORUS%20Elite%20AX%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 14,
+    "tienda": 2,
+    "precio": 14656,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Gigabyte%20X670%20AORUS%20Elite%20AX%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 14,
+    "tienda": 2,
+    "precio": 14369,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Gigabyte%20X670%20AORUS%20Elite%20AX%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 14,
+    "tienda": 2,
+    "precio": 14283,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Gigabyte%20X670%20AORUS%20Elite%20AX%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 1,
+    "precio": 5096,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 1,
+    "precio": 5023,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 1,
+    "precio": 4950,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 1,
+    "precio": 4853,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 1,
+    "precio": 4800,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 3,
+    "precio": 5223,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 3,
+    "precio": 5149,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 3,
+    "precio": 5074,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 3,
+    "precio": 4975,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 3,
+    "precio": 4920,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 5,
+    "precio": 5137,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 5,
+    "precio": 5063,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 5,
+    "precio": 4990,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 5,
+    "precio": 4892,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 15,
+    "tienda": 5,
+    "precio": 4838,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=MSI%20B550-A%20PRO%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 16,
+    "tienda": 1,
+    "precio": 3360,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=ASRock%20A520M-HDV%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 16,
+    "tienda": 1,
+    "precio": 3312,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=ASRock%20A520M-HDV%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 16,
+    "tienda": 1,
+    "precio": 3264,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=ASRock%20A520M-HDV%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 16,
+    "tienda": 1,
+    "precio": 3200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=ASRock%20A520M-HDV%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 16,
+    "tienda": 1,
+    "precio": 3200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=ASRock%20A520M-HDV%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 16,
+    "tienda": 5,
+    "precio": 3387,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=ASRock%20A520M-HDV%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 16,
+    "tienda": 5,
+    "precio": 3338,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=ASRock%20A520M-HDV%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 16,
+    "tienda": 5,
+    "precio": 3290,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=ASRock%20A520M-HDV%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 16,
+    "tienda": 5,
+    "precio": 3226,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=ASRock%20A520M-HDV%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 16,
+    "tienda": 5,
+    "precio": 3226,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=ASRock%20A520M-HDV%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 1,
+    "precio": 3570,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 1,
+    "precio": 3519,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 1,
+    "precio": 3468,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 1,
+    "precio": 3400,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 1,
+    "precio": 3400,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 4,
+    "precio": 3445,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 4,
+    "precio": 3396,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 4,
+    "precio": 3347,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 4,
+    "precio": 3281,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 4,
+    "precio": 3281,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 2,
+    "precio": 3516,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 2,
+    "precio": 3466,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 2,
+    "precio": 3416,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 2,
+    "precio": 3349,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 17,
+    "tienda": 2,
+    "precio": 3349,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR5%206000MHz%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 18,
+    "tienda": 1,
+    "precio": 7547,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%2032GB%20(2x16)%20DDR5%206000MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 18,
+    "tienda": 1,
+    "precio": 7439,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%2032GB%20(2x16)%20DDR5%206000MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 18,
+    "tienda": 1,
+    "precio": 7331,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%2032GB%20(2x16)%20DDR5%206000MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 18,
+    "tienda": 1,
+    "precio": 7188,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%2032GB%20(2x16)%20DDR5%206000MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 18,
+    "tienda": 1,
+    "precio": 6900,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%2032GB%20(2x16)%20DDR5%206000MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 18,
+    "tienda": 2,
+    "precio": 7434,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%2032GB%20(2x16)%20DDR5%206000MHz%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 18,
+    "tienda": 2,
+    "precio": 7327,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%2032GB%20(2x16)%20DDR5%206000MHz%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 18,
+    "tienda": 2,
+    "precio": 7221,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%2032GB%20(2x16)%20DDR5%206000MHz%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 18,
+    "tienda": 2,
+    "precio": 7080,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%2032GB%20(2x16)%20DDR5%206000MHz%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 18,
+    "tienda": 2,
+    "precio": 6797,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%2032GB%20(2x16)%20DDR5%206000MHz%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 1,
+    "precio": 2551,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 1,
+    "precio": 2514,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 1,
+    "precio": 2478,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 1,
+    "precio": 2429,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 1,
+    "precio": 2400,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 3,
+    "precio": 2614,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 3,
+    "precio": 2577,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 3,
+    "precio": 2540,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 3,
+    "precio": 2490,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 3,
+    "precio": 2460,
+    "moneda": "UYU",
+    "disponible": false,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 5,
+    "precio": 2571,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 5,
+    "precio": 2534,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 5,
+    "precio": 2498,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 5,
+    "precio": 2449,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 19,
+    "tienda": 5,
+    "precio": 2419,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Kingston%20Fury%20Beast%2016GB%20DDR4%203200MHz%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 1,
+    "precio": 1358,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 1,
+    "precio": 1339,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 1,
+    "precio": 1319,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 1,
+    "precio": 1294,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 1,
+    "precio": 1300,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 5,
+    "precio": 1369,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 5,
+    "precio": 1350,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 5,
+    "precio": 1330,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 5,
+    "precio": 1304,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 5,
+    "precio": 1310,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 4,
+    "precio": 1311,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 4,
+    "precio": 1292,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 4,
+    "precio": 1273,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 4,
+    "precio": 1248,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 20,
+    "tienda": 4,
+    "precio": 1255,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20Vengeance%20LPX%208GB%20DDR4%203200MHz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 1,
+    "precio": 20934,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 1,
+    "precio": 20634,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 1,
+    "precio": 20335,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 1,
+    "precio": 19937,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 1,
+    "precio": 18900,
+    "moneda": "UYU",
+    "disponible": false,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 4,
+    "precio": 20201,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 4,
+    "precio": 19912,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 4,
+    "precio": 19624,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 4,
+    "precio": 19239,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 4,
+    "precio": 18239,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 2,
+    "precio": 20620,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 2,
+    "precio": 20325,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 2,
+    "precio": 20030,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 2,
+    "precio": 19638,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 21,
+    "tienda": 2,
+    "precio": 18617,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Asus%20Dual%20RTX%204060%20OC%208GB%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 22,
+    "tienda": 1,
+    "precio": 17679,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Sapphire%20Pulse%20Radeon%20RX%207600%208GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 22,
+    "tienda": 1,
+    "precio": 17426,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Sapphire%20Pulse%20Radeon%20RX%207600%208GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 22,
+    "tienda": 1,
+    "precio": 17173,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Sapphire%20Pulse%20Radeon%20RX%207600%208GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 22,
+    "tienda": 1,
+    "precio": 16837,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Sapphire%20Pulse%20Radeon%20RX%207600%208GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 22,
+    "tienda": 1,
+    "precio": 16500,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Sapphire%20Pulse%20Radeon%20RX%207600%208GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 22,
+    "tienda": 2,
+    "precio": 17413,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Sapphire%20Pulse%20Radeon%20RX%207600%208GB%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 22,
+    "tienda": 2,
+    "precio": 17165,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Sapphire%20Pulse%20Radeon%20RX%207600%208GB%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 22,
+    "tienda": 2,
+    "precio": 16916,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Sapphire%20Pulse%20Radeon%20RX%207600%208GB%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 22,
+    "tienda": 2,
+    "precio": 16584,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Sapphire%20Pulse%20Radeon%20RX%207600%208GB%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 22,
+    "tienda": 2,
+    "precio": 16253,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Sapphire%20Pulse%20Radeon%20RX%207600%208GB%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 23,
+    "tienda": 1,
+    "precio": 28715,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=MSI%20Gaming%20X%20RTX%204060%20Ti%2016GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 23,
+    "tienda": 1,
+    "precio": 28305,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=MSI%20Gaming%20X%20RTX%204060%20Ti%2016GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 23,
+    "tienda": 1,
+    "precio": 27895,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=MSI%20Gaming%20X%20RTX%204060%20Ti%2016GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 23,
+    "tienda": 1,
+    "precio": 27348,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=MSI%20Gaming%20X%20RTX%204060%20Ti%2016GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 23,
+    "tienda": 1,
+    "precio": 26500,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=MSI%20Gaming%20X%20RTX%204060%20Ti%2016GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 23,
+    "tienda": 3,
+    "precio": 29433,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=MSI%20Gaming%20X%20RTX%204060%20Ti%2016GB%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 23,
+    "tienda": 3,
+    "precio": 29013,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=MSI%20Gaming%20X%20RTX%204060%20Ti%2016GB%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 23,
+    "tienda": 3,
+    "precio": 28592,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=MSI%20Gaming%20X%20RTX%204060%20Ti%2016GB%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 23,
+    "tienda": 3,
+    "precio": 28031,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=MSI%20Gaming%20X%20RTX%204060%20Ti%2016GB%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 23,
+    "tienda": 3,
+    "precio": 27162,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=MSI%20Gaming%20X%20RTX%204060%20Ti%2016GB%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 24,
+    "tienda": 1,
+    "precio": 36207,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Gigabyte%20RTX%204070%20WINDFORCE%2012GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 24,
+    "tienda": 1,
+    "precio": 35690,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Gigabyte%20RTX%204070%20WINDFORCE%2012GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 24,
+    "tienda": 1,
+    "precio": 35172,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Gigabyte%20RTX%204070%20WINDFORCE%2012GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 24,
+    "tienda": 1,
+    "precio": 34483,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Gigabyte%20RTX%204070%20WINDFORCE%2012GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 24,
+    "tienda": 1,
+    "precio": 34000,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Gigabyte%20RTX%204070%20WINDFORCE%2012GB%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 24,
+    "tienda": 5,
+    "precio": 36497,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Gigabyte%20RTX%204070%20WINDFORCE%2012GB%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 24,
+    "tienda": 5,
+    "precio": 35975,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Gigabyte%20RTX%204070%20WINDFORCE%2012GB%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 24,
+    "tienda": 5,
+    "precio": 35454,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Gigabyte%20RTX%204070%20WINDFORCE%2012GB%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 24,
+    "tienda": 5,
+    "precio": 34759,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Gigabyte%20RTX%204070%20WINDFORCE%2012GB%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 24,
+    "tienda": 5,
+    "precio": 34272,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Gigabyte%20RTX%204070%20WINDFORCE%2012GB%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 1,
+    "precio": 1591,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 1,
+    "precio": 1568,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 1,
+    "precio": 1545,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 1,
+    "precio": 1515,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 1,
+    "precio": 1500,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 4,
+    "precio": 1535,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 4,
+    "precio": 1513,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 4,
+    "precio": 1491,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 4,
+    "precio": 1462,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 4,
+    "precio": 1448,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 2,
+    "precio": 1567,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 2,
+    "precio": 1545,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 2,
+    "precio": 1522,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 2,
+    "precio": 1492,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 25,
+    "tienda": 2,
+    "precio": 1478,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Kingston%20A400%20480GB%20SATA%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 1,
+    "precio": 4464,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 1,
+    "precio": 4400,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 1,
+    "precio": 4336,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 1,
+    "precio": 4251,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 1,
+    "precio": 4200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 2,
+    "precio": 4397,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 2,
+    "precio": 4334,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 2,
+    "precio": 4271,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 2,
+    "precio": 4187,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 2,
+    "precio": 4137,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 3,
+    "precio": 4575,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 3,
+    "precio": 4510,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 3,
+    "precio": 4444,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 3,
+    "precio": 4357,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 26,
+    "tienda": 3,
+    "precio": 4305,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=WD%20Black%20SN770%201TB%20NVMe%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 1,
+    "precio": 16214,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 1,
+    "precio": 15982,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 1,
+    "precio": 15751,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 1,
+    "precio": 15442,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 1,
+    "precio": 14500,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 3,
+    "precio": 16619,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 3,
+    "precio": 16382,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 3,
+    "precio": 16145,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 3,
+    "precio": 15828,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 3,
+    "precio": 14862,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 5,
+    "precio": 16344,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 5,
+    "precio": 16110,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 5,
+    "precio": 15877,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 5,
+    "precio": 15565,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 27,
+    "tienda": 5,
+    "precio": 14616,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Samsung%20990%20Pro%202TB%20NVMe%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 1,
+    "precio": 2744,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 1,
+    "precio": 2705,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 1,
+    "precio": 2665,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 1,
+    "precio": 2613,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 1,
+    "precio": 2600,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 5,
+    "precio": 2766,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 5,
+    "precio": 2726,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 5,
+    "precio": 2687,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 5,
+    "precio": 2634,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 5,
+    "precio": 2621,
+    "moneda": "UYU",
+    "disponible": false,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 4,
+    "precio": 2648,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 4,
+    "precio": 2610,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 4,
+    "precio": 2572,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 4,
+    "precio": 2522,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 28,
+    "tienda": 4,
+    "precio": 2509,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20CV550%20550W%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 29,
+    "tienda": 1,
+    "precio": 3810,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20RM650e%20650W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 29,
+    "tienda": 1,
+    "precio": 3756,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20RM650e%20650W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 29,
+    "tienda": 1,
+    "precio": 3702,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20RM650e%20650W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 29,
+    "tienda": 1,
+    "precio": 3629,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20RM650e%20650W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 29,
+    "tienda": 1,
+    "precio": 3600,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20RM650e%20650W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 29,
+    "tienda": 4,
+    "precio": 3677,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20RM650e%20650W%2080%2B%20Gold%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 29,
+    "tienda": 4,
+    "precio": 3625,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20RM650e%20650W%2080%2B%20Gold%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 29,
+    "tienda": 4,
+    "precio": 3572,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20RM650e%20650W%2080%2B%20Gold%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 29,
+    "tienda": 4,
+    "precio": 3502,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20RM650e%20650W%2080%2B%20Gold%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 29,
+    "tienda": 4,
+    "precio": 3474,
+    "moneda": "UYU",
+    "disponible": false,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20RM650e%20650W%2080%2B%20Gold%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 1,
+    "precio": 4551,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 1,
+    "precio": 4486,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 1,
+    "precio": 4421,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 1,
+    "precio": 4335,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 1,
+    "precio": 4300,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 2,
+    "precio": 4483,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 2,
+    "precio": 4419,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 2,
+    "precio": 4355,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 2,
+    "precio": 4270,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 2,
+    "precio": 4236,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 3,
+    "precio": 4665,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 3,
+    "precio": 4599,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 3,
+    "precio": 4532,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 3,
+    "precio": 4443,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 30,
+    "tienda": 3,
+    "precio": 4408,
+    "moneda": "UYU",
+    "disponible": false,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20RM750e%20750W%2080%2B%20Gold%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 31,
+    "tienda": 1,
+    "precio": 5460,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20RM850e%20850W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 31,
+    "tienda": 1,
+    "precio": 5382,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20RM850e%20850W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 31,
+    "tienda": 1,
+    "precio": 5304,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20RM850e%20850W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 31,
+    "tienda": 1,
+    "precio": 5200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20RM850e%20850W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 31,
+    "tienda": 1,
+    "precio": 5200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20RM850e%20850W%2080%2B%20Gold%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 31,
+    "tienda": 3,
+    "precio": 5596,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Corsair%20RM850e%20850W%2080%2B%20Gold%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 31,
+    "tienda": 3,
+    "precio": 5517,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Corsair%20RM850e%20850W%2080%2B%20Gold%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 31,
+    "tienda": 3,
+    "precio": 5437,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Corsair%20RM850e%20850W%2080%2B%20Gold%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 31,
+    "tienda": 3,
+    "precio": 5330,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Corsair%20RM850e%20850W%2080%2B%20Gold%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 31,
+    "tienda": 3,
+    "precio": 5330,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Corsair%20RM850e%20850W%2080%2B%20Gold%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 1,
+    "precio": 2520,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 1,
+    "precio": 2484,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 1,
+    "precio": 2448,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 1,
+    "precio": 2400,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 1,
+    "precio": 2400,
+    "moneda": "UYU",
+    "disponible": false,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 5,
+    "precio": 2540,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 5,
+    "precio": 2504,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 5,
+    "precio": 2468,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 5,
+    "precio": 2419,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 5,
+    "precio": 2419,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 4,
+    "precio": 2432,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 4,
+    "precio": 2397,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 4,
+    "precio": 2362,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 4,
+    "precio": 2316,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 32,
+    "tienda": 4,
+    "precio": 2316,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Cooler%20Master%20MasterBox%20MB311L%20(mATX)%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 33,
+    "tienda": 1,
+    "precio": 3360,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=NZXT%20H5%20Flow%20(ATX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 33,
+    "tienda": 1,
+    "precio": 3312,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=NZXT%20H5%20Flow%20(ATX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 33,
+    "tienda": 1,
+    "precio": 3264,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=NZXT%20H5%20Flow%20(ATX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 33,
+    "tienda": 1,
+    "precio": 3200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=NZXT%20H5%20Flow%20(ATX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 33,
+    "tienda": 1,
+    "precio": 3200,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=NZXT%20H5%20Flow%20(ATX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 33,
+    "tienda": 4,
+    "precio": 3242,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=NZXT%20H5%20Flow%20(ATX)%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 33,
+    "tienda": 4,
+    "precio": 3196,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=NZXT%20H5%20Flow%20(ATX)%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 33,
+    "tienda": 4,
+    "precio": 3150,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=NZXT%20H5%20Flow%20(ATX)%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 33,
+    "tienda": 4,
+    "precio": 3088,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=NZXT%20H5%20Flow%20(ATX)%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 33,
+    "tienda": 4,
+    "precio": 3088,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=NZXT%20H5%20Flow%20(ATX)%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 34,
+    "tienda": 1,
+    "precio": 6134,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Lian%20Li%20A4-H2O%20(ITX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 34,
+    "tienda": 1,
+    "precio": 6046,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Lian%20Li%20A4-H2O%20(ITX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 34,
+    "tienda": 1,
+    "precio": 5958,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Lian%20Li%20A4-H2O%20(ITX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 34,
+    "tienda": 1,
+    "precio": 5842,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Lian%20Li%20A4-H2O%20(ITX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 34,
+    "tienda": 1,
+    "precio": 5900,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Lian%20Li%20A4-H2O%20(ITX)%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 34,
+    "tienda": 2,
+    "precio": 6042,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Lian%20Li%20A4-H2O%20(ITX)%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 34,
+    "tienda": 2,
+    "precio": 5955,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Lian%20Li%20A4-H2O%20(ITX)%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 34,
+    "tienda": 2,
+    "precio": 5869,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Lian%20Li%20A4-H2O%20(ITX)%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 34,
+    "tienda": 2,
+    "precio": 5754,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Lian%20Li%20A4-H2O%20(ITX)%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 34,
+    "tienda": 2,
+    "precio": 5812,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Lian%20Li%20A4-H2O%20(ITX)%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 1,
+    "precio": 1697,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 1,
+    "precio": 1673,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 1,
+    "precio": 1648,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 1,
+    "precio": 1616,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 1,
+    "precio": 1600,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 3,
+    "precio": 1739,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 3,
+    "precio": 1715,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 3,
+    "precio": 1690,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 3,
+    "precio": 1657,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 3,
+    "precio": 1640,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 5,
+    "precio": 1711,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 5,
+    "precio": 1686,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 5,
+    "precio": 1662,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 5,
+    "precio": 1629,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 35,
+    "tienda": 5,
+    "precio": 1613,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=DeepCool%20AK400%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 36,
+    "tienda": 1,
+    "precio": 2415,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Noctua%20NH-U12S%20redux%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 36,
+    "tienda": 1,
+    "precio": 2381,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Noctua%20NH-U12S%20redux%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 36,
+    "tienda": 1,
+    "precio": 2346,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Noctua%20NH-U12S%20redux%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 36,
+    "tienda": 1,
+    "precio": 2300,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Noctua%20NH-U12S%20redux%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 36,
+    "tienda": 1,
+    "precio": 2300,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Noctua%20NH-U12S%20redux%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 36,
+    "tienda": 5,
+    "precio": 2434,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Noctua%20NH-U12S%20redux%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 36,
+    "tienda": 5,
+    "precio": 2400,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Noctua%20NH-U12S%20redux%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 36,
+    "tienda": 5,
+    "precio": 2365,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Noctua%20NH-U12S%20redux%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 36,
+    "tienda": 5,
+    "precio": 2318,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Noctua%20NH-U12S%20redux%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 36,
+    "tienda": 5,
+    "precio": 2318,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Noctua%20NH-U12S%20redux%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 37,
+    "tienda": 1,
+    "precio": 18289,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=LG%20UltraGear%2027GP850%2027%22%20165Hz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 37,
+    "tienda": 1,
+    "precio": 18028,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=LG%20UltraGear%2027GP850%2027%22%20165Hz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 37,
+    "tienda": 1,
+    "precio": 17766,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=LG%20UltraGear%2027GP850%2027%22%20165Hz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 37,
+    "tienda": 1,
+    "precio": 17418,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=LG%20UltraGear%2027GP850%2027%22%20165Hz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 37,
+    "tienda": 1,
+    "precio": 17000,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=LG%20UltraGear%2027GP850%2027%22%20165Hz%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 37,
+    "tienda": 4,
+    "precio": 17649,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=LG%20UltraGear%2027GP850%2027%22%20165Hz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 37,
+    "tienda": 4,
+    "precio": 17397,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=LG%20UltraGear%2027GP850%2027%22%20165Hz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 37,
+    "tienda": 4,
+    "precio": 17145,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=LG%20UltraGear%2027GP850%2027%22%20165Hz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 37,
+    "tienda": 4,
+    "precio": 16808,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=LG%20UltraGear%2027GP850%2027%22%20165Hz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 37,
+    "tienda": 4,
+    "precio": 16405,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=LG%20UltraGear%2027GP850%2027%22%20165Hz%20Thot%20Computaci%C3%B3n%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 1,
+    "precio": 4990,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 1,
+    "precio": 4919,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 1,
+    "precio": 4847,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 1,
+    "precio": 4752,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 1,
+    "precio": 4700,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 2,
+    "precio": 4915,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 2,
+    "precio": 4845,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 2,
+    "precio": 4775,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 2,
+    "precio": 4681,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 2,
+    "precio": 4630,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20Hard%20PC%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 3,
+    "precio": 5115,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 3,
+    "precio": 5042,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 3,
+    "precio": 4969,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 3,
+    "precio": 4871,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 38,
+    "tienda": 3,
+    "precio": 4818,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Logitech%20G%20Pro%20X%20Mec%C3%A1nico%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 1,
+    "precio": 1977,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 1,
+    "precio": 1949,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 1,
+    "precio": 1921,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 1,
+    "precio": 1883,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 1,
+    "precio": 1900,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 3,
+    "precio": 2027,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 3,
+    "precio": 1998,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 3,
+    "precio": 1969,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 3,
+    "precio": 1930,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 3,
+    "precio": 1947,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20ZonaTecno%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 5,
+    "precio": 1993,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 5,
+    "precio": 1965,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 5,
+    "precio": 1936,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 5,
+    "precio": 1898,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 39,
+    "tienda": 5,
+    "precio": 1915,
+    "moneda": "UYU",
+    "disponible": false,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=Logitech%20G502%20Hero%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 40,
+    "tienda": 1,
+    "precio": 2786,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=HyperX%20Cloud%20II%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 40,
+    "tienda": 1,
+    "precio": 2746,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=HyperX%20Cloud%20II%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 40,
+    "tienda": 1,
+    "precio": 2706,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=HyperX%20Cloud%20II%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 40,
+    "tienda": 1,
+    "precio": 2653,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=HyperX%20Cloud%20II%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 40,
+    "tienda": 1,
+    "precio": 2600,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=HyperX%20Cloud%20II%20PC%20Store%20Uruguay%20Uruguay%20comprar"
+  },
+  {
+    "producto": 40,
+    "tienda": 5,
+    "precio": 2808,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-04",
+    "url": "https://www.google.com/search?q=HyperX%20Cloud%20II%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 40,
+    "tienda": 5,
+    "precio": 2768,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-09",
+    "url": "https://www.google.com/search?q=HyperX%20Cloud%20II%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 40,
+    "tienda": 5,
+    "precio": 2728,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-14",
+    "url": "https://www.google.com/search?q=HyperX%20Cloud%20II%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 40,
+    "tienda": 5,
+    "precio": 2674,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-18",
+    "url": "https://www.google.com/search?q=HyperX%20Cloud%20II%20NNET%20Uruguay%20comprar"
+  },
+  {
+    "producto": 40,
+    "tienda": 5,
+    "precio": 2621,
+    "moneda": "UYU",
+    "disponible": true,
+    "fecha": "2026-07-20",
+    "url": "https://www.google.com/search?q=HyperX%20Cloud%20II%20NNET%20Uruguay%20comprar"
+  }
+]

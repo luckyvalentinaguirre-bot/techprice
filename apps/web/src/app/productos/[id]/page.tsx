@@ -13,7 +13,7 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
   const currency = card.offers[0]?.currency ?? "UYU";
 
   return (
-    <div>
+    <div className="product-detail">
       <div className="product-detail__header">
         <div className="product-detail__image">
           {card.imageUrl ? (
